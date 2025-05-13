@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - myCascaid</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="top-nav">
+        <a href="index.html" class="back-button">
+            <img src="assets/icons/icons8-back.svg" alt="Back" class="nav-icon">
+        </a>
+        <h1 class="page-title">Notifications</h1>
+        <div class="spacer"></div> <!-- Empty div for flex spacing -->
+    </header>
+
+    <main>
+        <div class="notifications-container">
+            <div class="notification-item">
+                <div class="notification-icon">
+                    <img src="assets/icons/icons8-bell.svg" alt="Notification" class="notification-img">
+                </div>
+                <div class="notification-content">
+                    <h3 class="notification-title">Welcome to myCascaid</h3>
+                    <p class="notification-text">Thank you for joining our community. Get started by completing your profile.</p>
+                    <span class="notification-time">2 hours ago</span>
+                </div>
+            </div>
+            
+            <div class="notification-item unread">
+                <div class="notification-icon">
+                    <img src="assets/icons/icons8-engine.svg" alt="Engine" class="notification-img">
+                </div>
+                <div class="notification-content">
+                    <h3 class="notification-title">Engine Check Reminder</h3>
+                    <p class="notification-text">It's time for your regular engine health check. Schedule an appointment.</p>
+                    <span class="notification-time">Just now</span>
+                </div>
+            </div>
+            
+            <div class="notification-item">
+                <div class="notification-icon">
+                    <img src="assets/icons/profile-icon.svg" alt="Profile" class="notification-img">
+                </div>
+                <div class="notification-content">
+                    <h3 class="notification-title">Profile Update</h3>
+                    <p class="notification-text">Your profile has been successfully updated.</p>
+                    <span class="notification-time">Yesterday</span>
+                </div>
+            </div>
+            
+            <!-- Empty state when no notifications -->
+            <div class="empty-notifications" style="display: none;">
+                <img src="assets/icons/icons8-bell.svg" alt="No Notifications" class="empty-icon">
+                <h3>No Notifications</h3>
+                <p>You're all caught up! Check back later for updates.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer id="bottom-nav">
+        <button class="nav-button" data-page="home">
+            <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+        </button>
+        <button class="nav-button" data-page="engine">
+            <img src="assets/icons/icons8-engine.svg" alt="Check Engine Lights" class="nav-icon" data-default-icon="assets/icons/icons8-engine.svg" data-filled-icon="assets/icons/icons8-engine-filled.svg">
+        </button>
+        <button class="nav-button cascaid-logo" data-page="ai">
+            <div class="cascaid-logo-placeholder">
+                 <div class="half-circle left"></div>
+                 <div class="half-circle right"></div>
+            </div>
+        </button>
+        <button class="nav-button" data-page="messages">
+            <img src="assets/icons/icons8-chat-message.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
+        </button>
+        <button class="nav-button" data-page="wallet">
+            <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
+        </button>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html> 

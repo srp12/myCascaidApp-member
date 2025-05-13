@@ -1,0 +1,178 @@
+/* Login Page Specific Styles */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background-color-light); /* Use theme variable */
+}
+
+.login-container {
+    background-color: #fff; /* Add a background to the container */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.login-container h1 {
+    margin-bottom: 24px;
+    color: var(--text-color-light); /* Use theme variable */
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color-light);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Toggle Switch Styles */
+.toggle-switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.toggle-label {
+    margin: 0 10px;
+    color: var(--text-color-light);
+    font-size: 14px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color); /* Use theme variable */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.login-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color); /* Use theme variable */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #367c39; /* Darker shade of primary */
+}
+
+#login-message {
+    margin-top: 20px;
+    color: red;
+    font-size: 14px;
+}
+
+/* Focus states for login elements */
+.input-group input:focus,
+.login-button:focus,
+.switch input:focus + .slider {
+    outline: 2px solid var(--primary-color); 
+    outline-offset: 1px;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3); /* Optional: add a glow effect */
+}
+
+/* Adjust focus for slider specifically */
+.switch input:focus + .slider {
+     outline: none; /* Remove default outline on slider */
+}
+
+/* Dark mode specific styles for login */
+body.dark-mode {
+    background-color: var(--background-color-dark);
+}
+
+body.dark-mode .login-container {
+    background-color: #444; /* Darker container background */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .login-container h1,
+body.dark-mode .input-group label,
+body.dark-mode .toggle-label {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .input-group input {
+    background-color: #555;
+    border-color: #666;
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .slider {
+    background-color: #555; /* Darker slider background */
+}
+
+body.dark-mode input:checked + .slider {
+    background-color: var(--primary-color); /* Keep primary color for checked state */
+} 

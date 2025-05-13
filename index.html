@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myCascaid</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="top-nav">
+        <button class="profile-button">
+            <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+            <!-- Placeholder for actual profile image -->
+        </button>
+        <a href="notifications.html" class="notifications-link">
+            <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
+        </a>
+    </header>
+
+    <main>
+        <!-- Main content of the page will go here -->
+    </main>
+
+    <footer id="bottom-nav">
+        <button class="nav-button" data-page="home">
+            <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+        </button>
+        <button class="nav-button" data-page="engine">
+            <img src="assets/icons/icons8-engine.svg" alt="Check Engine Lights" class="nav-icon" data-default-icon="assets/icons/icons8-engine.svg" data-filled-icon="assets/icons/icons8-engine-filled.svg">
+        </button>
+        <button class="nav-button cascaid-logo" data-page="ai">
+            <div class="cascaid-logo-placeholder">
+                 <div class="half-circle left"></div>
+                 <div class="half-circle right"></div>
+            </div>
+        </button>
+        <button class="nav-button" data-page="messages">
+            <img src="assets/icons/icons8-chat-message.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
+        </button>
+        <button class="nav-button" data-page="wallet">
+            <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
+        </button>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <!-- Script to toggle navigation based on user type -->
+    <script>
+        // ... existing script content ...
+    </script>
+
+    <!-- Side Menus -->
+    <div id="side-menu-overlay"></div>
+    <div id="profile-side-menu" class="side-menu">
+        <div class="profile-header">
+            <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="profile-image-large">
+            <h3 class="profile-name">Full Name</h3>
+            <p class="profile-username">@saawan</p>
+            <div class="profile-stats">
+                <span><strong>0</strong> Followers</span>
+                <span><strong>0</strong> Following</span>
+            </div>
+        </div>
+        <nav class="profile-nav">
+            <ul>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/profile-icon.svg" alt="Profile Icon" class="menu-icon">
+                    Profile
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-graph-report.svg" alt="Reports Icon" class="menu-icon">
+                    Reports
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-bookmark.svg" alt="Bookmarks Icon" class="menu-icon">
+                    Bookmarks
+                </a></li>
+                <li>
+                    <div class="theme-toggle-container">
+                        <span>
+                            <img src="assets/icons/icons8-night.svg" alt="Theme Icon" class="menu-icon theme-icon light-theme-icon">
+                            <img src="assets/icons/icons8-sun.svg" alt="Theme Icon" class="menu-icon theme-icon dark-theme-icon">
+                            Appearance
+                        </span>
+                        <button id="theme-toggle-button" class="theme-toggle-sidebar-button">Toggle Theme</button>
+                    </div>
+                </li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/settings.svg" alt="Settings Icon" class="menu-icon">
+                    Settings
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-invite.svg" alt="Invite Icon" class="menu-icon">
+                    Invite
+                </a></li>
+            </ul>
+        </nav>
+        <button class="logout-button">
+            <img src="assets/icons/logout.svg" alt="Logout Icon" class="menu-icon">
+            Logout
+        </button>
+    </div>
+    <div id="settings-side-menu" class="side-menu">
+        <h2>Settings</h2>
+        <!-- Settings content goes here -->
+        <ul>
+            <li>Account</li>
+            <li>Appearance (Theme)</li>
+            <li>Notifications</li>
+        </ul>
+    </div>
+</body>
+</html> 
