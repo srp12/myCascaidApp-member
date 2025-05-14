@@ -1,0 +1,6 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left half-circle -->
+  <path d="M0 12 A12 12 0 0 1 12 0 L12 24 A12 12 0 0 1 0 12" fill="#4CAF50"/>
+  <!-- Right half-circle -->
+  <path d="M12 0 A12 12 0 0 1 24 12 A12 12 0 0 1 12 24 L12 0" fill="#4CAF50"/>
+</svg> 

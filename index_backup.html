@@ -6,59 +6,13 @@
     <title>myCascaid</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tweet-cards.css">
-    <style>
-        /* Tooltip styles */
-        .user-badge {
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .tooltip {
-            visibility: hidden;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 8px 12px;
-            position: absolute;
-            z-index: 1000;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        
-        .tooltip::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-        }
-        
-        .user-badge:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        .tooltip.show {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
 </head>
 <body>
     <header id="top-nav">
         <div class="nav-top-row">
             <button class="profile-button">
                 <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+                <!-- Placeholder for actual profile image -->
             </button>
             <a href="notifications.html" class="notifications-link">
                 <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
@@ -66,10 +20,7 @@
         </div>
         <div class="nav-bottom-row">
             <div class="feed-tabs">
-                <button class="feed-tab active" data-feed="for-you">
-                    Private Feed
-                    <img src="assets/icons/icons8-lock.svg" alt="Secure" class="feed-tab-icon" style="width: 14px; height: 14px; margin-left: 4px; vertical-align: middle;">
-                </button>
+                <button class="feed-tab active" data-feed="for-you">Private Feed</button>
                 <button class="feed-tab" data-feed="news-education">News & Education</button>
                 <button class="feed-tab" data-feed="following">Following</button>
             </div>
@@ -78,10 +29,9 @@
 
     <main>
         <div class="feed-content">
-            <!-- Private Feed -->
             <div id="for-you-feed" class="feed active">
                 <div class="feed-cards">
-                    <!-- 1. Reminder Tweet from Primary Coach (private) -->
+                    <!-- 1. Reminder Tweet from Primary Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -91,7 +41,6 @@
                                         <p class="tweet-name">Dr. Sarah Chen</p>
                                         <div class="user-badge primary-coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Primary Care Provider</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@drsarahchen</p>
@@ -129,7 +78,7 @@
                         </div>
                     </div>
 
-                    <!-- 5. Survey Tweet from Coach (private) -->
+                    <!-- 5. Survey Tweet from Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -139,7 +88,6 @@
                                         <p class="tweet-name">Coach Mike</p>
                                         <div class="user-badge coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Health Coach</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@coach_mike</p>
@@ -176,7 +124,7 @@
                             <div class="tweet-time">5h ago</div>
                         </div>
                     </div>
-                    
+
                     <!-- 6. Wearables Setup Tweet from Primary Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
@@ -187,7 +135,6 @@
                                         <p class="tweet-name">Dr. Sarah Chen</p>
                                         <div class="user-badge primary-coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Primary Care Provider</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@drsarahchen</p>
@@ -235,7 +182,6 @@
                                         <p class="tweet-name">Dr. Sarah Chen</p>
                                         <div class="user-badge primary-coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Primary Care Provider</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@drsarahchen</p>
@@ -273,7 +219,7 @@
                         </div>
                     </div>
 
-                    <!-- Check-in Tweet with Photo Upload from Primary Coach -->
+                    <!-- 9. Check-in Tweet with Photo Upload from Primary Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -283,7 +229,6 @@
                                         <p class="tweet-name">Dr. Sarah Chen</p>
                                         <div class="user-badge primary-coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Primary Care Provider</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@drsarahchen</p>
@@ -325,7 +270,54 @@
                         </div>
                     </div>
 
-                    <!-- Blood Pressure Check-in from Coach -->
+                    <!-- 13. Medication Reminder from Primary Coach -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dr. Sarah Chen" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Dr. Sarah Chen</p>
+                                        <div class="user-badge primary-coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@drsarahchen</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-visibility">
+                            <img src="assets/icons/icons8-lock.svg" alt="Private" class="tweet-visibility-icon">
+                            <span>Only visible to you</span>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">It's time for your evening dose of insulin (10 units). Please take it with dinner as prescribed.</p>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">I've Taken It</button>
+                                <button class="action-button" style="background-color: #888;">Remind in 30 Min</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>Like</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>Comment</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">1h ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 14. Blood Pressure Check-in from Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -335,7 +327,6 @@
                                         <p class="tweet-name">Coach Mike</p>
                                         <div class="user-badge coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Health Coach</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@coach_mike</p>
@@ -383,7 +374,7 @@
                         </div>
                     </div>
 
-                    <!-- Appointment Reminder from Primary Coach -->
+                    <!-- 16. Appointment Reminder from Primary Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -393,7 +384,6 @@
                                         <p class="tweet-name">Dr. Sarah Chen</p>
                                         <div class="user-badge primary-coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Primary Care Provider</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@drsarahchen</p>
@@ -431,187 +421,280 @@
                         </div>
                     </div>
 
-                    <!-- Add more private tweets with visibility tag here -->
+                    <!-- 19. Medication Side Effect Check-in from Primary Coach -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dr. Sarah Chen" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Dr. Sarah Chen</p>
+                                        <div class="user-badge primary-coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@drsarahchen</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-visibility">
+                            <img src="assets/icons/icons8-lock.svg" alt="Private" class="tweet-visibility-icon">
+                            <span>Only visible to you</span>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">It's been one week since we started you on Jardiance. Have you experienced any side effects? Please check all that apply:</p>
+                            <div class="poll-options" style="margin-top: 12px;">
+                                <div class="poll-option">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="checkbox" style="margin-right: 10px;">
+                                        <span>Urinary tract infection</span>
+                                    </label>
+                                </div>
+                                <div class="poll-option">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="checkbox" style="margin-right: 10px;">
+                                        <span>Increased urination</span>
+                                    </label>
+                                </div>
+                                <div class="poll-option">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="checkbox" style="margin-right: 10px;">
+                                        <span>Thirst or dry mouth</span>
+                                    </label>
+                                </div>
+                                <div class="poll-option">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="checkbox" style="margin-right: 10px;">
+                                        <span>Low blood sugar</span>
+                                    </label>
+                                </div>
+                                <div class="poll-option">
+                                    <label style="display: flex; align-items: center;">
+                                        <input type="checkbox" style="margin-right: 10px;">
+                                        <span>No side effects</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Submit</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>Like</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>Comment</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">4h ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 21. CGM Data Analysis from Primary Coach -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dr. Sarah Chen" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Dr. Sarah Chen</p>
+                                        <div class="user-badge primary-coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@drsarahchen</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-visibility">
+                            <img src="assets/icons/icons8-lock.svg" alt="Private" class="tweet-visibility-icon">
+                            <span>Only visible to you</span>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">I've analyzed your CGM data from the past week. Your time in range has improved to 78% (from 65% last week). I noticed high glucose readings between 2-4 PM. Let's discuss how we might adjust your lunch to prevent these afternoon spikes.</p>
+                            <div style="background: #f9f9f9; border-radius: 8px; padding: 15px; margin: 12px 0; border: 1px solid #eee;">
+                                <div style="margin-bottom: 10px; font-weight: 500;">Weekly CGM Stats:</div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span>Time in Range:</span>
+                                    <span style="color: #4CAF50; font-weight: 500;">78%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span>Average Glucose:</span>
+                                    <span>142 mg/dL</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>Glucose Variability:</span>
+                                    <span>22%</span>
+                                </div>
+                            </div>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Schedule Discussion</button>
+                                <button class="action-button" style="background-color: #888;">View Full Report</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>Like</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>Comment</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">9h ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 23. Medication Adjustment from Primary Coach -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dr. Sarah Chen" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Dr. Sarah Chen</p>
+                                        <div class="user-badge primary-coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@drsarahchen</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-visibility">
+                            <img src="assets/icons/icons8-lock.svg" alt="Private" class="tweet-visibility-icon">
+                            <span>Only visible to you</span>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">Based on your recent glucose patterns, I'm adjusting your insulin dosage. Please take 12 units (instead of 10) with dinner starting tonight. Continue monitoring closely and report any low blood sugar symptoms immediately.</p>
+                            <div style="background: #fff4e5; border: 1px solid #ffd69f; border-radius: 8px; padding: 12px; margin: 12px 0; display: flex; align-items: center;">
+                                <span style="margin-right: 8px; font-size: 20px;">⚠️</span>
+                                <p style="margin: 0; font-size: 14px;">Medication change: Insulin increased from 10 units to 12 units at dinner time.</p>
+                            </div>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Acknowledge Change</button>
+                                <button class="action-button" style="background-color: #888;">Request Discussion</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>Like</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>Comment</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">30m ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 24. Sleep Quality Check-in from Coach -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Coach Mike</p>
+                                        <div class="user-badge coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@coach_mike</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-visibility">
+                            <img src="assets/icons/icons8-lock.svg" alt="Private" class="tweet-visibility-icon">
+                            <span>Only visible to you</span>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">Good morning! How did you sleep last night? Quality sleep is crucial for glucose regulation. Let us know so we can help optimize your sleep routine.</p>
+                            <div style="margin: 15px 0;">
+                                <p style="margin-bottom: 8px; font-weight: 500;">Rate your sleep quality:</p>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <button class="sleep-rating" style="flex: 1; padding: 10px; margin: 0 5px; border: 1px solid #ddd; background: none; border-radius: 4px; cursor: pointer;">
+                                        <span style="font-size: 24px;">😴</span>
+                                        <p style="margin: 5px 0 0 0; font-size: 12px;">Poor</p>
+                                    </button>
+                                    <button class="sleep-rating" style="flex: 1; padding: 10px; margin: 0 5px; border: 1px solid #ddd; background: none; border-radius: 4px; cursor: pointer;">
+                                        <span style="font-size: 24px;">😐</span>
+                                        <p style="margin: 5px 0 0 0; font-size: 12px;">Fair</p>
+                                    </button>
+                                    <button class="sleep-rating" style="flex: 1; padding: 10px; margin: 0 5px; border: 1px solid #ddd; background: none; border-radius: 4px; cursor: pointer;">
+                                        <span style="font-size: 24px;">😊</span>
+                                        <p style="margin: 5px 0 0 0; font-size: 12px;">Good</p>
+                                    </button>
+                                    <button class="sleep-rating" style="flex: 1; padding: 10px; margin: 0 5px; border: 1px solid #ddd; background: none; border-radius: 4px; cursor: pointer;">
+                                        <span style="font-size: 24px;">😁</span>
+                                        <p style="margin: 5px 0 0 0; font-size: 12px;">Great</p>
+                                    </button>
+                                </div>
+                            </div>
+                            <div style="margin-top: 12px;">
+                                <label style="display: block; margin-bottom: 5px;">Hours slept:</label>
+                                <input type="number" min="0" max="12" step="0.5" placeholder="7.5" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                            </div>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Submit</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>Like</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>Comment</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">7h ago</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- News & Education Feed -->
             <div id="news-education-feed" class="feed">
-                <div class="feed-cards">
-                    <!-- Educational Article -->
-                    <div class="tweet-card">
-                        <div class="tweet-header">
-                            <div class="tweet-user">
-                                <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Dr. James Wilson" class="tweet-avatar">
-                                <div class="tweet-user-info">
-                                    <div class="tweet-name-container">
-                                        <p class="tweet-name">Dr. James Wilson</p>
-                                    </div>
-                                    <p class="tweet-username">@drjwilson</p>
-                                </div>
-                            </div>
-                            <div class="tweet-menu">
-                                <button class="tweet-menu-button">
-                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="tweet-content">
-                            <p class="tweet-text">New research published in NEJM suggests time-restricted eating (16:8 method) may improve insulin sensitivity in type 2 diabetes. Study included 152 participants over 12 months. Promising results, but more research needed.</p>
-                            <div class="tweet-completion-actions">
-                                <button class="action-button">Read Full Article</button>
-                                <button class="action-button" style="background-color: #888;">Save for Later</button>
-                            </div>
-                        </div>
-                        <div class="tweet-actions">
-                            <div class="tweet-action-buttons">
-                                <button class="tweet-action-button">
-                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
-                                    <span>93</span>
-                                </button>
-                                <button class="tweet-action-button">
-                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
-                                    <span>32</span>
-                                </button>
-                            </div>
-                            <div class="tweet-time">3d ago</div>
-                        </div>
-                    </div>
-
-                    <!-- Educational Video -->
-                    <div class="tweet-card">
-                        <div class="tweet-header">
-                            <div class="tweet-user">
-                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike" class="tweet-avatar">
-                                <div class="tweet-user-info">
-                                    <div class="tweet-name-container">
-                                        <p class="tweet-name">Coach Mike</p>
-                                        <div class="user-badge coach-badge">
-                                            <span class="badge-check">✓</span>
-                                            <span class="tooltip">Health Coach</span>
-                                        </div>
-                                    </div>
-                                    <p class="tweet-username">@coach_mike</p>
-                                </div>
-                            </div>
-                            <div class="tweet-menu">
-                                <button class="tweet-menu-button">
-                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="tweet-content">
-                            <p class="tweet-text">🔍 <b>Understanding Carb Counting</b> 🔍<br><br>Carbohydrate counting is a meal planning technique that can help you manage your blood glucose levels. Here are 3 quick tips:<br><br>1️⃣ Read food labels carefully<br>2️⃣ Use measuring tools for accuracy<br>3️⃣ Keep a food journal to track patterns</p>
-                            <div class="tweet-completion-actions">
-                                <button class="action-button">Watch Video Tutorial</button>
-                                <button class="action-button" style="background-color: #888;">Download Guide</button>
-                            </div>
-                        </div>
-                        <div class="tweet-actions">
-                            <div class="tweet-action-buttons">
-                                <button class="tweet-action-button">
-                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
-                                    <span>27</span>
-                                </button>
-                                <button class="tweet-action-button">
-                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
-                                    <span>8</span>
-                                </button>
-                            </div>
-                            <div class="tweet-time">3d ago</div>
-                        </div>
-                    </div>
-
-                    <!-- Recipe Recommendation -->
-                    <div class="tweet-card">
-                        <div class="tweet-header">
-                            <div class="tweet-user">
-                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike" class="tweet-avatar">
-                                <div class="tweet-user-info">
-                                    <div class="tweet-name-container">
-                                        <p class="tweet-name">Coach Mike</p>
-                                        <div class="user-badge coach-badge">
-                                            <span class="badge-check">✓</span>
-                                            <span class="tooltip">Health Coach</span>
-                                        </div>
-                                    </div>
-                                    <p class="tweet-username">@coach_mike</p>
-                                </div>
-                            </div>
-                            <div class="tweet-menu">
-                                <button class="tweet-menu-button">
-                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="tweet-content">
-                            <p class="tweet-text">Here's a low-carb lunch idea you might enjoy: Mediterranean Chicken Bowl with cauliflower rice, olives, feta, and olive oil dressing. High protein, fiber-rich, and minimal impact on blood sugar.</p>
-                            <img src="https://source.unsplash.com/random/600x400/?mediterranean,food" alt="Mediterranean Bowl" style="width: 100%; border-radius: 8px; margin: 12px 0;">
-                            <div class="tweet-completion-actions">
-                                <button class="action-button">Get Recipe</button>
-                                <button class="action-button" style="background-color: #888;">Save for Later</button>
-                            </div>
-                        </div>
-                        <div class="tweet-actions">
-                            <div class="tweet-action-buttons">
-                                <button class="tweet-action-button">
-                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
-                                    <span>52</span>
-                                </button>
-                                <button class="tweet-action-button">
-                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
-                                    <span>11</span>
-                                </button>
-                            </div>
-                            <div class="tweet-time">1d ago</div>
-                        </div>
-                    </div>
-
-                    <!-- News Article -->
-                    <div class="tweet-card">
-                        <div class="tweet-header">
-                            <div class="tweet-user">
-                                <img src="https://randomuser.me/api/portraits/women/75.jpg" alt="Diabetes Today" class="tweet-avatar">
-                                <div class="tweet-user-info">
-                                    <div class="tweet-name-container">
-                                        <p class="tweet-name">Diabetes Today</p>
-                                    </div>
-                                    <p class="tweet-username">@diabetestoday</p>
-                                </div>
-                            </div>
-                            <div class="tweet-menu">
-                                <button class="tweet-menu-button">
-                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="tweet-content">
-                            <p class="tweet-text">FDA Approves New Diabetes Management App with Predictive Alerts. The app uses machine learning to forecast glucose trends up to 60 minutes in advance, giving users more time to prevent highs and lows.</p>
-                            <div class="tweet-completion-actions">
-                                <button class="action-button">Read News</button>
-                            </div>
-                        </div>
-                        <div class="tweet-actions">
-                            <div class="tweet-action-buttons">
-                                <button class="tweet-action-button">
-                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
-                                    <span>118</span>
-                                </button>
-                                <button class="tweet-action-button">
-                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
-                                    <span>36</span>
-                                </button>
-                            </div>
-                            <div class="tweet-time">2d ago</div>
-                        </div>
-                    </div>
+                <!-- News & Education feed content will go here -->
+                <div class="feed-placeholder">
+                    <p>Health news and educational content will appear here</p>
                 </div>
             </div>
             
-            <!-- Following Feed -->
             <div id="following-feed" class="feed">
                 <div class="feed-cards">
-                    <!-- 2. Check-in Tweet from Coach (public) -->
+                    <!-- 2. Check-in Tweet from Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -621,7 +704,6 @@
                                         <p class="tweet-name">Coach Mike</p>
                                         <div class="user-badge coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Health Coach</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@coach_mike</p>
@@ -665,7 +747,7 @@
                         </div>
                     </div>
 
-                    <!-- 3. Encouragement Tweet from Primary Coach (public) -->
+                    <!-- 3. Encouragement Tweet from Primary Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -675,7 +757,6 @@
                                         <p class="tweet-name">Dr. Sarah Chen</p>
                                         <div class="user-badge primary-coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Primary Care Provider</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@drsarahchen</p>
@@ -708,7 +789,7 @@
                         </div>
                     </div>
 
-                    <!-- 4. Post Tweet from Regular User (public) -->
+                    <!-- 4. Post Tweet from Regular User -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -743,8 +824,8 @@
                             <div class="tweet-time">2d ago</div>
                         </div>
                     </div>
-                    
-                    <!-- Workout Tweet from Coach -->
+
+                    <!-- 8. Workout Tweet from Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -754,7 +835,6 @@
                                         <p class="tweet-name">Coach Mike</p>
                                         <div class="user-badge coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Health Coach</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@coach_mike</p>
@@ -811,7 +891,7 @@
                         </div>
                     </div>
 
-                    <!-- Poll Tweet from Coach -->
+                    <!-- 10. Poll Tweet from Coach -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -821,7 +901,6 @@
                                         <p class="tweet-name">Coach Mike</p>
                                         <div class="user-badge coach-badge">
                                             <span class="badge-check">✓</span>
-                                            <span class="tooltip">Health Coach</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@coach_mike</p>
@@ -865,7 +944,109 @@
                         </div>
                     </div>
 
-                    <!-- Community Story from Regular User -->
+                    <!-- 11. Poll Results Tweet from Regular User -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="David Johnson" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">David Johnson</p>
+                                    </div>
+                                    <p class="tweet-username">@david_j</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">What's your preferred method of tracking your blood glucose?</p>
+                            <div class="poll-results">
+                                <div class="poll-result">
+                                    <p class="poll-option-text">Continuous Glucose Monitor (CGM)</p>
+                                    <div class="poll-bar-container">
+                                        <div class="poll-bar" style="width: 65%;"></div>
+                                    </div>
+                                    <p class="poll-percentage">65%</p>
+                                </div>
+                                <div class="poll-result">
+                                    <p class="poll-option-text">Traditional Glucometer</p>
+                                    <div class="poll-bar-container">
+                                        <div class="poll-bar" style="width: 28%;"></div>
+                                    </div>
+                                    <p class="poll-percentage">28%</p>
+                                </div>
+                                <div class="poll-result">
+                                    <p class="poll-option-text">Both CGM and Glucometer</p>
+                                    <div class="poll-bar-container">
+                                        <div class="poll-bar" style="width: 7%;"></div>
+                                    </div>
+                                    <p class="poll-percentage">7%</p>
+                                </div>
+                            </div>
+                            <p style="font-size: 14px; color: #666; margin-top: 12px;">124 votes • Poll closed</p>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>32</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>15</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">2d ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 12. Educational Post from Coach -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Coach Mike</p>
+                                        <div class="user-badge coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@coach_mike</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">🔍 <b>Understanding Carb Counting</b> 🔍<br><br>Carbohydrate counting is a meal planning technique that can help you manage your blood glucose levels. Here are 3 quick tips:<br><br>1️⃣ Read food labels carefully<br>2️⃣ Use measuring tools for accuracy<br>3️⃣ Keep a food journal to track patterns<br><br>Want to learn more about carb counting?</p>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Read Full Article</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>27</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>8</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">3d ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 15. Community Story from Regular User -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -901,7 +1082,171 @@
                         </div>
                     </div>
 
-                    <!-- Local Support Group Information -->
+                    <!-- 17. User Question to Community -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Robert Kim" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Robert Kim</p>
+                                    </div>
+                                    <p class="tweet-username">@rob_kim</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">Has anyone tried the new FreeStyle Libre 3? I'm thinking of switching from Dexcom. Would love to hear about your experiences, especially battery life and accuracy compared to finger sticks.</p>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>18</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>24</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">8h ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 18. Recipe Recommendation from Coach -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Coach Mike</p>
+                                        <div class="user-badge coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@coach_mike</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">Here's a low-carb lunch idea you might enjoy: Mediterranean Chicken Bowl with cauliflower rice, olives, feta, and olive oil dressing. High protein, fiber-rich, and minimal impact on blood sugar.</p>
+                            <img src="https://source.unsplash.com/random/600x400/?mediterranean,food" alt="Mediterranean Bowl" style="width: 100%; border-radius: 8px; margin: 12px 0;">
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Get Recipe</button>
+                                <button class="action-button" style="background-color: #888;">Save for Later</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>52</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>11</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">1d ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 20. Health Challenge from Coach -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Coach Mike</p>
+                                        <div class="user-badge coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@coach_mike</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">🚶‍♂️ <b>7-Day Step Challenge</b> 🚶‍♀️<br><br>Join our community step challenge! Goal: 8,000 steps per day for 7 days. Track your steps with your connected device or manually input them each day. Winners get recognition and a digital badge!</p>
+                            <div class="progress-container" style="margin: 15px 0; background: #f1f1f1; border-radius: 10px; height: 20px; overflow: hidden;">
+                                <div style="width: 30%; height: 100%; background-color: #4CAF50; text-align: center; line-height: 20px; color: white; font-size: 12px;">
+                                    Day 2/7
+                                </div>
+                            </div>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Accept Challenge</button>
+                                <button class="action-button" style="background-color: #888;">Decline</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>78</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>19</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">2d ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 22. New Research from Regular User -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Dr. James Wilson" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Dr. James Wilson</p>
+                                    </div>
+                                    <p class="tweet-username">@drjwilson</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">New research published in NEJM suggests time-restricted eating (16:8 method) may improve insulin sensitivity in type 2 diabetes. Study included 152 participants over 12 months. Promising results, but more research needed. Link to full paper in comments.</p>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>93</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>32</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">3d ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 25. Local Support Group from Regular User -->
                     <div class="tweet-card">
                         <div class="tweet-header">
                             <div class="tweet-user">
@@ -959,8 +1304,6 @@
                             <div class="tweet-time">1d ago</div>
                         </div>
                     </div>
-                    
-                    <!-- Add more public tweets here -->
                 </div>
             </div>
         </div>
@@ -989,35 +1332,9 @@
 
     <script src="js/theme.js"></script>
     <script src="js/navigation.js"></script>
+    <!-- Script to toggle navigation based on user type -->
     <script>
-        // Add tooltip functionality for mobile
-        document.addEventListener('DOMContentLoaded', function() {
-            const badges = document.querySelectorAll('.user-badge');
-            const tooltips = document.querySelectorAll('.tooltip');
-            
-            // Handle badge click/tap
-            badges.forEach(badge => {
-                badge.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    
-                    // Hide all other tooltips first
-                    tooltips.forEach(tip => {
-                        tip.classList.remove('show');
-                    });
-                    
-                    // Show this tooltip
-                    const tooltip = this.querySelector('.tooltip');
-                    tooltip.classList.add('show');
-                });
-            });
-            
-            // Close tooltips when tapping elsewhere
-            document.addEventListener('click', function() {
-                tooltips.forEach(tooltip => {
-                    tooltip.classList.remove('show');
-                });
-            });
-        });
+        // ... existing script content ...
     </script>
 
     <!-- Side Menus -->

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myCascaid</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tweet-cards.css">
+</head>
+<body>
+    <header id="top-nav">
+        <div class="nav-top-row">
+            <button class="profile-button">
+                <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+            </button>
+            <a href="notifications.html" class="notifications-link">
+                <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
+            </a>
+        </div>
+        <div class="nav-bottom-row">
+            <div class="feed-tabs">
+                <button class="feed-tab active" data-feed="for-you">Private Feed</button>
+                <button class="feed-tab" data-feed="news-education">News & Education</button>
+                <button class="feed-tab" data-feed="following">Following</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="feed-content">
+            <!-- Private Feed -->
+            <div id="for-you-feed" class="feed active">
+                <div class="feed-cards">
+                    <!-- 1. Reminder Tweet from Primary Coach (private) -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dr. Sarah Chen" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Dr. Sarah Chen</p>
+                                        <div class="user-badge primary-coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@drsarahchen</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-visibility">
+                            <img src="assets/icons/icons8-lock.svg" alt="Private" class="tweet-visibility-icon">
+                            <span>Only visible to you</span>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">Remember to take your Metformin (500mg) with breakfast today. Keep up the good work with your medication adherence!</p>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Mark as Done</button>
+                                <button class="action-button" style="background-color: #888;">Snooze for 1 hour</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>Like</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>Comment</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">2h ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Survey Tweet from Coach (private) -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Coach Mike</p>
+                                        <div class="user-badge coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@coach_mike</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-visibility">
+                            <img src="assets/icons/icons8-lock.svg" alt="Private" class="tweet-visibility-icon">
+                            <span>Only visible to you</span>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">We'd like to learn more about your dietary habits to customize your plan. Please take a moment to answer this short survey.</p>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Start Survey</button>
+                                <button class="action-button" style="background-color: #888;">Remind Me Later</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>Like</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>Comment</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">5h ago</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add more private tweets with visibility tag here -->
+                </div>
+            </div>
+            
+            <!-- News & Education Feed -->
+            <div id="news-education-feed" class="feed">
+                <div class="feed-placeholder">
+                    <p>Health news and educational content will appear here</p>
+                </div>
+            </div>
+            
+            <!-- Following Feed -->
+            <div id="following-feed" class="feed">
+                <div class="feed-cards">
+                    <!-- 2. Check-in Tweet from Coach (public) -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Coach Mike</p>
+                                        <div class="user-badge coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@coach_mike</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">How are you feeling today? Let us know so we can better support your health journey.</p>
+                            <div class="tweet-interaction">
+                                <p><strong>Rate your mood:</strong></p>
+                                <div class="rating-slider-container">
+                                    <input type="range" min="1" max="5" value="3" class="rating-slider">
+                                    <div class="rating-scale">
+                                        <span>😞</span>
+                                        <span>😐</span>
+                                        <span>🙂</span>
+                                        <span>😊</span>
+                                        <span>😁</span>
+                                    </div>
+                                </div>
+                                <button class="action-button">Submit</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>Like</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>Comment</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">4h ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Encouragement Tweet from Primary Coach (public) -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dr. Sarah Chen" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Dr. Sarah Chen</p>
+                                        <div class="user-badge primary-coach-badge">
+                                            <span class="badge-check">✓</span>
+                                        </div>
+                                    </div>
+                                    <p class="tweet-username">@drsarahchen</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">Congratulations, Saawan! You've maintained your glucose levels in range for 7 days straight. This is a significant milestone in your diabetes management journey! 🎉</p>
+                            <div class="tweet-completion-actions">
+                                <button class="action-button">Thank you!</button>
+                            </div>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>Like</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>Comment</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">1d ago</div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Post Tweet from Regular User (public) -->
+                    <div class="tweet-card">
+                        <div class="tweet-header">
+                            <div class="tweet-user">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Jennifer Wright" class="tweet-avatar">
+                                <div class="tweet-user-info">
+                                    <div class="tweet-name-container">
+                                        <p class="tweet-name">Jennifer Wright</p>
+                                    </div>
+                                    <p class="tweet-username">@jen_wellness</p>
+                                </div>
+                            </div>
+                            <div class="tweet-menu">
+                                <button class="tweet-menu-button">
+                                    <img src="assets/icons/icons8-more.svg" alt="More options" class="tweet-menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tweet-content">
+                            <p class="tweet-text">Just completed my 30-day low-carb diet challenge! Lost 8 pounds and my energy levels are through the roof. Anyone else trying this approach for managing blood sugar?</p>
+                        </div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action-buttons">
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-heart.svg" alt="Like" class="tweet-action-icon">
+                                    <span>42</span>
+                                </button>
+                                <button class="tweet-action-button">
+                                    <img src="assets/icons/icons8-comment.svg" alt="Comment" class="tweet-action-icon">
+                                    <span>13</span>
+                                </button>
+                            </div>
+                            <div class="tweet-time">2d ago</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add more public tweets here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="bottom-nav">
+        <button class="nav-button" data-page="home">
+            <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+        </button>
+        <button class="nav-button" data-page="engine">
+            <img src="assets/icons/icons8-engine.svg" alt="Check Engine Lights" class="nav-icon" data-default-icon="assets/icons/icons8-engine.svg" data-filled-icon="assets/icons/icons8-engine-filled.svg">
+        </button>
+        <button class="nav-button cascaid-logo" data-page="ai">
+            <div class="cascaid-logo-placeholder">
+                 <div class="half-circle left"></div>
+                 <div class="half-circle right"></div>
+            </div>
+        </button>
+        <button class="nav-button" data-page="messages">
+            <img src="assets/icons/icons8-chat-message.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
+        </button>
+        <button class="nav-button" data-page="wallet">
+            <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
+        </button>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+
+    <!-- Side Menus -->
+    <div id="side-menu-overlay"></div>
+    <div id="profile-side-menu" class="side-menu">
+        <div class="profile-header">
+            <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="profile-image-large">
+            <h3 class="profile-name">Saawan Patel</h3>
+            <p class="profile-username">@saawan</p>
+            <div class="profile-stats">
+                <span><strong>0</strong> Followers</span>
+                <span><strong>0</strong> Following</span>
+            </div>
+        </div>
+        <nav class="profile-nav">
+            <ul>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/profile-icon.svg" alt="Profile Icon" class="menu-icon">
+                    Profile
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-graph-report.svg" alt="Reports Icon" class="menu-icon">
+                    Reports
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-bookmark.svg" alt="Bookmarks Icon" class="menu-icon">
+                    Bookmarks
+                </a></li>
+                <li>
+                    <div class="theme-toggle-container">
+                        <span>
+                            <img src="assets/icons/icons8-night.svg" alt="Theme Icon" class="menu-icon theme-icon light-theme-icon">
+                            <img src="assets/icons/icons8-sun.svg" alt="Theme Icon" class="menu-icon theme-icon dark-theme-icon">
+                            Appearance
+                        </span>
+                        <button id="theme-toggle-button" class="theme-toggle-sidebar-button">Toggle Theme</button>
+                    </div>
+                </li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/settings.svg" alt="Settings Icon" class="menu-icon">
+                    Settings
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-invite.svg" alt="Invite Icon" class="menu-icon">
+                    Invite
+                </a></li>
+            </ul>
+        </nav>
+        <button class="logout-button">
+            <img src="assets/icons/logout.svg" alt="Logout Icon" class="menu-icon">
+            Logout
+        </button>
+    </div>
+    <div id="settings-side-menu" class="side-menu">
+        <h2>Settings</h2>
+        <!-- Settings content goes here -->
+        <ul>
+            <li>Account</li>
+            <li>Appearance (Theme)</li>
+            <li>Notifications</li>
+        </ul>
+    </div>
+</body>
+</html> 

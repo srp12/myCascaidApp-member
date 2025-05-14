@@ -1,0 +1,400 @@
+/* Tweet Card Styles */
+.feed-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0;
+}
+
+.tweet-card {
+    background-color: var(--background-color-light);
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.dark-mode .tweet-card {
+    background-color: var(--background-color-dark);
+    border-color: #444;
+}
+
+.tweet-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.tweet-user {
+    display: flex;
+    align-items: center;
+}
+
+.tweet-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+}
+
+.tweet-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-name-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tweet-name {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+}
+
+.tweet-username {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+body.dark-mode .tweet-username {
+    color: #aaa;
+}
+
+.user-badge {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+}
+
+.primary-coach-badge {
+    background-color: #e53935;
+}
+
+.coach-badge {
+    background-color: #2196F3;
+}
+
+.badge-check {
+    color: white;
+    font-size: 10px;
+}
+
+.tweet-time {
+    color: #666;
+    font-size: 14px;
+}
+
+body.dark-mode .tweet-time {
+    color: #aaa;
+}
+
+.tweet-menu {
+    position: relative;
+}
+
+.tweet-menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.tweet-menu-icon {
+    width: 18px;
+    height: 18px;
+}
+
+body.dark-mode .tweet-menu-icon {
+    filter: brightness(0) invert(1);
+}
+
+.tweet-visibility {
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+body.dark-mode .tweet-visibility {
+    color: #aaa;
+}
+
+.tweet-visibility-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+}
+
+body.dark-mode .tweet-visibility-icon {
+    filter: brightness(0) invert(1);
+}
+
+.tweet-content {
+    margin-bottom: 16px;
+}
+
+.tweet-text {
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+.tweet-interaction {
+    margin-top: 8px;
+}
+
+/* Interactive components */
+.tweet-actions {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+    margin-top: 12px;
+}
+
+body.dark-mode .tweet-actions {
+    border-top-color: #444;
+}
+
+.tweet-action-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.tweet-action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #666;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+body.dark-mode .tweet-action-button {
+    color: #aaa;
+}
+
+.tweet-action-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+}
+
+body.dark-mode .tweet-action-icon {
+    filter: brightness(0) invert(1);
+}
+
+.tweet-completion-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.action-button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-button:hover {
+    background-color: #43A047;
+}
+
+/* Rating slider */
+.rating-slider-container {
+    margin: 8px 0;
+}
+
+.rating-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+body.dark-mode .rating-scale {
+    color: #aaa;
+}
+
+/* Poll */
+.poll-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.poll-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+body.dark-mode .poll-option {
+    border-color: #555;
+}
+
+.poll-option:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.poll-option.selected {
+    border-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.poll-results {
+    margin-top: 12px;
+}
+
+.poll-result {
+    margin-bottom: 8px;
+}
+
+.poll-option-text {
+    font-weight: 500;
+}
+
+.poll-bar-container {
+    height: 8px;
+    background-color: #eee;
+    border-radius: 4px;
+    margin: 4px 0;
+    overflow: hidden;
+}
+
+body.dark-mode .poll-bar-container {
+    background-color: #444;
+}
+
+.poll-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.5s ease-out;
+}
+
+.poll-percentage {
+    font-size: 13px;
+    color: #666;
+}
+
+body.dark-mode .poll-percentage {
+    color: #aaa;
+}
+
+/* Media upload area */
+.media-upload-area {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+body.dark-mode .media-upload-area {
+    border-color: #555;
+}
+
+.media-upload-area:hover {
+    border-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.05);
+}
+
+.media-upload-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+}
+
+body.dark-mode .media-upload-icon {
+    filter: brightness(0) invert(1);
+}
+
+.media-upload-text {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+body.dark-mode .media-upload-text {
+    color: #aaa;
+}
+
+/* Workout card */
+.workout-details {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px 0;
+}
+
+body.dark-mode .workout-details {
+    background-color: #3a3a3a;
+}
+
+.workout-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.workout-title {
+    font-weight: 600;
+    margin: 0;
+}
+
+.workout-duration {
+    color: #666;
+}
+
+body.dark-mode .workout-duration {
+    color: #aaa;
+}
+
+.workout-exercises {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.workout-exercise {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exercise-name {
+    font-weight: 500;
+}
+
+.exercise-details {
+    color: #666;
+    font-size: 14px;
+}
+
+body.dark-mode .exercise-details {
+    color: #aaa;
+} 
