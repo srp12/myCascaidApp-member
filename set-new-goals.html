@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set New Health Goals - myCascaid</title>
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/my-goals.css">
+    <link rel="stylesheet" href="css/set-new-goals.css">
+</head>
+<body>
+    <header id="top-nav">
+        <div class="nav-top-row">
+            <button class="profile-button">
+                <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+                <span class="nav-tooltip">Profile</span>
+            </button>
+            <div class="nav-top-right">
+                <button class="search-button">
+                    <img src="assets/icons/icons8-search.svg" alt="Search" class="nav-icon" data-default-icon="assets/icons/icons8-search.svg" data-filled-icon="assets/icons/icons8-search.svg">
+                    <span class="nav-tooltip">Search</span>
+                </button>
+                <a href="notifications.html" class="notifications-link">
+                    <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
+                    <span class="nav-tooltip">Notifications</span>
+                </a>
+            </div>
+        </div>
+        <div class="page-title-container">
+            <h1 class="page-title">Set Your Health Goals</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="set-goals-container">
+            <div class="back-to-profile">
+                <a href="profile.html#my-goals" class="back-button">
+                    <img src="assets/icons/icons8-arrow-left.svg" alt="Back">
+                    Back to My Goals
+                </a>
+            </div>
+            
+            <div class="instructions-panel">
+                <p>Select health goals that matter to you. When you select a goal, related goals will appear that you may also want to consider.</p>
+            </div>
+            
+            <div class="search-add-container">
+                <div class="search-goals-bar">
+                    <input type="text" id="search-goals-input" placeholder="Search for health goals...">
+                    <button id="clear-search-btn" class="clear-search" title="Clear search">×</button>
+                    <button class="add-new-goal-btn" title="Add a custom goal">
+                        <img src="assets/icons/icons8-plus.svg" alt="Add" class="btn-icon">
+                    </button>
+                </div>
+                <div id="inline-create-container" class="inline-create-container">
+                    <span id="create-prompt">Create new goal: </span>
+                    <span id="create-goal-text" class="create-goal-text"></span>
+                    <button id="inline-create-primary" class="inline-create-btn" title="Create as primary goal">
+                        <img src="assets/icons/icons8-add.svg" alt="Add" class="inline-icon">
+                        Primary
+                    </button>
+                    <button id="inline-create-secondary" class="inline-create-btn" title="Create as secondary goal">
+                        <img src="assets/icons/icons8-add.svg" alt="Add" class="inline-icon">
+                        Secondary
+                    </button>
+                </div>
+            </div>
+            
+            <div class="all-goals-container">
+                <!-- Primary goals will be added here by JavaScript -->
+            </div>
+            
+            <div class="selected-goals-container">
+                <h3>Your Selected Goals</h3>
+                <div class="selected-goals-list">
+                    <!-- Selected goals will appear here -->
+                </div>
+                <div class="empty-state">No goals selected yet. Click on the goal bubbles to select your health goals.</div>
+                <button class="save-goals-button" disabled>Save My Goals</button>
+            </div>
+        </div>
+    </main>
+
+    <footer id="bottom-nav">
+        <button class="nav-button" data-page="home">
+            <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+            <span class="nav-tooltip">Home</span>
+        </button>
+        <button class="nav-button" data-page="engine">
+            <img src="assets/icons/icons8-engine.svg" alt="Check Engine Lights" class="nav-icon" data-default-icon="assets/icons/icons8-engine.svg" data-filled-icon="assets/icons/icons8-engine-filled.svg">
+            <span class="nav-tooltip">Engine Lights</span>
+        </button>
+        <button class="nav-button cascaid-logo" data-page="ai">
+            <div class="cascaid-logo-placeholder">
+                <div class="half-circle left"></div>
+                <div class="half-circle right"></div>
+            </div>
+            <span class="nav-tooltip">AI Assistant</span>
+        </button>
+        <button class="nav-button" data-page="messages">
+            <img src="assets/icons/icons8-chat-message.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
+            <span class="nav-tooltip">Messages</span>
+        </button>
+        <button class="nav-button" data-page="wallet">
+            <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
+            <span class="nav-tooltip">Health Wallet</span>
+        </button>
+    </footer>
+
+    <!-- Add New Goal Modal -->
+    <div id="add-goal-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Custom Goal</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-goal-form">
+                    <div class="form-group">
+                        <label for="new-goal-label">Goal Title:</label>
+                        <input type="text" id="new-goal-label" placeholder="Enter your health goal" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-goal-type">Goal Type:</label>
+                        <select id="new-goal-type" required>
+                            <option value="primary">Primary Goal</option>
+                            <option value="secondary">Secondary Goal</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="primary-goal-select-group" style="display: none;">
+                        <label for="primary-goal-select">Related to Primary Goal:</label>
+                        <select id="primary-goal-select" required>
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-button">Cancel</button>
+                        <button type="submit" class="save-button">
+                            <img src="assets/icons/icons8-add.svg" alt="Add" class="btn-icon">
+                            Add Goal
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Side Menus -->
+    <div id="side-menu-overlay"></div>
+    <div id="profile-side-menu" class="side-menu">
+        <div class="profile-header">
+            <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="profile-image-large">
+            <h3 class="profile-name">Saawan Patel</h3>
+            <p class="profile-username">@saawan</p>
+            <div class="profile-stats">
+                <span><strong>5</strong> Followers</span>
+                <span><strong>18</strong> Following</span>
+            </div>
+        </div>
+        <nav class="profile-nav">
+            <ul>
+                <li><a href="profile.html" class="profile-nav-link active">
+                    <img src="assets/icons/profile-icon.svg" alt="Profile Icon" class="menu-icon">
+                    Profile
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-graph-report.svg" alt="Reports Icon" class="menu-icon">
+                    Reports
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-bookmark.svg" alt="Bookmarks Icon" class="menu-icon">
+                    Bookmarks
+                </a></li>
+                <li>
+                    <a href="#" class="profile-nav-link theme-toggle-container" id="theme-toggle-link">
+                        <span>
+                            <img src="assets/icons/icons8-night.svg" alt="Dark Theme" class="menu-icon theme-icon light-theme-icon">
+                            <img src="assets/icons/icons8-sun.svg" alt="Light Theme" class="menu-icon theme-icon dark-theme-icon">
+                            Appearance
+                        </span>
+                    </a>
+                </li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/settings.svg" alt="Settings Icon" class="menu-icon">
+                    Settings
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-invite.svg" alt="Invite Icon" class="menu-icon">
+                    Invite
+                </a></li>
+            </ul>
+        </nav>
+        <button class="logout-button">
+            <img src="assets/icons/logout.svg" alt="Logout Icon" class="menu-icon">
+            Logout
+        </button>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/my-goals.js"></script>
+    <script src="js/set-new-goals.js"></script>
+</body>
+</html> 
