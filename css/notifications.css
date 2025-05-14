@@ -1,0 +1,54 @@
+/* Notifications page specific styles */
+
+/* Override back button styles for better clickability */
+.notifications-page .back-button {
+    padding: 10px 15px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10; /* Ensure it's clickable */
+    cursor: pointer;
+    background-color: transparent; /* Ensure background is clickable */
+    border-radius: 4px; /* Add subtle radius */
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
+}
+
+/* Add a subtle hover effect for desktop */
+.notifications-page .back-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-theme.notifications-page .back-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.notifications-page .back-button .nav-icon {
+    width: 20px;
+    height: 20px;
+    pointer-events: none; /* Make sure the icon doesn't interfere with clicks */
+}
+
+/* Align header elements properly */
+.notifications-page #top-nav {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 12px;
+    height: 60px; /* Fixed height for consistent spacing */
+}
+
+.notifications-page .page-title {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    left: -12px; /* Slightly offset title to center it */
+    pointer-events: none; /* Ensures it doesn't interfere with back button */
+}
+
+.notifications-page .spacer {
+    width: 44px; /* Match the minimum width of the back button */
+} 

@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>myCascaid - Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tweet-cards.css">
+    <link rel="stylesheet" href="css/floating-post.css">
+    <style>
+        /* HIPAA Compliance badge */
+        .hipaa-badge {
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 128, 0, 0.1);
+            color: #006400;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin: 8px 0;
+        }
+        
+        .dark-theme .hipaa-badge {
+            background-color: rgba(0, 128, 0, 0.2);
+            color: #4CAF50;
+        }
+        
+        .hipaa-badge img {
+            width: 14px;
+            height: 14px;
+            margin-right: 5px;
+        }
+        
+        /* Chat roster */
+        .roster-section {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dark-theme .roster-section {
+            border-bottom-color: #38444d;
+        }
+        
+        .roster-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .roster-users {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            gap: 15px;
+        }
+        
+        .roster-user {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .roster-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .roster-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .roster-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+        
+        .dark-theme .roster-badge {
+            border-color: #192734;
+            background: #192734;
+        }
+        
+        .primary-badge {
+            background: #E53935;
+            color: white;
+        }
+        
+        .coach-badge {
+            background: #1E88E5;
+            color: white;
+        }
+        
+        .roster-name {
+            font-size: 12px;
+            text-align: center;
+            max-width: 65px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        /* Chat list */
+        .chat-list {
+            padding: 0;
+        }
+        
+        .chat-item {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .dark-theme .chat-item {
+            border-bottom-color: #38444d;
+        }
+        
+        .chat-item:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+        
+        .dark-theme .chat-item:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+        
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .chat-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .chat-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            font-size: 9px;
+        }
+        
+        .dark-theme .chat-badge {
+            border-color: #192734;
+            background: #192734;
+        }
+        
+        .chat-info {
+            flex: 1;
+        }
+        
+        .chat-top-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .chat-name {
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        .chat-time {
+            color: #657786;
+            font-size: 13px;
+        }
+        
+        .chat-message {
+            color: #657786;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 250px;
+        }
+        
+        .chat-unread-count {
+            background-color: #1DA1F2;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        /* Direct Message View */
+        .dm-container {
+            display: none;
+            flex-direction: column;
+            height: 100vh; /* Use full viewport height */
+            padding-bottom: env(safe-area-inset-bottom); /* For notched iPhones */
+        }
+        
+        .dm-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dark-theme .dm-header {
+            border-bottom-color: #38444d;
+        }
+        
+        .dm-back-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        
+        .dm-back-button img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .dark-theme .dm-back-button img {
+            filter: brightness(0) invert(1);
+        }
+        
+        .dm-user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dm-username {
+            font-size: 12px;
+            color: #657786;
+        }
+        
+        .dm-messages-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 60px; /* Provide space for the input container */
+        }
+        
+        .message {
+            max-width: 75%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .message-received {
+            background-color: #f1f0f0;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .dark-theme .message-received {
+            background-color: #3D5466;
+        }
+        
+        .message-sent {
+            background-color: #1DA1F2;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message-time {
+            font-size: 11px;
+            color: #657786;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .message-sent .message-time {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .dm-input-container {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            background-color: white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 100;
+            padding-bottom: calc(10px + env(safe-area-inset-bottom)); /* For notched iPhones */
+        }
+        
+        .dark-theme .dm-input-container {
+            border-top-color: #38444d;
+            background-color: #192734;
+        }
+        
+        .dm-input {
+            flex: 1;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin-right: 10px;
+            outline: none;
+            resize: none;
+            max-height: 100px;
+            min-height: 40px;
+        }
+        
+        .dark-theme .dm-input {
+            border-color: #38444d;
+            background-color: #253341;
+            color: white;
+        }
+        
+        .dm-send-button {
+            background-color: #1DA1F2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        
+        .dm-send-button img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Group chat section */
+        .section-divider {
+            margin: 15px 0;
+            padding: 0 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .new-chat-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #1DA1F2;
+            color: white;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 100;
+            padding-bottom: env(safe-area-inset-bottom); /* For notched iPhones */
+        }
+        
+        .new-chat-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        body {
+            padding-bottom: 0 !important; /* Remove any bottom padding that might be used for the nav bar */
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            /* iOS-specific fixes */
+            .dm-input-container {
+                padding-bottom: calc(10px + env(safe-area-inset-bottom));
+            }
+
+            .new-chat-button {
+                bottom: calc(20px + env(safe-area-inset-bottom));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="top-nav">
+        <!-- Default chat list view header -->
+        <div id="chat-list-header" class="nav-top-row">
+            <button class="profile-button">
+                <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+            </button>
+            <a href="notifications.html" class="notifications-link">
+                <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
+            </a>
+        </div>
+        
+        <!-- DM view header (hidden by default) -->
+        <div id="dm-view-header" class="nav-top-row" style="display: none;">
+            <button class="dm-back-button" id="dm-back-button">
+                <img src="assets/icons/icons8-back.svg" alt="Back">
+            </button>
+            <div class="dm-user-info">
+                <span class="dm-name">Dr. Sarah Chen</span>
+                <span class="dm-username">@drsarahchen</span>
+            </div>
+        </div>
+        
+        <div class="nav-bottom-row">
+            <h2 class="page-title">Messages</h2>
+        </div>
+    </header>
+
+    <main>
+        <!-- Chat list view -->
+        <div id="chat-list-view">
+            <!-- Roster section with coach profiles -->
+            <div class="roster-section">
+                <div class="roster-title">Your Care Team</div>
+                <div class="roster-users">
+                    <!-- Primary Care Provider -->
+                    <div class="roster-user" data-user-id="1" data-name="Dr. Sarah Chen" data-username="@drsarahchen">
+                        <div class="roster-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dr. Sarah Chen">
+                            <div class="roster-badge primary-badge">✓</div>
+                        </div>
+                        <span class="roster-name">Dr. Sarah Chen</span>
+                    </div>
+                    
+                    <!-- Health Coach -->
+                    <div class="roster-user" data-user-id="2" data-name="Coach Mike" data-username="@coach_mike">
+                        <div class="roster-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike">
+                            <div class="roster-badge coach-badge">✓</div>
+                        </div>
+                        <span class="roster-name">Coach Mike</span>
+                    </div>
+                    
+                    <!-- Specialist Doctor -->
+                    <div class="roster-user" data-user-id="3" data-name="Dr. Emily Zhang" data-username="@dr_zhang_endo">
+                        <div class="roster-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Dr. Emily Zhang">
+                            <div class="roster-badge primary-badge">✓</div>
+                        </div>
+                        <span class="roster-name">Dr. Emily Zhang</span>
+                    </div>
+                    
+                    <!-- Mental Health Specialist -->
+                    <div class="roster-user" data-user-id="4" data-name="Dr. Nadia Patel" data-username="@dr_nadia_psych">
+                        <div class="roster-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Dr. Nadia Patel">
+                            <div class="roster-badge primary-badge">✓</div>
+                        </div>
+                        <span class="roster-name">Dr. Nadia Patel</span>
+                    </div>
+                    
+                    <!-- Nutritionist -->
+                    <div class="roster-user" data-user-id="5" data-name="Maya Singh, RD" data-username="@maya_nutritionist">
+                        <div class="roster-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/53.jpg" alt="Maya Singh">
+                            <div class="roster-badge coach-badge">✓</div>
+                        </div>
+                        <span class="roster-name">Maya Singh</span>
+                    </div>
+                    
+                    <!-- Professional Trainer -->
+                    <div class="roster-user" data-user-id="6" data-name="Alex Rivera" data-username="@coach_alex">
+                        <div class="roster-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Alex Rivera">
+                            <div class="roster-badge coach-badge">✓</div>
+                        </div>
+                        <span class="roster-name">Alex Rivera</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Active chats list -->
+            <div class="chat-list">
+                <!-- HIPAA compliant indication for one-on-one chats -->
+                <div class="hipaa-badge">
+                    <img src="assets/icons/icons8-lock.svg" alt="HIPAA Compliant">
+                    <span>All one-on-one chats are HIPAA compliant</span>
+                </div>
+                
+                <!-- Individual chat items -->
+                <div class="chat-item" data-user-id="1" data-name="Dr. Sarah Chen" data-username="@drsarahchen">
+                    <div class="chat-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dr. Sarah Chen">
+                        <div class="chat-badge primary-badge">✓</div>
+                    </div>
+                    <div class="chat-info">
+                        <div class="chat-top-row">
+                            <span class="chat-name">Dr. Sarah Chen</span>
+                            <span class="chat-time">10:45 AM</span>
+                        </div>
+                        <div class="chat-message">Your latest blood work results look good. Your A1C has improved since last visit.</div>
+                    </div>
+                    <div class="chat-unread-count">2</div>
+                </div>
+                
+                <div class="chat-item" data-user-id="2" data-name="Coach Mike" data-username="@coach_mike">
+                    <div class="chat-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Coach Mike">
+                        <div class="chat-badge coach-badge">✓</div>
+                    </div>
+                    <div class="chat-info">
+                        <div class="chat-top-row">
+                            <span class="chat-name">Coach Mike</span>
+                            <span class="chat-time">Yesterday</span>
+                        </div>
+                        <div class="chat-message">Don't forget to log your meals today. Looking forward to seeing your progress!</div>
+                    </div>
+                </div>
+                
+                <!-- Group chat section -->
+                <div class="section-divider">Group Chats</div>
+                
+                <div class="chat-item" data-chat-id="group-1" data-name="Diabetes Support Group" data-is-group="true">
+                    <div class="chat-avatar">
+                        <img src="assets/icons/icons8-group.svg" alt="Group Chat">
+                    </div>
+                    <div class="chat-info">
+                        <div class="chat-top-row">
+                            <span class="chat-name">Diabetes Support Group</span>
+                            <span class="chat-time">3:22 PM</span>
+                        </div>
+                        <div class="chat-message">Maria: Has anyone tried the new continuous glucose monitor? I'm thinking about getting one.</div>
+                    </div>
+                    <div class="chat-unread-count">5</div>
+                </div>
+                
+                <div class="chat-item" data-chat-id="group-2" data-name="Care Team Discussion" data-is-group="true">
+                    <div class="chat-avatar">
+                        <img src="assets/icons/icons8-group.svg" alt="Group Chat">
+                    </div>
+                    <div class="chat-info">
+                        <div class="chat-top-row">
+                            <span class="chat-name">Care Team Discussion</span>
+                            <span class="chat-time">Tuesday</span>
+                        </div>
+                        <div class="chat-message">Dr. Sarah: Let's coordinate about Saawan's exercise plan for next month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Direct message view (hidden by default) -->
+        <div id="dm-view" class="dm-container">
+            <div class="hipaa-badge">
+                <img src="assets/icons/icons8-lock.svg" alt="HIPAA Compliant">
+                <span>This conversation is HIPAA compliant and secure</span>
+            </div>
+            
+            <div class="dm-messages-container">
+                <!-- Sample messages -->
+                <div class="message message-received">
+                    <div class="message-content">Hello Saawan, I've reviewed your latest blood work results and they look promising. Your A1C has improved since your last visit.</div>
+                    <div class="message-time">10:30 AM</div>
+                </div>
+                
+                <div class="message message-received">
+                    <div class="message-content">Would you like to discuss the results in detail during our next appointment?</div>
+                    <div class="message-time">10:31 AM</div>
+                </div>
+                
+                <div class="message message-sent">
+                    <div class="message-content">That's great news! Yes, I'd like to go through them during our next appointment.</div>
+                    <div class="message-time">10:40 AM</div>
+                </div>
+                
+                <div class="message message-received">
+                    <div class="message-content">Perfect. I'll make a note to review them with you. Keep up the good work with your diet and exercise routine!</div>
+                    <div class="message-time">10:45 AM</div>
+                </div>
+            </div>
+            
+            <div class="dm-input-container">
+                <textarea class="dm-input" placeholder="Type a message..." rows="1"></textarea>
+                <button class="dm-send-button">
+                    <img src="assets/icons/icons8-send.svg" alt="Send">
+                </button>
+            </div>
+        </div>
+    </main>
+    
+    <!-- New chat button -->
+    <button class="new-chat-button">
+        <img src="assets/icons/icons8-edit.svg" alt="New Chat">
+    </button>
+
+    <footer id="bottom-nav">
+        <button class="nav-button" data-page="home">
+            <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+        </button>
+        <button class="nav-button" data-page="engine">
+            <img src="assets/icons/icons8-engine.svg" alt="Check Engine Lights" class="nav-icon" data-default-icon="assets/icons/icons8-engine.svg" data-filled-icon="assets/icons/icons8-engine-filled.svg">
+        </button>
+        <button class="nav-button cascaid-logo" data-page="ai">
+            <div class="cascaid-logo-placeholder">
+                 <div class="half-circle left"></div>
+                 <div class="half-circle right"></div>
+            </div>
+        </button>
+        <button class="nav-button active" data-page="messages">
+            <img src="assets/icons/icons8-chat-message-filled.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
+        </button>
+        <button class="nav-button" data-page="wallet">
+            <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
+        </button>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script>
+        // Chat functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatListView = document.getElementById('chat-list-view');
+            const dmView = document.getElementById('dm-view');
+            const chatListHeader = document.getElementById('chat-list-header');
+            const dmViewHeader = document.getElementById('dm-view-header');
+            const backButton = document.getElementById('dm-back-button');
+            const dmName = document.querySelector('.dm-name');
+            const dmUsername = document.querySelector('.dm-username');
+            const bottomNav = document.getElementById('bottom-nav');
+            
+            // Function to show DM view
+            function showDMView(name, username) {
+                chatListView.style.display = 'none';
+                dmView.style.display = 'flex';
+                chatListHeader.style.display = 'none';
+                dmViewHeader.style.display = 'flex';
+                
+                // Hide bottom navigation and new chat button in DM view
+                bottomNav.style.display = 'none';
+                document.querySelector('.new-chat-button').style.display = 'none';
+                
+                // Update the DM header with user info
+                dmName.textContent = name;
+                dmUsername.textContent = username;
+            }
+            
+            // Function to show chat list view
+            function showChatListView() {
+                chatListView.style.display = 'block';
+                dmView.style.display = 'none';
+                chatListHeader.style.display = 'flex';
+                dmViewHeader.style.display = 'none';
+                
+                // Show bottom navigation and new chat button in chat list view
+                bottomNav.style.display = 'flex';
+                document.querySelector('.new-chat-button').style.display = 'flex';
+            }
+            
+            // Event listeners for chat items
+            const chatItems = document.querySelectorAll('.chat-item');
+            chatItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const name = this.getAttribute('data-name');
+                    const username = this.getAttribute('data-username');
+                    showDMView(name, username);
+                });
+            });
+            
+            // Event listeners for roster users
+            const rosterUsers = document.querySelectorAll('.roster-user');
+            rosterUsers.forEach(user => {
+                user.addEventListener('click', function() {
+                    const name = this.getAttribute('data-name');
+                    const username = this.getAttribute('data-username');
+                    showDMView(name, username);
+                });
+            });
+            
+            // Back button event listener
+            backButton.addEventListener('click', showChatListView);
+            
+            // Auto-resize textarea
+            messageInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+            
+            // Send button functionality
+            const sendButton = document.querySelector('.dm-send-button');
+            const messageInput = document.querySelector('.dm-input');
+            const messagesContainer = document.querySelector('.dm-messages-container');
+            
+            sendButton.addEventListener('click', function() {
+                const messageText = messageInput.value.trim();
+                if (messageText) {
+                    // Create new message element
+                    const messageElement = document.createElement('div');
+                    messageElement.className = 'message message-sent';
+                    
+                    // Add message content
+                    const contentElement = document.createElement('div');
+                    contentElement.className = 'message-content';
+                    contentElement.textContent = messageText;
+                    messageElement.appendChild(contentElement);
+                    
+                    // Add timestamp
+                    const timeElement = document.createElement('div');
+                    timeElement.className = 'message-time';
+                    
+                    // Format current time
+                    const now = new Date();
+                    let hours = now.getHours();
+                    const minutes = now.getMinutes().toString().padStart(2, '0');
+                    const ampm = hours >= 12 ? 'PM' : 'AM';
+                    hours = hours % 12;
+                    hours = hours ? hours : 12; // Convert 0 to 12
+                    
+                    timeElement.textContent = `${hours}:${minutes} ${ampm}`;
+                    messageElement.appendChild(timeElement);
+                    
+                    // Add to messages container
+                    messagesContainer.appendChild(messageElement);
+                    
+                    // Clear input and reset height
+                    messageInput.value = '';
+                    messageInput.style.height = 'auto';
+                    
+                    // Scroll to bottom
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }
+            });
+            
+            // Allow sending message with Enter key (but Shift+Enter for new line)
+            messageInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendButton.click();
+                }
+            });
+            
+            // Handle viewport adjustments for mobile keyboard
+            const viewportHeight = () => {
+                return window.innerHeight;
+            };
+            
+            // Detect virtual keyboard and adjust viewport
+            const viewportHandler = () => {
+                document.documentElement.style.setProperty('--vh', `${viewportHeight() * 0.01}px`);
+            };
+            
+            window.addEventListener('resize', viewportHandler);
+            window.addEventListener('orientationchange', viewportHandler);
+            viewportHandler();
+        });
+    </script>
+
+    <!-- Side Menus -->
+    <div id="side-menu-overlay"></div>
+    <div id="profile-side-menu" class="side-menu">
+        <div class="profile-header">
+            <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="profile-image-large">
+            <h3 class="profile-name">Saawan Patel</h3>
+            <p class="profile-username">@saawan</p>
+            <div class="profile-stats">
+                <span><strong>0</strong> Followers</span>
+                <span><strong>0</strong> Following</span>
+            </div>
+        </div>
+        <nav class="profile-nav">
+            <ul>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/profile-icon.svg" alt="Profile Icon" class="menu-icon">
+                    Profile
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-graph-report.svg" alt="Reports Icon" class="menu-icon">
+                    Reports
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-bookmark.svg" alt="Bookmarks Icon" class="menu-icon">
+                    Bookmarks
+                </a></li>
+                <li>
+                    <div class="theme-toggle-container">
+                        <span>
+                            <img src="assets/icons/icons8-night.svg" alt="Theme Icon" class="menu-icon theme-icon light-theme-icon">
+                            <img src="assets/icons/icons8-sun.svg" alt="Theme Icon" class="menu-icon theme-icon dark-theme-icon">
+                            Appearance
+                        </span>
+                        <button id="theme-toggle-button" class="theme-toggle-sidebar-button">Toggle Theme</button>
+                    </div>
+                </li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/settings.svg" alt="Settings Icon" class="menu-icon">
+                    Settings
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-invite.svg" alt="Invite Icon" class="menu-icon">
+                    Invite
+                </a></li>
+            </ul>
+        </nav>
+        <button class="logout-button">
+            <img src="assets/icons/logout.svg" alt="Logout Icon" class="menu-icon">
+            Logout
+        </button>
+    </div>
+</body>
+</html> 

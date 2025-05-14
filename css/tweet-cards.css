@@ -14,7 +14,7 @@
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-body.dark-mode .tweet-card {
+body.dark-theme .tweet-card {
     background-color: var(--background-color-dark);
     border-color: #444;
 }
@@ -61,7 +61,7 @@ body.dark-mode .tweet-card {
     margin: 0;
 }
 
-body.dark-mode .tweet-username {
+body.dark-theme .tweet-username {
     color: #aaa;
 }
 
@@ -93,7 +93,7 @@ body.dark-mode .tweet-username {
     font-size: 14px;
 }
 
-body.dark-mode .tweet-time {
+body.dark-theme .tweet-time {
     color: #aaa;
 }
 
@@ -113,7 +113,7 @@ body.dark-mode .tweet-time {
     height: 18px;
 }
 
-body.dark-mode .tweet-menu-icon {
+body.dark-theme .tweet-menu-icon {
     filter: brightness(0) invert(1);
 }
 
@@ -125,7 +125,7 @@ body.dark-mode .tweet-menu-icon {
     margin-bottom: 8px;
 }
 
-body.dark-mode .tweet-visibility {
+body.dark-theme .tweet-visibility {
     color: #aaa;
 }
 
@@ -135,7 +135,7 @@ body.dark-mode .tweet-visibility {
     margin-right: 4px;
 }
 
-body.dark-mode .tweet-visibility-icon {
+body.dark-theme .tweet-visibility-icon {
     filter: brightness(0) invert(1);
 }
 
@@ -161,7 +161,7 @@ body.dark-mode .tweet-visibility-icon {
     margin-top: 12px;
 }
 
-body.dark-mode .tweet-actions {
+body.dark-theme .tweet-actions {
     border-top-color: #444;
 }
 
@@ -181,7 +181,7 @@ body.dark-mode .tweet-actions {
     transition: color 0.2s;
 }
 
-body.dark-mode .tweet-action-button {
+body.dark-theme .tweet-action-button {
     color: #aaa;
 }
 
@@ -191,7 +191,7 @@ body.dark-mode .tweet-action-button {
     margin-right: 6px;
 }
 
-body.dark-mode .tweet-action-icon {
+body.dark-theme .tweet-action-icon {
     filter: brightness(0) invert(1);
 }
 
@@ -230,7 +230,7 @@ body.dark-mode .tweet-action-icon {
     color: #666;
 }
 
-body.dark-mode .rating-scale {
+body.dark-theme .rating-scale {
     color: #aaa;
 }
 
@@ -252,7 +252,7 @@ body.dark-mode .rating-scale {
     transition: background-color 0.2s, border-color 0.2s;
 }
 
-body.dark-mode .poll-option {
+body.dark-theme .poll-option {
     border-color: #555;
 }
 
@@ -285,7 +285,7 @@ body.dark-mode .poll-option {
     overflow: hidden;
 }
 
-body.dark-mode .poll-bar-container {
+body.dark-theme .poll-bar-container {
     background-color: #444;
 }
 
@@ -300,7 +300,7 @@ body.dark-mode .poll-bar-container {
     color: #666;
 }
 
-body.dark-mode .poll-percentage {
+body.dark-theme .poll-percentage {
     color: #aaa;
 }
 
@@ -315,7 +315,7 @@ body.dark-mode .poll-percentage {
     transition: border-color 0.2s, background-color 0.2s;
 }
 
-body.dark-mode .media-upload-area {
+body.dark-theme .media-upload-area {
     border-color: #555;
 }
 
@@ -330,7 +330,7 @@ body.dark-mode .media-upload-area {
     margin-bottom: 8px;
 }
 
-body.dark-mode .media-upload-icon {
+body.dark-theme .media-upload-icon {
     filter: brightness(0) invert(1);
 }
 
@@ -340,7 +340,7 @@ body.dark-mode .media-upload-icon {
     margin: 0;
 }
 
-body.dark-mode .media-upload-text {
+body.dark-theme .media-upload-text {
     color: #aaa;
 }
 
@@ -352,7 +352,7 @@ body.dark-mode .media-upload-text {
     margin: 12px 0;
 }
 
-body.dark-mode .workout-details {
+body.dark-theme .workout-details {
     background-color: #3a3a3a;
 }
 
@@ -371,7 +371,7 @@ body.dark-mode .workout-details {
     color: #666;
 }
 
-body.dark-mode .workout-duration {
+body.dark-theme .workout-duration {
     color: #aaa;
 }
 
@@ -395,6 +395,6 @@ body.dark-mode .workout-duration {
     font-size: 14px;
 }
 
-body.dark-mode .exercise-details {
+body.dark-theme .exercise-details {
     color: #aaa;
 } 

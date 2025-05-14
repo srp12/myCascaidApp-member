@@ -23,7 +23,7 @@ body.light-mode {
 }
 
 /* Dark mode */
-body.dark-mode {
+body.dark-theme {
     background-color: var(--background-color-dark);
     color: var(--text-color-dark);
 }
@@ -151,7 +151,7 @@ main {
 }
 
 /* Cascaid logo in Dark Mode (inactive) */
-body.dark-mode .cascaid-logo-placeholder .half-circle {
+body.dark-theme .cascaid-logo-placeholder .half-circle {
     background-color: #FFFFFF; /* White in dark mode */
 }
 
@@ -160,7 +160,7 @@ body.dark-mode .cascaid-logo-placeholder .half-circle {
     background-color: #000000; /* Keep original color */
 }
 
-body.dark-mode .nav-button.cascaid-logo.active .cascaid-logo-placeholder .half-circle {
+body.dark-theme .nav-button.cascaid-logo.active .cascaid-logo-placeholder .half-circle {
     background-color: #FFFFFF; /* Keep white in dark mode */
 }
 
@@ -219,28 +219,28 @@ body.dark-mode .nav-button.cascaid-logo.active .cascaid-logo-placeholder .half-c
 }
 
 /* Dark mode styling without color changes */
-body.dark-mode .nav-button.active {
+body.dark-theme .nav-button.active {
     /* No color change */
 }
 
-body.dark-mode .nav-button.active .nav-icon:not([src*="-filled"]) {
+body.dark-theme .nav-button.active .nav-icon:not([src*="-filled"]) {
     /* No special filter */
 }
 
 /* General nav icons in dark mode turn white */
-body.dark-mode #bottom-nav .nav-icon:not([src*="-filled"]),
-body.dark-mode #top-nav .nav-icon:not([src*="-filled"]) {
+body.dark-theme #bottom-nav .nav-icon:not([src*="-filled"]),
+body.dark-theme #top-nav .nav-icon:not([src*="-filled"]) {
     filter: brightness(0) invert(1); /* Makes icons white */
 }
 
 /* For top nav and bottom nav filled icons */
-body.dark-mode #top-nav img.nav-icon[src*="-filled"],
-body.dark-mode #bottom-nav img.nav-icon[src*="-filled"] {
+body.dark-theme #top-nav img.nav-icon[src*="-filled"],
+body.dark-theme #bottom-nav img.nav-icon[src*="-filled"] {
     filter: none; /* Prevent filled icons from being inverted by default */
 }
 
 /* For active/selected filled icons in dark mode - invert colors */
-body.dark-mode .nav-button.active img.nav-icon[src*="-filled"] {
+body.dark-theme .nav-button.active img.nav-icon[src*="-filled"] {
     filter: brightness(0) invert(1) !important; /* Make filled icons white when active in dark mode */
 }
 
@@ -276,7 +276,7 @@ body.dark-mode .nav-button.active img.nav-icon[src*="-filled"] {
     box-sizing: border-box;
 }
 
-body.dark-mode .side-menu {
+body.dark-theme .side-menu {
     background-color: var(--background-color-dark);
     color: var(--text-color-dark);
 }
@@ -309,7 +309,7 @@ body.side-menu-active .side-menu.active {
     text-align: center;
 }
 
-body.dark-mode #profile-side-menu .profile-header {
+body.dark-theme #profile-side-menu .profile-header {
     border-bottom-color: #444; /* Darker border in dark mode */
 }
 
@@ -333,7 +333,7 @@ body.dark-mode #profile-side-menu .profile-header {
     color: #777;
     margin-bottom: 12px;
 }
-body.dark-mode #profile-side-menu .profile-username {
+body.dark-theme #profile-side-menu .profile-username {
     color: #aaa;
 }
 
@@ -379,7 +379,7 @@ body.dark-mode #profile-side-menu .profile-username {
     background-color: rgba(0,0,0,0.05);
 }
 
-body.dark-mode #profile-side-menu .profile-nav ul li a:hover {
+body.dark-theme #profile-side-menu .profile-nav ul li a:hover {
     background-color: rgba(255,255,255,0.08);
 }
 
@@ -399,7 +399,7 @@ body.dark-mode #profile-side-menu .profile-nav ul li a:hover {
     cursor: pointer;
     font-size: 0.8em; /* Smaller text for the button */
 }
-body.dark-mode #theme-toggle-button.theme-toggle-sidebar-button {
+body.dark-theme #theme-toggle-button.theme-toggle-sidebar-button {
     border-color: #555;
 }
 
@@ -420,7 +420,7 @@ body.dark-mode #theme-toggle-button.theme-toggle-sidebar-button {
     transition: background-color 0.2s ease;
 }
 
-body.dark-mode #profile-side-menu .logout-button {
+body.dark-theme #profile-side-menu .logout-button {
     background-color: #444;
     color: var(--text-color-dark);
 }
@@ -458,34 +458,34 @@ body .light-theme-icon {
 }
 
 /* Show sun icon in dark mode, hide moon icon */
-body.dark-mode .light-theme-icon {
+body.dark-theme .light-theme-icon {
     display: none;
 }
 
-body.dark-mode .dark-theme-icon {
+body.dark-theme .dark-theme-icon {
     display: inline-block;
     filter: brightness(0) invert(1); /* Make the sun icon white in dark mode */
 }
 
 /* Dark mode for menu icons */
-body.dark-mode .profile-nav .menu-icon:not(.theme-icon),
-body.dark-mode .logout-button .menu-icon {
+body.dark-theme .profile-nav .menu-icon:not(.theme-icon),
+body.dark-theme .logout-button .menu-icon {
     filter: brightness(0) invert(1); /* Makes icons white in dark mode */
 }
 
 /* Dark mode adjustments */
-body.dark-mode {
+body.dark-theme {
     background-color: var(--background-color-dark);
     color: var(--text-color-dark);
 }
 
-body.dark-mode #top-nav,
-body.dark-mode #bottom-nav {
+body.dark-theme #top-nav,
+body.dark-theme #bottom-nav {
     background-color: rgba(51, 51, 51, 0.8); /* Darker transparent background */
     border-top-color: #555; /* Darker border */
 }
 
-body.dark-mode #theme-toggle-button {
+body.dark-theme #theme-toggle-button {
     background-color: #555;
     color: var(--text-color-dark);
     border: 1px solid #666;
@@ -496,7 +496,7 @@ body.dark-mode #theme-toggle-button {
     filter: none !important; /* Override any other filter rules */
 }
 
-body.dark-mode .notifications-link .nav-icon {
+body.dark-theme .notifications-link .nav-icon {
     filter: brightness(0) invert(1) !important; /* Always white in dark mode */
 }
 
@@ -516,7 +516,7 @@ body.dark-mode .notifications-link .nav-icon {
 }
 
 /* Make back icon white in dark mode */
-body.dark-mode .back-button .nav-icon {
+body.dark-theme .back-button .nav-icon {
     filter: brightness(0) invert(1); /* Makes icon white in dark mode */
 }
 
@@ -542,7 +542,7 @@ body.dark-mode .back-button .nav-icon {
     transition: background-color 0.2s ease;
 }
 
-body.dark-mode .notification-item {
+body.dark-theme .notification-item {
     border-bottom-color: #444;
 }
 
@@ -550,7 +550,7 @@ body.dark-mode .notification-item {
     background-color: rgba(76, 175, 80, 0.1); /* Light green background for unread */
 }
 
-body.dark-mode .notification-item.unread {
+body.dark-theme .notification-item.unread {
     background-color: rgba(76, 175, 80, 0.2); /* Slightly more visible in dark mode */
 }
 
@@ -566,7 +566,7 @@ body.dark-mode .notification-item.unread {
     padding: 8px;
 }
 
-body.dark-mode .notification-img {
+body.dark-theme .notification-img {
     background-color: #444;
     filter: brightness(0) invert(1); /* Makes icons white in dark mode */
 }
@@ -586,7 +586,7 @@ body.dark-mode .notification-img {
     color: #666;
 }
 
-body.dark-mode .notification-text {
+body.dark-theme .notification-text {
     color: #aaa;
 }
 
@@ -595,7 +595,7 @@ body.dark-mode .notification-text {
     color: #999;
 }
 
-body.dark-mode .notification-time {
+body.dark-theme .notification-time {
     color: #777;
 }
 
@@ -605,7 +605,7 @@ body.dark-mode .notification-time {
     color: #666;
 }
 
-body.dark-mode .empty-notifications {
+body.dark-theme .empty-notifications {
     color: #aaa;
 }
 
@@ -616,7 +616,7 @@ body.dark-mode .empty-notifications {
     margin-bottom: 16px;
 }
 
-body.dark-mode .empty-icon {
+body.dark-theme .empty-icon {
     filter: brightness(0) invert(1);
     opacity: 0.7;
 }
@@ -632,7 +632,7 @@ body.dark-mode .empty-icon {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-body.dark-mode .feed-tabs-container {
+body.dark-theme .feed-tabs-container {
     background-color: var(--background-color-dark);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
@@ -644,7 +644,7 @@ body.dark-mode .feed-tabs-container {
     background-color: var(--background-color-light);
 }
 
-body.dark-mode .feed-tabs {
+body.dark-theme .feed-tabs {
     border-bottom-color: #444;
     background-color: var(--background-color-dark);
 }
@@ -663,7 +663,7 @@ body.dark-mode .feed-tabs {
     transition: color 0.2s ease;
 }
 
-body.dark-mode .feed-tab {
+body.dark-theme .feed-tab {
     color: #aaa;
 }
 
@@ -686,7 +686,7 @@ body.dark-mode .feed-tab {
     background-color: #000000; /* Black underline in light mode */
 }
 
-body.dark-mode .feed-tab.active:after {
+body.dark-theme .feed-tab.active:after {
     background-color: #FFFFFF; /* White underline in dark mode */
 }
 
@@ -709,6 +709,6 @@ body.dark-mode .feed-tab.active:after {
     color: #666;
 }
 
-body.dark-mode .feed-placeholder {
+body.dark-theme .feed-placeholder {
     color: #aaa;
 } 

@@ -1,0 +1,613 @@
+/* Floating Post Button Styles */
+.floating-post-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.floating-post-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #355E3B;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.floating-post-button:hover {
+    background-color: #2A4A2F;
+    transform: scale(1.05);
+}
+
+.floating-post-button img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+/* Post Type Menu */
+.post-type-menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.post-type-menu.active {
+    display: flex;
+}
+
+.post-type-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.post-type-option:hover {
+    background-color: #f7f7f7;
+}
+
+.post-type-option img {
+    width: 20px;
+    height: 20px;
+}
+
+.post-type-option span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Post Modal */
+.post-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-modal-overlay.active {
+    display: flex;
+}
+
+.post-modal {
+    background-color: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.post-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.post-modal-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.post-modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #666;
+}
+
+.post-modal-body {
+    margin-bottom: 20px;
+}
+
+.post-textarea {
+    width: 100%;
+    min-height: 120px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    resize: none;
+    margin-bottom: 15px;
+}
+
+.post-textarea:focus {
+    border-color: #1d9bf0;
+    outline: none;
+}
+
+.post-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.post-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f5f8fa;
+    cursor: pointer;
+}
+
+.post-option:hover {
+    background-color: #e8f5fd;
+}
+
+.post-option img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Mention Menu */
+.mention-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    width: 250px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 2100;
+}
+
+.mention-menu.active {
+    display: block;
+}
+
+.mention-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.mention-option:hover {
+    background-color: #f7f7f7;
+}
+
+.mention-option img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.mention-name {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.mention-username {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Post Button */
+.post-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.post-button {
+    background-color: #355E3B;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.post-button:hover {
+    background-color: #2A4A2F;
+}
+
+.post-button:disabled {
+    background-color: rgba(53, 94, 59, 0.5);
+    cursor: not-allowed;
+}
+
+/* Health Check-in Form */
+.health-check-form {
+    display: none;
+}
+
+.health-check-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Poll Form */
+.poll-form {
+    display: none;
+}
+
+.poll-form.active {
+    display: block;
+}
+
+.poll-option-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.poll-option-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.remove-option {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+}
+
+.add-option-button {
+    background: none;
+    border: none;
+    color: #1d9bf0;
+    cursor: pointer;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Dark Mode Support */
+.dark-theme .post-type-menu,
+.dark-theme .post-modal,
+.dark-theme .mention-menu {
+    background-color: #15202b;
+    color: white;
+}
+
+.dark-theme .post-type-option {
+    color: white;
+}
+
+.dark-theme .post-type-option img,
+.dark-theme .post-option img,
+.dark-theme .composer-tool-button img,
+.dark-theme .nav-icon,
+.dark-theme .tweet-action-icon,
+.dark-theme .media-upload-icon {
+    filter: brightness(0) invert(1) !important; /* Make all icons white in dark mode */
+}
+
+.dark-theme .post-type-option:hover,
+.dark-theme .mention-option:hover {
+    background-color: #1e2732;
+}
+
+.dark-theme .post-textarea,
+.dark-theme .form-group input,
+.dark-theme .form-group select,
+.dark-theme .poll-option-input input {
+    background-color: #273340;
+    border-color: #38444d;
+    color: white;
+}
+
+.dark-theme .post-option {
+    background-color: #273340;
+}
+
+.dark-theme .post-option:hover {
+    background-color: #38444d;
+}
+
+.dark-theme .mention-username {
+    color: #8899a6;
+}
+
+/* Create Post Page Styles */
+.back-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.page-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+#submit-post-button {
+    background-color: #1d9bf0;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.create-post-content {
+    padding: 16px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.post-profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.post-user-details {
+    flex: 1;
+}
+
+.post-user-name {
+    font-weight: 600;
+    margin: 0 0 5px 0;
+}
+
+.post-visibility-selector select {
+    border: none;
+    background: #f0f2f5;
+    border-radius: 16px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.post-composer {
+    margin-bottom: 15px;
+}
+
+#post-composer-textarea {
+    width: 100%;
+    min-height: 120px;
+    border: none;
+    resize: none;
+    font-size: 16px;
+    padding: 0;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.post-forms {
+    margin-bottom: 20px;
+}
+
+/* Health Check-in Form Styles */
+.health-check-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f7f9fa;
+    border-radius: 12px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Poll Form Styles */
+.poll-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f7f9fa;
+    border-radius: 12px;
+}
+
+.poll-option-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.poll-option-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.remove-option {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-option-button {
+    background: none;
+    border: none;
+    color: #1d9bf0;
+    cursor: pointer;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+
+/* Photo Upload Form Styles */
+.photo-upload-form {
+    margin-bottom: 20px;
+}
+
+.media-upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-upload-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.media-upload-text {
+    margin: 0;
+    color: #666;
+}
+
+.uploaded-photo-preview {
+    position: relative;
+    margin-top: 15px;
+}
+
+.uploaded-photo-preview img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+.remove-photo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Post Composer Tools */
+.post-composer-tools {
+    display: none; /* Hide these tools since they're redundant */
+}
+
+.tool-buttons {
+    display: none;
+}
+
+.composer-tool-button {
+    display: none;
+}
+
+/* Dark Mode Support */
+.dark-theme .post-type-menu,
+.dark-theme .mention-menu,
+.dark-theme #post-composer-textarea,
+.dark-theme .post-visibility-selector select {
+    background-color: #15202b;
+    color: white;
+}
+
+.dark-theme .post-type-option:hover,
+.dark-theme .mention-option:hover,
+.dark-theme .composer-tool-button:hover {
+    background-color: #1e2732;
+}
+
+.dark-theme .form-group input,
+.dark-theme .form-group select,
+.dark-theme .poll-option-input input {
+    background-color: #273340;
+    border-color: #38444d;
+    color: white;
+}
+
+.dark-theme .health-check-form,
+.dark-theme .poll-form {
+    background-color: #192734;
+}
+
+.dark-theme .media-upload-area {
+    border-color: #38444d;
+}
+
+.dark-theme .media-upload-text,
+.dark-theme .mention-username {
+    color: #8899a6;
+}
+
+.dark-theme .post-composer-tools {
+    border-color: #38444d;
+} 

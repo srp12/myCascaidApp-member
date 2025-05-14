@@ -4,9 +4,11 @@ const THEME_KEY = 'myCascaidTheme';
 
 function applyTheme(theme) {
     if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('light-theme');
     } else {
-        document.body.classList.remove('dark-mode');
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
     }
 }
 
@@ -44,14 +46,19 @@ function initializeTheme() {
 }
 
 function toggleTheme() {
-    const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    const currentTheme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     applyTheme(newTheme);
     saveTheme(newTheme);
 }
 
-// Export functions or attach listeners if needed outside this module
-// For simple cases, just ensuring initializeTheme runs is enough
+// Export functions for use in other pages
+window.myCascaidTheme = {
+    applyTheme,
+    getPreferredTheme,
+    toggleTheme,
+    getSavedTheme
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeTheme();
@@ -60,5 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggleButton = document.getElementById('theme-toggle-button');
     if (themeToggleButton) {
         themeToggleButton.addEventListener('click', toggleTheme);
+    }
+    
+    // Update sidebar theme toggle button text if it exists
+    if (themeToggleButton && document.body.classList.contains('dark-theme')) {
+        themeToggleButton.textContent = 'Switch to Light Mode';
+    } else if (themeToggleButton) {
+        themeToggleButton.textContent = 'Switch to Dark Mode';
     }
 }); 

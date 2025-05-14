@@ -148,31 +148,31 @@ input:checked + .slider:before {
 }
 
 /* Dark mode specific styles for login */
-body.dark-mode {
+body.dark-theme {
     background-color: var(--background-color-dark);
 }
 
-body.dark-mode .login-container {
+body.dark-theme .login-container {
     background-color: #444; /* Darker container background */
     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
 }
 
-body.dark-mode .login-container h1,
-body.dark-mode .input-group label,
-body.dark-mode .toggle-label {
+body.dark-theme .login-container h1,
+body.dark-theme .input-group label,
+body.dark-theme .toggle-label {
     color: var(--text-color-dark);
 }
 
-body.dark-mode .input-group input {
+body.dark-theme .input-group input {
     background-color: #555;
     border-color: #666;
     color: var(--text-color-dark);
 }
 
-body.dark-mode .slider {
+body.dark-theme .slider {
     background-color: #555; /* Darker slider background */
 }
 
-body.dark-mode input:checked + .slider {
+body.dark-theme input:checked + .slider {
     background-color: var(--primary-color); /* Keep primary color for checked state */
 } 

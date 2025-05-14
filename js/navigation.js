@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         bottomNavHeight = bottomNav.offsetHeight;
         topNav.style.transform = `translateY(${currentTopTranslateY}px)`;
         bottomNav.style.transform = `translateY(${currentBottomTranslateY}px)`;
-        // console.log('Nav dimensions initialized:', { topNavHeight, bottomNavHeight });
     }
 
     setTimeout(initializeNavDimensions, 0); // Initialize after layout
@@ -88,14 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
          setTimeout(initializeNavDimensions, 50);
     });
-
-    /* Removed default active state setting for Home button
-    // Set initial active state for nav button (example: Home)
-    const homeButton = document.querySelector('.nav-button[data-page="home"]');
-    if (homeButton) {
-        homeButton.classList.add('active');
-    }
-    */
 
     // --- Feed Tabs Logic ---
     const feedTabs = document.querySelectorAll('.feed-tab');
@@ -200,41 +191,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Bottom Nav Icon Click Logic ---
+    // --- Bottom Nav Icon Click Logic with Page Navigation ---
     const navButtons = document.querySelectorAll('#bottom-nav .nav-button');
-    const allNavIcons = document.querySelectorAll('#bottom-nav .nav-button img.nav-icon');
-
+    
     navButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Reset all icons to default
-            allNavIcons.forEach(icon => {
-                if (icon.dataset.defaultIcon) {
+        button.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            
+            // Remove active class from all buttons and reset icons
+            navButtons.forEach(btn => {
+                btn.classList.remove('active');
+                const icon = btn.querySelector('.nav-icon');
+                if (icon && icon.dataset.defaultIcon) {
                     icon.src = icon.dataset.defaultIcon;
                 }
             });
-
-            // Remove 'active' class from all buttons
-            navButtons.forEach(btn => btn.classList.remove('active'));
-
-            // Set clicked icon to filled (if available) and add 'active' class
-            const icon = button.querySelector('img.nav-icon');
+            
+            // Add active class to clicked button and set filled icon
+            this.classList.add('active');
+            const icon = this.querySelector('.nav-icon');
             if (icon && icon.dataset.filledIcon) {
                 icon.src = icon.dataset.filledIcon;
             }
-            button.classList.add('active');
-
-            // Potentially load page content based on button.dataset.page
-            // console.log('Navigating to:', button.dataset.page);
+            
+            // Handle page navigation
+            switch(page) {
+                case 'home':
+                    window.location.href = 'index.html';
+                    break;
+                case 'messages':
+                    window.location.href = 'chat.html';
+                    break;
+                case 'engine':
+                    window.location.href = 'engine.html';
+                    break;
+                case 'wallet':
+                    window.location.href = 'wallet.html';
+                    break;
+                case 'ai':
+                    window.location.href = 'ai.html';
+                    break;
+            }
         });
     });
-
-    // Set initial active state for the home button and its icon
-    const homeButton = document.querySelector('#bottom-nav .nav-button[data-page="home"]');
-    if (homeButton) {
-        homeButton.classList.add('active');
-        const homeIcon = homeButton.querySelector('img.nav-icon');
-        if (homeIcon && homeIcon.dataset.filledIcon) { // Check for filled icon
-            homeIcon.src = homeIcon.dataset.filledIcon; // Set to filled if active
-        }
-    }
 }); 

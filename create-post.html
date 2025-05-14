@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post - myCascaid</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tweet-cards.css">
+    <link rel="stylesheet" href="css/floating-post.css">
+    <script src="js/theme.js"></script>
+    <style>
+        /* Additional dark mode styles to ensure all elements are visible */
+        .dark-theme {
+            color: white;
+        }
+        
+        .dark-theme .post-user-name,
+        .dark-theme .page-title,
+        .dark-theme label,
+        .dark-theme .post-button,
+        .dark-theme #submit-post-button {
+            color: white;
+        }
+        
+        .dark-theme .post-composer-tools,
+        .dark-theme .form-group {
+            border-color: #38444d;
+        }
+        
+        .dark-theme img,
+        .dark-theme .nav-icon,
+        .dark-theme .composer-tool-button img {
+            filter: brightness(0) invert(1);
+        }
+        
+        /* Ensure inputs and selects have proper contrast in dark mode */
+        .dark-theme input,
+        .dark-theme select,
+        .dark-theme textarea {
+            background-color: #192734;
+            color: white;
+            border-color: #38444d;
+        }
+        
+        /* Updated post button color */
+        #submit-post-button, .post-button {
+            background-color: #355E3B !important;
+        }
+        
+        #submit-post-button:hover, .post-button:hover {
+            background-color: #2A4A2F !important;
+        }
+    </style>
+</head>
+<body>
+    <header id="top-nav">
+        <div class="nav-top-row">
+            <button class="back-button" id="back-button">
+                <img src="assets/icons/icons8-back.svg" alt="Back" class="nav-icon">
+            </button>
+            <h1 class="page-title">Create Post</h1>
+            <button class="post-button" id="submit-post-button">Post</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="create-post-content">
+            <div class="user-info">
+                <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="post-profile-image">
+                <div class="post-user-details">
+                    <p class="post-user-name">Saawan Patel</p>
+                    
+                    <!-- Visibility selector -->
+                    <div class="post-visibility-selector">
+                        <select id="visibility-selector">
+                            <option value="public">Public</option>
+                            <option value="following">Following Only</option>
+                            <option value="care-team">Care Team Only</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-composer">
+                <textarea id="post-composer-textarea" placeholder="What's on your mind? Try tagging your followers or coaches to get their attention." autofocus></textarea>
+            </div>
+
+            <!-- Post type forms -->
+            <div class="post-forms">
+                <!-- Health Check-in Form -->
+                <div class="health-check-form" id="full-health-check-form">
+                    <div class="form-group">
+                        <label for="full-health-metric">Metric</label>
+                        <select id="full-health-metric">
+                            <option value="blood_sugar">Blood Sugar</option>
+                            <option value="blood_pressure">Blood Pressure</option>
+                            <option value="weight">Weight</option>
+                            <option value="exercise">Exercise</option>
+                            <option value="sleep">Sleep</option>
+                            <option value="mood">Mood</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="full-health-value">Value</label>
+                        <input type="text" id="full-health-value" placeholder="Enter value">
+                    </div>
+                    <div class="form-group">
+                        <label for="full-health-unit">Unit</label>
+                        <select id="full-health-unit">
+                            <option value="mg/dL">mg/dL</option>
+                            <option value="mmHg">mmHg</option>
+                            <option value="kg">kg</option>
+                            <option value="minutes">minutes</option>
+                            <option value="hours">hours</option>
+                            <option value="steps">steps</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Poll Form -->
+                <div class="poll-form" id="full-poll-form">
+                    <div class="form-group">
+                        <label>Poll Options</label>
+                        <div id="full-poll-options-container">
+                            <div class="poll-option-input">
+                                <input type="text" placeholder="Option 1">
+                                <button type="button" class="remove-option">✕</button>
+                            </div>
+                            <div class="poll-option-input">
+                                <input type="text" placeholder="Option 2">
+                                <button type="button" class="remove-option">✕</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-option-button" id="full-add-option-button">
+                            <span>+ Add Option</span>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <label for="poll-duration">Poll Duration</label>
+                        <select id="poll-duration">
+                            <option value="1">1 day</option>
+                            <option value="3">3 days</option>
+                            <option value="7" selected>7 days</option>
+                            <option value="14">14 days</option>
+                            <option value="30">30 days</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Photo Upload Form -->
+                <div class="photo-upload-form" id="photo-upload-form">
+                    <div class="media-upload-area">
+                        <img src="assets/icons/icons8-camera.svg" alt="Upload" class="media-upload-icon">
+                        <p class="media-upload-text">Tap to upload a photo</p>
+                    </div>
+                    <div class="uploaded-photo-preview" id="uploaded-photo-preview" style="display: none;">
+                        <img src="" alt="Uploaded Photo" id="photo-preview">
+                        <button type="button" class="remove-photo" id="remove-photo-button">✕</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mention Menu -->
+    <div class="mention-menu" id="full-mention-menu"></div>
+
+    <script>
+        // Apply theme from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply saved theme if theme.js has loaded
+            if (window.myCascaidTheme) {
+                const savedTheme = window.myCascaidTheme.getPreferredTheme();
+                window.myCascaidTheme.applyTheme(savedTheme);
+            }
+            
+            // Get the post type from the URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const postType = urlParams.get('type') || 'regular';
+            
+            // Set up the page based on post type
+            setupPostType(postType);
+            
+            // Handle back button
+            document.getElementById('back-button').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+            
+            // Handle submit button
+            document.getElementById('submit-post-button').addEventListener('click', function() {
+                submitPost(postType);
+            });
+            
+            // Handle textarea mentions
+            const textarea = document.getElementById('post-composer-textarea');
+            if (textarea) {
+                textarea.addEventListener('input', handleMentions);
+                textarea.addEventListener('keydown', handleMentionKeyboard);
+            }
+            
+            // Setup poll option buttons if applicable
+            if (postType === 'poll') {
+                setupPollOptions();
+            }
+            
+            // Setup photo upload if applicable
+            if (postType === 'photo') {
+                setupPhotoUpload();
+            }
+        });
+        
+        function setupPostType(type) {
+            // Update page title
+            const pageTitle = document.querySelector('.page-title');
+            const textarea = document.getElementById('post-composer-textarea');
+            
+            // Hide all forms first
+            document.querySelectorAll('.post-forms > div').forEach(form => {
+                form.style.display = 'none';
+            });
+            
+            // Show appropriate form and setup based on type
+            switch(type) {
+                case 'health-check':
+                    pageTitle.textContent = 'Health Check-in';
+                    textarea.placeholder = 'Share an update about your health... Try tagging your followers or coaches to get their attention.';
+                    document.getElementById('full-health-check-form').style.display = 'block';
+                    break;
+                    
+                case 'question':
+                    pageTitle.textContent = 'Ask a Question';
+                    textarea.placeholder = 'What would you like to ask? Try tagging your followers or coaches to get their attention.';
+                    break;
+                    
+                case 'poll':
+                    pageTitle.textContent = 'Create Poll';
+                    textarea.placeholder = 'Ask a question for your poll... Try tagging your followers or coaches to get their attention.';
+                    document.getElementById('full-poll-form').style.display = 'block';
+                    break;
+                    
+                case 'photo':
+                    pageTitle.textContent = 'Share Photo';
+                    textarea.placeholder = 'Add a caption to your photo... Try tagging your followers or coaches to get their attention.';
+                    document.getElementById('photo-upload-form').style.display = 'block';
+                    break;
+                    
+                default: // regular post
+                    pageTitle.textContent = 'Create Post';
+                    textarea.placeholder = 'What\'s on your mind?';
+                    break;
+            }
+        }
+        
+        function handleMentions(event) {
+            const textarea = event.target;
+            const text = textarea.value;
+            const cursorPosition = textarea.selectionStart;
+            const textUptoCursor = text.substring(0, cursorPosition);
+            const mentionMenu = document.getElementById('full-mention-menu');
+            
+            // Check if we're typing a mention
+            const mentionMatch = textUptoCursor.match(/@(\w*)$/);
+            
+            if (mentionMatch) {
+                const mentionText = mentionMatch[1].toLowerCase();
+                showMentionMenu(mentionText, textarea, mentionMenu);
+            } else if (mentionMenu) {
+                mentionMenu.classList.remove('active');
+            }
+        }
+        
+        function handleMentionKeyboard(event) {
+            const mentionMenu = document.getElementById('full-mention-menu');
+            
+            if (mentionMenu && mentionMenu.classList.contains('active')) {
+                // Arrow down
+                if (event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    selectNextMention(mentionMenu);
+                }
+                // Arrow up
+                else if (event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    selectPreviousMention(mentionMenu);
+                }
+                // Enter or Tab to select
+                else if (event.key === 'Enter' || event.key === 'Tab') {
+                    event.preventDefault();
+                    insertSelectedMention(mentionMenu, event.target);
+                }
+                // Escape to close
+                else if (event.key === 'Escape') {
+                    event.preventDefault();
+                    mentionMenu.classList.remove('active');
+                }
+            }
+        }
+        
+        function showMentionMenu(query, textareaEl, mentionMenu) {
+            if (!mentionMenu) return;
+            
+            // Mock data for followers (in a real app, this would come from an API)
+            const followers = [
+                { id: 1, name: 'Dr. Sarah Chen', username: 'drsarahchen', avatar: 'https://randomuser.me/api/portraits/women/32.jpg' },
+                { id: 2, name: 'Coach Mike', username: 'coach_mike', avatar: 'https://randomuser.me/api/portraits/men/45.jpg' },
+                { id: 3, name: 'Dr. James Wilson', username: 'drjwilson', avatar: 'https://randomuser.me/api/portraits/men/62.jpg' },
+                { id: 4, name: 'Jennifer Wright', username: 'jen_wellness', avatar: 'https://randomuser.me/api/portraits/women/65.jpg' },
+                { id: 5, name: 'Maria Garcia', username: 'maria_g', avatar: 'https://randomuser.me/api/portraits/women/44.jpg' }
+            ];
+            
+            // Filter followers based on query
+            const filteredFollowers = followers.filter(follower => 
+                follower.name.toLowerCase().includes(query) || 
+                follower.username.toLowerCase().includes(query)
+            );
+            
+            if (filteredFollowers.length === 0) {
+                mentionMenu.classList.remove('active');
+                return;
+            }
+            
+            // Position the menu below the @ symbol
+            const textareaRect = textareaEl.getBoundingClientRect();
+            const cursorPosition = getCursorPosition(textareaEl);
+            
+            mentionMenu.style.top = `${textareaRect.top + cursorPosition.top + 20}px`;
+            mentionMenu.style.left = `${textareaRect.left + cursorPosition.left}px`;
+            
+            // Populate menu with filtered followers
+            mentionMenu.innerHTML = '';
+            filteredFollowers.forEach((follower, index) => {
+                const option = document.createElement('div');
+                option.className = 'mention-option';
+                if (index === 0) option.classList.add('selected');
+                option.dataset.username = follower.username;
+                
+                option.innerHTML = `
+                    <img src="${follower.avatar}" alt="${follower.name}">
+                    <div>
+                        <div class="mention-name">${follower.name}</div>
+                        <div class="mention-username">@${follower.username}</div>
+                    </div>
+                `;
+                
+                option.addEventListener('click', function() {
+                    insertMention(follower.username, textareaEl);
+                    mentionMenu.classList.remove('active');
+                });
+                
+                mentionMenu.appendChild(option);
+            });
+            
+            mentionMenu.classList.add('active');
+        }
+        
+        function getCursorPosition(textareaEl) {
+            const text = textareaEl.value.substring(0, textareaEl.selectionStart);
+            const textBeforeCursor = text.split('\n');
+            const lineCount = textBeforeCursor.length;
+            const charCount = textBeforeCursor[textBeforeCursor.length - 1].length;
+            
+            const lineHeight = parseInt(getComputedStyle(textareaEl).lineHeight) || 20;
+            const charWidth = 8; // Approximate character width
+            
+            return {
+                top: (lineCount - 1) * lineHeight,
+                left: charCount * charWidth
+            };
+        }
+        
+        function selectNextMention(mentionMenu) {
+            const selected = mentionMenu.querySelector('.selected');
+            if (selected) {
+                selected.classList.remove('selected');
+                const next = selected.nextElementSibling || mentionMenu.firstElementChild;
+                if (next) next.classList.add('selected');
+            }
+        }
+        
+        function selectPreviousMention(mentionMenu) {
+            const selected = mentionMenu.querySelector('.selected');
+            if (selected) {
+                selected.classList.remove('selected');
+                const prev = selected.previousElementSibling || mentionMenu.lastElementChild;
+                if (prev) prev.classList.add('selected');
+            }
+        }
+        
+        function insertSelectedMention(mentionMenu, textareaEl) {
+            const selected = mentionMenu.querySelector('.selected');
+            if (selected) {
+                const username = selected.dataset.username;
+                insertMention(username, textareaEl);
+                mentionMenu.classList.remove('active');
+            }
+        }
+        
+        function insertMention(username, textareaEl) {
+            const text = textareaEl.value;
+            const cursorPos = textareaEl.selectionStart;
+            const textBeforeCursor = text.substring(0, cursorPos);
+            const textAfterCursor = text.substring(cursorPos);
+            
+            // Find the @ that started this mention
+            const lastAtPos = textBeforeCursor.lastIndexOf('@');
+            if (lastAtPos !== -1) {
+                const newText = textBeforeCursor.substring(0, lastAtPos) + 
+                               `@${username} ` + 
+                               textAfterCursor;
+                
+                textareaEl.value = newText;
+                textareaEl.selectionStart = textareaEl.selectionEnd = 
+                    lastAtPos + username.length + 2; // +2 for @ and space
+            }
+            
+            textareaEl.focus();
+        }
+        
+        function setupPollOptions() {
+            const addButton = document.getElementById('full-add-option-button');
+            const container = document.getElementById('full-poll-options-container');
+            
+            // Add option button
+            if (addButton && container) {
+                addButton.addEventListener('click', function() {
+                    const optionCount = container.children.length + 1;
+                    
+                    const newOption = document.createElement('div');
+                    newOption.className = 'poll-option-input';
+                    newOption.innerHTML = `
+                        <input type="text" placeholder="Option ${optionCount}">
+                        <button type="button" class="remove-option">✕</button>
+                    `;
+                    
+                    container.appendChild(newOption);
+                    setupPollOptionRemoval();
+                    
+                    // Focus the new input
+                    const newInput = newOption.querySelector('input');
+                    if (newInput) newInput.focus();
+                });
+            }
+            
+            // Initial setup of remove buttons
+            setupPollOptionRemoval();
+        }
+        
+        function setupPollOptionRemoval() {
+            const container = document.getElementById('full-poll-options-container');
+            const removeButtons = container.querySelectorAll('.remove-option');
+            
+            removeButtons.forEach(button => {
+                // Remove existing listeners first
+                const newButton = button.cloneNode(true);
+                button.parentNode.replaceChild(newButton, button);
+                
+                // Add new listener
+                newButton.addEventListener('click', function() {
+                    const optionInput = this.parentNode;
+                    
+                    // Don't allow fewer than 2 options
+                    if (container.children.length > 2) {
+                        optionInput.remove();
+                        // Update placeholder numbers
+                        updateOptionPlaceholders();
+                    }
+                });
+            });
+        }
+        
+        function updateOptionPlaceholders() {
+            const container = document.getElementById('full-poll-options-container');
+            const options = container.querySelectorAll('.poll-option-input input');
+            options.forEach((input, index) => {
+                input.placeholder = `Option ${index + 1}`;
+            });
+        }
+        
+        function setupPhotoUpload() {
+            const uploadArea = document.querySelector('.media-upload-area');
+            const preview = document.getElementById('uploaded-photo-preview');
+            const previewImg = document.getElementById('photo-preview');
+            const removeButton = document.getElementById('remove-photo-button');
+            
+            if (uploadArea) {
+                uploadArea.addEventListener('click', function() {
+                    // In a real app, this would open a file picker
+                    // For demo purposes, we'll simulate uploading a random image
+                    const randomImage = 'https://source.unsplash.com/random/600x400/?health';
+                    
+                    previewImg.src = randomImage;
+                    uploadArea.style.display = 'none';
+                    preview.style.display = 'block';
+                });
+            }
+            
+            if (removeButton) {
+                removeButton.addEventListener('click', function() {
+                    uploadArea.style.display = 'flex';
+                    preview.style.display = 'none';
+                    previewImg.src = '';
+                });
+            }
+        }
+        
+        function submitPost(postType) {
+            const postText = document.getElementById('post-composer-textarea').value.trim();
+            const visibility = document.getElementById('visibility-selector').value;
+            
+            if (postText.length === 0) {
+                alert('Please enter some text for your post');
+                return;
+            }
+            
+            // Construct post data object
+            const postData = {
+                type: postType,
+                text: postText,
+                visibility: visibility
+            };
+            
+            // Add type-specific data
+            if (postType === 'health-check') {
+                postData.healthData = {
+                    metric: document.getElementById('full-health-metric').value,
+                    value: document.getElementById('full-health-value').value,
+                    unit: document.getElementById('full-health-unit').value
+                };
+                
+                if (!postData.healthData.value) {
+                    alert('Please enter a value for your health check-in');
+                    return;
+                }
+            }
+            
+            if (postType === 'poll') {
+                const options = [];
+                document.querySelectorAll('#full-poll-options-container input').forEach(input => {
+                    if (input.value.trim()) {
+                        options.push(input.value.trim());
+                    }
+                });
+                
+                if (options.length < 2) {
+                    alert('Please enter at least 2 options for your poll');
+                    return;
+                }
+                
+                postData.pollOptions = options;
+                postData.pollDuration = document.getElementById('poll-duration').value;
+            }
+            
+            if (postType === 'photo') {
+                const photoPreview = document.getElementById('photo-preview');
+                if (photoPreview && photoPreview.src) {
+                    postData.photoUrl = photoPreview.src;
+                } else {
+                    alert('Please upload a photo');
+                    return;
+                }
+            }
+            
+            console.log('Post submitted:', postData);
+            
+            // In a real app, you would send this data to your backend
+            // For demo purposes, we'll just show an alert and redirect back
+            alert('Your post has been submitted!');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html> 
