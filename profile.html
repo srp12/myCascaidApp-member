@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - myCascaid</title>
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <header id="top-nav">
+        <div class="nav-top-row">
+            <button class="profile-button">
+                <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+                <span class="nav-tooltip">Profile</span>
+            </button>
+            <div class="nav-top-right">
+                <button class="search-button">
+                    <img src="assets/icons/icons8-search.svg" alt="Search" class="nav-icon" data-default-icon="assets/icons/icons8-search.svg" data-filled-icon="assets/icons/icons8-search.svg">
+                    <span class="nav-tooltip">Search</span>
+                </button>
+                <a href="notifications.html" class="notifications-link">
+                    <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
+                    <span class="nav-tooltip">Notifications</span>
+                </a>
+            </div>
+        </div>
+        <div class="page-title-container">
+            <h1 class="page-title">Profile</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <!-- Profile Header -->
+            <div class="profile-header-section">
+                <div class="profile-photo-container">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile Photo" id="profile-photo">
+                    <button class="edit-photo-btn">
+                        <img src="assets/icons/icons8-camera.svg" alt="Edit Photo">
+                    </button>
+                </div>
+                <div class="profile-banner">
+                    <h2 class="profile-name">Saawan Patel</h2>
+                    <div class="membership-badge elite">
+                        Elite Member
+                        <div class="tooltip">Elite membership tier with premium benefits</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Navigation Tabs -->
+            <div class="profile-tabs">
+                <button class="profile-tab active" data-tab="personal-info">Personal Info</button>
+                <button class="profile-tab" data-tab="my-goals">My Goals</button>
+                <button class="profile-tab" data-tab="addresses">Addresses</button>
+                <button class="profile-tab" data-tab="payment">Payment Methods</button>
+                <button class="profile-tab" data-tab="membership">Membership & Billing</button>
+            </div>
+
+            <!-- Tab Content Sections -->
+            <div class="tab-content">
+                <!-- Personal Info Tab -->
+                <div id="personal-info" class="tab-pane active">
+                    <div class="section-header">
+                        <h3>Personal Information</h3>
+                        <button class="edit-button" data-section="personal-info">
+                            <img src="assets/icons/icons8-edit.svg" alt="Edit">
+                            Edit
+                        </button>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">First Name</span>
+                            <span class="info-value">Saawan</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Last Name</span>
+                            <span class="info-value">Patel</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Birthday</span>
+                            <span class="info-value">April 15, 1985</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Sex at Birth</span>
+                            <span class="info-value">Male</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">saawan.patel@example.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Phone Number</span>
+                            <span class="info-value">(555) 123-4567</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Date Joined</span>
+                            <span class="info-value">January 10, 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Goals Tab -->
+                <div id="my-goals" class="tab-pane">
+                    <div class="section-header">
+                        <h3>My Health Goals</h3>
+                    </div>
+                    
+                    <div class="goals-container">
+                        <div class="goals-selection">
+                            <div class="tier-container">
+                                <h4 class="tier-title">Primary Goals</h4>
+                                <div class="goal-tags tier-1">
+                                    <span class="goal-tag" data-goal-id="weight">Weight Management</span>
+                                    <span class="goal-tag" data-goal-id="diabetes">Diabetes Management</span>
+                                    <span class="goal-tag" data-goal-id="blood-pressure">Blood Pressure</span>
+                                    <span class="goal-tag" data-goal-id="fitness">Fitness</span>
+                                    <span class="goal-tag" data-goal-id="mental">Mental Wellness</span>
+                                </div>
+                            </div>
+                            
+                            <div class="tier-container">
+                                <h4 class="tier-title">Secondary Goals</h4>
+                                <div class="goal-tags tier-2">
+                                    <!-- These will be dynamically shown based on primary selection -->
+                                </div>
+                            </div>
+                            
+                            <div class="tier-container">
+                                <h4 class="tier-title">Specific Targets</h4>
+                                <div class="goal-tags tier-3">
+                                    <!-- These will be dynamically shown based on secondary selection -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="selected-goals-container">
+                            <h4>Selected Goals</h4>
+                            <div class="selected-goals-list">
+                                <!-- Selected goals will appear here -->
+                                <div class="empty-state">
+                                    <p>No goals selected yet. Click on the tags above to set your health goals.</p>
+                                </div>
+                            </div>
+                            <button class="save-goals-button" disabled>Save My Goals</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Addresses Tab -->
+                <div id="addresses" class="tab-pane">
+                    <div class="section-header">
+                        <h3>Shipping Addresses</h3>
+                        <button class="add-button" data-section="address">
+                            <img src="assets/icons/icons8-add.svg" alt="Add">
+                            Add New Address
+                        </button>
+                    </div>
+                    <div class="addresses-container">
+                        <div class="address-card active">
+                            <div class="address-badge">Primary</div>
+                            <div class="address-content">
+                                <p class="address-name">Home Address</p>
+                                <p class="address-line">123 Main Street, Apt 4B</p>
+                                <p class="address-line">Seattle, WA 98101</p>
+                                <p class="address-line">United States</p>
+                            </div>
+                            <div class="address-actions">
+                                <button class="edit-button" data-address-id="addr1">
+                                    <img src="assets/icons/icons8-edit.svg" alt="Edit">
+                                </button>
+                                <button class="delete-button" data-address-id="addr1">
+                                    <img src="assets/icons/icons8-trash.svg" alt="Delete">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="address-card">
+                            <div class="address-content">
+                                <p class="address-name">Work Address</p>
+                                <p class="address-line">456 Business Ave, Suite 300</p>
+                                <p class="address-line">Seattle, WA 98104</p>
+                                <p class="address-line">United States</p>
+                            </div>
+                            <div class="address-actions">
+                                <button class="set-primary-button" data-address-id="addr2">Set as Primary</button>
+                                <button class="edit-button" data-address-id="addr2">
+                                    <img src="assets/icons/icons8-edit.svg" alt="Edit">
+                                </button>
+                                <button class="delete-button" data-address-id="addr2">
+                                    <img src="assets/icons/icons8-trash.svg" alt="Delete">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Methods Tab -->
+                <div id="payment" class="tab-pane">
+                    <div class="section-header">
+                        <h3>Payment Methods</h3>
+                        <button class="add-button" data-section="payment">
+                            <img src="assets/icons/icons8-add.svg" alt="Add">
+                            Add Payment Method
+                        </button>
+                    </div>
+                    <div class="payment-methods-container">
+                        <div class="payment-card active">
+                            <div class="payment-badge">Primary</div>
+                            <div class="payment-icon visa"></div>
+                            <div class="payment-content">
+                                <p class="payment-name">Visa ending in 4242</p>
+                                <p class="payment-expiry">Expires 05/2025</p>
+                            </div>
+                            <div class="payment-actions">
+                                <button class="edit-button" data-payment-id="pm1">
+                                    <img src="assets/icons/icons8-edit.svg" alt="Edit">
+                                </button>
+                                <button class="delete-button" data-payment-id="pm1">
+                                    <img src="assets/icons/icons8-trash.svg" alt="Delete">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="payment-card">
+                            <div class="payment-icon mastercard"></div>
+                            <div class="payment-content">
+                                <p class="payment-name">Mastercard ending in 8888</p>
+                                <p class="payment-expiry">Expires 12/2024</p>
+                            </div>
+                            <div class="payment-actions">
+                                <button class="set-primary-button" data-payment-id="pm2">Set as Primary</button>
+                                <button class="edit-button" data-payment-id="pm2">
+                                    <img src="assets/icons/icons8-edit.svg" alt="Edit">
+                                </button>
+                                <button class="delete-button" data-payment-id="pm2">
+                                    <img src="assets/icons/icons8-trash.svg" alt="Delete">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membership & Billing Tab -->
+                <div id="membership" class="tab-pane">
+                    <div class="membership-details">
+                        <div class="section-header">
+                            <h3>Current Membership</h3>
+                            <button class="upgrade-button" id="upgrade-membership">
+                                Upgrade Plan
+                            </button>
+                        </div>
+                        <div class="membership-card">
+                            <div class="membership-icon elite"></div>
+                            <div class="membership-content">
+                                <h4>Elite Membership</h4>
+                                <p class="membership-price">$49.99/month</p>
+                                <p class="membership-renewal">Next billing date: June 15, 2023</p>
+                                <div class="membership-features">
+                                    <p><span class="check-icon">✓</span> Unlimited access to all features</p>
+                                    <p><span class="check-icon">✓</span> Priority coach support</p>
+                                    <p><span class="check-icon">✓</span> Premium health resources</p>
+                                    <p><span class="check-icon">✓</span> Custom meal & exercise plans</p>
+                                    <p><span class="check-icon">✓</span> Monthly health assessments</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="billing-history">
+                        <div class="section-header">
+                            <h3>Billing History</h3>
+                        </div>
+                        <div class="billing-table-container">
+                            <table class="billing-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>Invoice</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>May 15, 2023</td>
+                                        <td>Elite Membership - Monthly</td>
+                                        <td>$49.99</td>
+                                        <td><a href="#" class="invoice-link">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>April 15, 2023</td>
+                                        <td>Elite Membership - Monthly</td>
+                                        <td>$49.99</td>
+                                        <td><a href="#" class="invoice-link">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>March 15, 2023</td>
+                                        <td>Professional Membership - Monthly</td>
+                                        <td>$39.99</td>
+                                        <td><a href="#" class="invoice-link">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>February 15, 2023</td>
+                                        <td>Professional Membership - Monthly</td>
+                                        <td>$39.99</td>
+                                        <td><a href="#" class="invoice-link">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>January 15, 2023</td>
+                                        <td>Professional Membership - Monthly</td>
+                                        <td>$39.99</td>
+                                        <td><a href="#" class="invoice-link">View</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals for editing forms -->
+    <div class="modal" id="personal-info-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Personal Information</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="personal-info-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first-name" value="Saawan">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" value="Patel">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthday">Birthday</label>
+                            <input type="date" id="birthday" name="birthday" value="1985-04-15">
+                        </div>
+                        <div class="form-group">
+                            <label for="sex">Sex at Birth</label>
+                            <select id="sex" name="sex">
+                                <option value="male" selected>Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" value="saawan.patel@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" value="(555) 123-4567">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-button">Cancel</button>
+                        <button type="submit" class="save-button">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="address-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Address</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="address-form">
+                    <div class="form-group">
+                        <label for="address-name">Address Name</label>
+                        <input type="text" id="address-name" name="address-name" placeholder="Home, Work, etc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="address-line1">Address Line 1</label>
+                        <input type="text" id="address-line1" name="address-line1" placeholder="Street address, P.O. box, etc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="address-line2">Address Line 2</label>
+                        <input type="text" id="address-line2" name="address-line2" placeholder="Apartment, suite, unit, etc. (optional)">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State/Province</label>
+                            <input type="text" id="state" name="state">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zip">ZIP/Postal Code</label>
+                            <input type="text" id="zip" name="zip">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" name="country">
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="AU">Australia</option>
+                                <option value="IN">India</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="set-primary-address" name="set-primary-address">
+                        <label for="set-primary-address">Set as primary address</label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-button">Cancel</button>
+                        <button type="submit" class="save-button">Save Address</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="payment-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Payment Method</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry-date">Expiration Date</label>
+                            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-name">Name on Card</label>
+                        <input type="text" id="card-name" name="card-name">
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="set-primary-payment" name="set-primary-payment">
+                        <label for="set-primary-payment">Set as primary payment method</label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-button">Cancel</button>
+                        <button type="submit" class="save-button">Save Payment Method</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="membership-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upgrade Membership</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="plan-options">
+                    <div class="plan-card basic">
+                        <h3>Basic</h3>
+                        <p class="plan-price">$19.99<span>/month</span></p>
+                        <ul class="plan-features">
+                            <li>Core health tracking</li>
+                            <li>Community access</li>
+                            <li>Basic resources</li>
+                        </ul>
+                        <button class="select-plan-button" data-plan="basic">Select</button>
+                    </div>
+                    <div class="plan-card premium">
+                        <h3>Premium</h3>
+                        <p class="plan-price">$29.99<span>/month</span></p>
+                        <ul class="plan-features">
+                            <li>All Basic features</li>
+                            <li>Coach support</li>
+                            <li>Personalized guidance</li>
+                        </ul>
+                        <button class="select-plan-button" data-plan="premium">Select</button>
+                    </div>
+                    <div class="plan-card professional">
+                        <h3>Professional</h3>
+                        <p class="plan-price">$39.99<span>/month</span></p>
+                        <ul class="plan-features">
+                            <li>All Premium features</li>
+                            <li>Advanced analytics</li>
+                            <li>Professional support</li>
+                        </ul>
+                        <button class="select-plan-button" data-plan="professional">Select</button>
+                    </div>
+                    <div class="plan-card elite active">
+                        <div class="current-plan-badge">Current Plan</div>
+                        <h3>Elite</h3>
+                        <p class="plan-price">$49.99<span>/month</span></p>
+                        <ul class="plan-features">
+                            <li>All Professional features</li>
+                            <li>Priority support</li>
+                            <li>Custom plans</li>
+                            <li>Monthly assessments</li>
+                        </ul>
+                        <button class="select-plan-button" data-plan="elite" disabled>Current</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="bottom-nav">
+        <button class="nav-button" data-page="home">
+            <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+            <span class="nav-tooltip">Home</span>
+        </button>
+        <button class="nav-button" data-page="engine">
+            <img src="assets/icons/icons8-engine.svg" alt="Check Engine Lights" class="nav-icon" data-default-icon="assets/icons/icons8-engine.svg" data-filled-icon="assets/icons/icons8-engine-filled.svg">
+            <span class="nav-tooltip">Engine Lights</span>
+        </button>
+        <button class="nav-button cascaid-logo" data-page="ai">
+            <div class="cascaid-logo-placeholder">
+                 <div class="half-circle left"></div>
+                 <div class="half-circle right"></div>
+            </div>
+            <span class="nav-tooltip">AI Assistant</span>
+        </button>
+        <button class="nav-button" data-page="messages">
+            <img src="assets/icons/icons8-chat-message.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
+            <span class="nav-tooltip">Messages</span>
+        </button>
+        <button class="nav-button" data-page="wallet">
+            <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
+            <span class="nav-tooltip">Health Wallet</span>
+        </button>
+    </footer>
+
+    <!-- Side Menus -->
+    <div id="side-menu-overlay"></div>
+    <div id="profile-side-menu" class="side-menu">
+        <div class="profile-header">
+            <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="profile-image-large">
+            <h3 class="profile-name">Saawan Patel</h3>
+            <p class="profile-username">@saawan</p>
+            <div class="profile-stats">
+                <span><strong>5</strong> Followers</span>
+                <span><strong>18</strong> Following</span>
+            </div>
+        </div>
+        <nav class="profile-nav">
+            <ul>
+                <li><a href="profile.html" class="profile-nav-link active">
+                    <img src="assets/icons/profile-icon.svg" alt="Profile Icon" class="menu-icon">
+                    Profile
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-graph-report.svg" alt="Reports Icon" class="menu-icon">
+                    Reports
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-bookmark.svg" alt="Bookmarks Icon" class="menu-icon">
+                    Bookmarks
+                </a></li>
+                <li>
+                    <a href="#" class="profile-nav-link theme-toggle-container" id="theme-toggle-link">
+                        <span>
+                            <img src="assets/icons/icons8-night.svg" alt="Dark Theme" class="menu-icon theme-icon light-theme-icon">
+                            <img src="assets/icons/icons8-sun.svg" alt="Light Theme" class="menu-icon theme-icon dark-theme-icon">
+                            Appearance
+                        </span>
+                    </a>
+                </li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/settings.svg" alt="Settings Icon" class="menu-icon">
+                    Settings
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-invite.svg" alt="Invite Icon" class="menu-icon">
+                    Invite
+                </a></li>
+            </ul>
+        </nav>
+        <button class="logout-button">
+            <img src="assets/icons/logout.svg" alt="Logout Icon" class="menu-icon">
+            Logout
+        </button>
+    </div>
+    <div id="settings-side-menu" class="side-menu">
+        <h2>Settings</h2>
+        <!-- Settings content goes here -->
+        <ul>
+            <li>Account</li>
+            <li>Appearance (Theme)</li>
+            <li>Notifications</li>
+        </ul>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html> 

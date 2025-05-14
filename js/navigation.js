@@ -263,6 +263,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 openSideMenu(profileSideMenu);
             }
         });
+        
+        // Direct navigation to profile page when clicking the top profile button
+        profileButton.addEventListener('dblclick', () => {
+            window.location.href = 'profile.html';
+        });
+    }
+
+    // Add event listeners to the profile menu links
+    if (profileSideMenu) {
+        const profileLink = profileSideMenu.querySelector('a.profile-nav-link');
+        if (profileLink) {
+            profileLink.addEventListener('click', (event) => {
+                // The link now has href="profile.html" so we don't need to prevent default
+                closeSideMenus(); // Close the menu after clicking
+            });
+        }
     }
 
     if (notificationsButton && settingsSideMenu) {
