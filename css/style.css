@@ -41,13 +41,25 @@ body.dark-mode {
 #top-nav {
     top: 0;
     left: 0;
-    height: 60px; /* Example height */
-    /* Add styles for profile image and settings icon */
+    height: auto; /* Allow height to adjust to content */
+    display: flex;
+    flex-direction: column; /* Stack the rows */
+    padding: 0;
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+#top-nav .nav-top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px;
-    box-sizing: border-box; /* Include padding in width/height */
+    padding: 12px 16px;
+    height: 60px; /* Match previous top-nav height */
+    box-sizing: border-box;
+}
+
+#top-nav .nav-bottom-row {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #top-nav .profile-button, #top-nav .settings-button, #top-nav .notifications-link {
@@ -85,9 +97,9 @@ body.dark-mode {
 }
 
 main {
-    padding-top: 70px; /* Adjust based on top nav height */
-    padding-bottom: 70px; /* Adjust based on bottom nav height */
-    min-height: 200vh; /* Make page scrollable for testing nav hide/show */
+    padding-top: 110px; /* Adjust based on new combined height of top-nav */
+    padding-bottom: 70px;
+    min-height: 100vh;
 }
 
 /* Add styles for icons later */
@@ -607,4 +619,96 @@ body.dark-mode .empty-notifications {
 body.dark-mode .empty-icon {
     filter: brightness(0) invert(1);
     opacity: 0.7;
+}
+
+/* Feed Tabs Container and Styles */
+.feed-tabs-container {
+    position: fixed;
+    top: 60px; /* Position right below top-nav */
+    left: 0;
+    width: 100%;
+    background-color: var(--background-color-light);
+    z-index: 990; /* Below top-nav but above main content */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .feed-tabs-container {
+    background-color: var(--background-color-dark);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.feed-tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #eee;
+    background-color: var(--background-color-light);
+}
+
+body.dark-mode .feed-tabs {
+    border-bottom-color: #444;
+    background-color: var(--background-color-dark);
+}
+
+.feed-tab {
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    flex: 1;
+    text-align: center;
+    transition: color 0.2s ease;
+}
+
+body.dark-mode .feed-tab {
+    color: #aaa;
+}
+
+.feed-tab:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+.feed-tab.active {
+    color: var(--primary-color);
+}
+
+.feed-tab.active:after {
+    background-color: #000000; /* Black underline in light mode */
+}
+
+body.dark-mode .feed-tab.active:after {
+    background-color: #FFFFFF; /* White underline in dark mode */
+}
+
+/* Feed Content Styles */
+.feed-content {
+    padding: 0 16px;
+}
+
+.feed {
+    display: none;
+}
+
+.feed.active {
+    display: block;
+}
+
+.feed-placeholder {
+    padding: 40px 0;
+    text-align: center;
+    color: #666;
+}
+
+body.dark-mode .feed-placeholder {
+    color: #aaa;
 } 

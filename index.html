@@ -8,17 +8,47 @@
 </head>
 <body>
     <header id="top-nav">
-        <button class="profile-button">
-            <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
-            <!-- Placeholder for actual profile image -->
-        </button>
-        <a href="notifications.html" class="notifications-link">
-            <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
-        </a>
+        <div class="nav-top-row">
+            <button class="profile-button">
+                <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+                <!-- Placeholder for actual profile image -->
+            </button>
+            <a href="notifications.html" class="notifications-link">
+                <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
+            </a>
+        </div>
+        <div class="nav-bottom-row">
+            <div class="feed-tabs">
+                <button class="feed-tab active" data-feed="for-you">For You</button>
+                <button class="feed-tab" data-feed="news-education">News & Education</button>
+                <button class="feed-tab" data-feed="following">Following</button>
+            </div>
+        </div>
     </header>
 
     <main>
-        <!-- Main content of the page will go here -->
+        <div class="feed-content">
+            <div id="for-you-feed" class="feed active">
+                <!-- For You feed content will go here -->
+                <div class="feed-placeholder">
+                    <p>Your personalized feed will appear here</p>
+                </div>
+            </div>
+            
+            <div id="news-education-feed" class="feed">
+                <!-- News & Education feed content will go here -->
+                <div class="feed-placeholder">
+                    <p>Health news and educational content will appear here</p>
+                </div>
+            </div>
+            
+            <div id="following-feed" class="feed">
+                <!-- Following feed content will go here -->
+                <div class="feed-placeholder">
+                    <p>Content from accounts you follow will appear here</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer id="bottom-nav">

@@ -97,6 +97,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     */
 
+    // --- Feed Tabs Logic ---
+    const feedTabs = document.querySelectorAll('.feed-tab');
+    const feeds = document.querySelectorAll('.feed');
+    
+    // Feed tab click handling
+    if (feedTabs.length > 0 && feeds.length > 0) {
+        feedTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                feedTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all feeds
+                feeds.forEach(feed => feed.classList.remove('active'));
+                
+                // Show the corresponding feed
+                const feedId = `${tab.dataset.feed}-feed`;
+                const targetFeed = document.getElementById(feedId);
+                if (targetFeed) {
+                    targetFeed.classList.add('active');
+                }
+            });
+        });
+    }
+
     // --- Side Menu Logic ---
     const profileButton = document.querySelector('#top-nav .profile-button');
     const profileIcon = profileButton ? profileButton.querySelector('img.nav-icon') : null;
