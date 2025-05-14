@@ -9,6 +9,104 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // --- Set home icon to filled if on homepage ---
+    const setActiveNavIcon = () => {
+        const currentPage = window.location.pathname;
+        const isHomePage = currentPage.endsWith('index.html') || currentPage.endsWith('/') || currentPage === '';
+        
+        if (isHomePage) {
+            const homeButton = document.querySelector('#bottom-nav .nav-button[data-page="home"]');
+            if (homeButton) {
+                homeButton.classList.add('active');
+                const homeIcon = homeButton.querySelector('.nav-icon');
+                if (homeIcon && homeIcon.dataset.filledIcon) {
+                    homeIcon.src = homeIcon.dataset.filledIcon;
+                }
+            }
+        }
+    };
+    
+    // Call immediately to set correct icon state
+    setActiveNavIcon();
+
+    // --- Handle tooltips for press and hold ---
+    const setupTooltips = () => {
+        // Get all nav buttons with tooltips
+        const navButtons = document.querySelectorAll('.nav-button, .profile-button, .search-button, .notifications-link');
+        
+        navButtons.forEach(button => {
+            let pressTimer;
+            const tooltip = button.querySelector('.nav-tooltip');
+            
+            if (!tooltip) return;
+            
+            // Style the tooltip for proper display
+            tooltip.style.display = 'none';
+            tooltip.style.position = 'absolute';
+            tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            tooltip.style.color = '#fff';
+            tooltip.style.padding = '5px 8px';
+            tooltip.style.borderRadius = '4px';
+            tooltip.style.fontSize = '12px';
+            tooltip.style.zIndex = '1000';
+            tooltip.style.whiteSpace = 'nowrap';
+            
+            // Set up touch/mouse events
+            // Press and hold (touchstart)
+            button.addEventListener('touchstart', (e) => {
+                pressTimer = setTimeout(() => {
+                    showTooltip(tooltip, button);
+                }, 500); // Show after 500ms press
+            });
+            
+            // Press and hold (mousedown)
+            button.addEventListener('mousedown', (e) => {
+                pressTimer = setTimeout(() => {
+                    showTooltip(tooltip, button);
+                }, 500); // Show after 500ms press
+            });
+            
+            // Cancel if release (touchend/mouseup)
+            const cancelPress = () => {
+                clearTimeout(pressTimer);
+                hideTooltip(tooltip);
+            };
+            
+            button.addEventListener('touchend', cancelPress);
+            button.addEventListener('touchcancel', cancelPress);
+            button.addEventListener('mouseup', cancelPress);
+            button.addEventListener('mouseleave', cancelPress);
+        });
+    };
+    
+    const showTooltip = (tooltip, button) => {
+        // Position the tooltip above the button
+        const buttonRect = button.getBoundingClientRect();
+        tooltip.style.display = 'block';
+        
+        // If in bottom nav, position above the button
+        if (button.closest('#bottom-nav')) {
+            tooltip.style.bottom = '100%';
+            tooltip.style.left = '50%';
+            tooltip.style.transform = 'translateX(-50%)';
+            tooltip.style.marginBottom = '8px';
+        } 
+        // If in top nav, position below the button
+        else if (button.closest('#top-nav')) {
+            tooltip.style.top = '100%';
+            tooltip.style.left = '50%';
+            tooltip.style.transform = 'translateX(-50%)';
+            tooltip.style.marginTop = '8px';
+        }
+    };
+    
+    const hideTooltip = (tooltip) => {
+        tooltip.style.display = 'none';
+    };
+    
+    // Initialize tooltips
+    setupTooltips();
+
     let ticking = false;
     let lastScrollY = window.scrollY;
     
@@ -223,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = 'chat.html';
                     break;
                 case 'engine':
-                    window.location.href = 'engine.html';
+                    window.location.href = 'engine-lights.html';
                     break;
                 case 'wallet':
                     window.location.href = 'wallet.html';

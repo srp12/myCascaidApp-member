@@ -53,7 +53,7 @@ body.dark-theme {
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
-    height: 60px; /* Match previous top-nav height */
+    height: 60px;
     box-sizing: border-box;
 }
 
@@ -711,4 +711,95 @@ body.dark-theme .feed-tab.active:after {
 
 body.dark-theme .feed-placeholder {
     color: #aaa;
+}
+
+/* Add styles for the nav-tooltip */
+.nav-tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* Add styles for the search button */
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+    margin: 0;
+}
+
+.search-button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Top navigation layout for proper spacing */
+#top-nav .nav-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+/* Create a container for right-side icons with proper spacing */
+.nav-top-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* This creates approximately 1.5 icon spaces between icons */
+}
+
+/* Adjust individual icon containers if needed */
+.search-button, .notifications-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Position the nav-tooltip for bottom nav */
+#bottom-nav .nav-button .nav-tooltip {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+}
+
+/* Position the nav-tooltip for top nav */
+#top-nav .nav-tooltip {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+}
+
+/* Add an arrow to the tooltip */
+.nav-tooltip::after {
+    content: "";
+    position: absolute;
+    border-width: 5px;
+    border-style: solid;
+}
+
+#bottom-nav .nav-tooltip::after {
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+#top-nav .nav-tooltip::after {
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
 } 

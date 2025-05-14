@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Engine Lights - myCascaid</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/engine-lights.css">
+</head>
+<body>
+    <header id="top-nav">
+        <div class="nav-top-row">
+            <button class="profile-button">
+                <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+                <span class="nav-tooltip">Profile</span>
+            </button>
+            <div class="nav-top-right">
+                <button class="search-button">
+                    <img src="assets/icons/icons8-search.svg" alt="Search" class="nav-icon" data-default-icon="assets/icons/icons8-search.svg" data-filled-icon="assets/icons/icons8-search.svg">
+                    <span class="nav-tooltip">Search</span>
+                </button>
+                <a href="notifications.html" class="notifications-link">
+                    <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
+                    <span class="nav-tooltip">Notifications</span>
+                </a>
+            </div>
+        </div>
+        <div class="nav-bottom-row">
+            <h1 class="page-title">Your Engine Lights</h1>
+        </div>
+    </header>
+
+    <main class="engine-lights-container">
+        <div class="engine-lights-panel" id="engineLightsPanel">
+            <div class="engine-lights-list">
+                <div class="engine-light high-risk" data-risk="high" data-title="Blood Glucose Level" data-description="Your blood glucose readings have been consistently high over the past 3 days.">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Blood Glucose</span>
+                </div>
+                <div class="engine-light mid-risk" data-risk="mid" data-title="Medication Adherence" data-description="You've missed 2 of your scheduled medications this week.">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Medication</span>
+                </div>
+                <div class="engine-light low-risk" data-risk="low" data-title="Physical Activity" data-description="Your activity level is slightly below your weekly target. Try to increase your daily steps.">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Activity</span>
+                </div>
+                <div class="engine-light optimal" data-risk="optimal" data-title="Sleep Quality" data-description="Your sleep patterns have been consistent and within the healthy range. Keep up the good work!">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Sleep</span>
+                </div>
+                <div class="engine-light mid-risk" data-risk="mid" data-title="Blood Pressure" data-description="Your blood pressure readings are occasionally elevated. We recommend monitoring more frequently.">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Blood Pressure</span>
+                </div>
+                <div class="engine-light low-risk" data-risk="low" data-title="Dietary Habits" data-description="Your carbohydrate intake has been slightly higher than recommended. Consider reducing refined sugars.">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Diet</span>
+                </div>
+                <div class="engine-light optimal" data-risk="optimal" data-title="Water Intake" data-description="You've been meeting your daily hydration goals consistently. Great job staying hydrated!">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Hydration</span>
+                </div>
+                <div class="engine-light high-risk" data-risk="high" data-title="Stress Level" data-description="Your reported stress level has been high for the past week. Consider using the stress management resources.">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Stress</span>
+                </div>
+                <div class="engine-light mid-risk" data-risk="mid" data-title="Weight Management" data-description="Your weight has fluctuated outside of your target range. Let's review your nutrition plan.">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Weight</span>
+                </div>
+                <div class="engine-light low-risk" data-risk="low" data-title="Heart Rate Variability" data-description="Your heart rate variability is slightly below optimal range. Consider some relaxation exercises.">
+                    <div class="light-circle"></div>
+                    <span class="light-name">Heart Rate</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel-toggle" id="panelToggle">
+            <div class="toggle-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="engine-light-details" id="engineLightDetails">
+            <div class="empty-state">
+                <img src="assets/icons/icons8-engine.svg" alt="Engine Light" class="empty-state-icon">
+                <p>Select an engine light to view details</p>
+            </div>
+            <div class="detail-content" id="detailContent" style="display: none;">
+                <div class="detail-header">
+                    <div class="risk-indicator">
+                        <div class="risk-circle"></div>
+                        <span class="risk-level">High Risk</span>
+                    </div>
+                    <h2 class="detail-title">Blood Glucose Level</h2>
+                </div>
+                <div class="detail-body">
+                    <p class="detail-description">Your blood glucose readings have been consistently high over the past 3 days.</p>
+                    <div class="detail-recommendation">
+                        <h3>Recommendations</h3>
+                        <ul>
+                            <li>Monitor your blood glucose more frequently</li>
+                            <li>Review your carbohydrate intake with your nutritionist</li>
+                            <li>Ensure you're taking your medication as prescribed</li>
+                            <li>Consider a 15-minute walk after meals</li>
+                        </ul>
+                    </div>
+                    <div class="detail-chart">
+                        <h3>Recent Readings</h3>
+                        <div class="chart-placeholder">
+                            <p>Chart visualization would appear here</p>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-button">Contact Your Coach</button>
+                        <button class="action-button secondary">View Resources</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="bottom-nav">
+        <button class="nav-button" data-page="home">
+            <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+            <span class="nav-tooltip">Home</span>
+        </button>
+        <button class="nav-button active" data-page="engine">
+            <img src="assets/icons/icons8-engine-filled.svg" alt="Check Engine Lights" class="nav-icon" data-default-icon="assets/icons/icons8-engine.svg" data-filled-icon="assets/icons/icons8-engine-filled.svg">
+            <span class="nav-tooltip">Engine Lights</span>
+        </button>
+        <button class="nav-button cascaid-logo" data-page="ai">
+            <div class="cascaid-logo-placeholder">
+                 <div class="half-circle left"></div>
+                 <div class="half-circle right"></div>
+            </div>
+            <span class="nav-tooltip">AI Assistant</span>
+        </button>
+        <button class="nav-button" data-page="messages">
+            <img src="assets/icons/icons8-chat-message.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
+            <span class="nav-tooltip">Messages</span>
+        </button>
+        <button class="nav-button" data-page="wallet">
+            <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
+            <span class="nav-tooltip">Health Wallet</span>
+        </button>
+    </footer>
+
+    <!-- Side Menus (reused from main page) -->
+    <div id="side-menu-overlay"></div>
+    <div id="profile-side-menu" class="side-menu">
+        <div class="profile-header">
+            <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="profile-image-large">
+            <h3 class="profile-name">Saawan Patel</h3>
+            <p class="profile-username">@saawan</p>
+            <div class="profile-stats">
+                <span><strong>0</strong> Followers</span>
+                <span><strong>0</strong> Following</span>
+            </div>
+        </div>
+        <nav class="profile-nav">
+            <ul>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/profile-icon.svg" alt="Profile Icon" class="menu-icon">
+                    Profile
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-graph-report.svg" alt="Reports Icon" class="menu-icon">
+                    Reports
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-bookmark.svg" alt="Bookmarks Icon" class="menu-icon">
+                    Bookmarks
+                </a></li>
+                <li>
+                    <div class="theme-toggle-container">
+                        <span>
+                            <img src="assets/icons/icons8-night.svg" alt="Theme Icon" class="menu-icon theme-icon light-theme-icon">
+                            <img src="assets/icons/icons8-sun.svg" alt="Theme Icon" class="menu-icon theme-icon dark-theme-icon">
+                            Appearance
+                        </span>
+                        <button id="theme-toggle-button" class="theme-toggle-sidebar-button">Toggle Theme</button>
+                    </div>
+                </li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/settings.svg" alt="Settings Icon" class="menu-icon">
+                    Settings
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-invite.svg" alt="Invite Icon" class="menu-icon">
+                    Invite
+                </a></li>
+            </ul>
+        </nav>
+        <button class="logout-button">
+            <img src="assets/icons/logout.svg" alt="Logout Icon" class="menu-icon">
+            Logout
+        </button>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/engine-lights.js"></script>
+</body>
+</html> 

@@ -1,0 +1,362 @@
+/* Engine Lights Page Styles */
+
+.engine-lights-container {
+    display: flex;
+    position: relative;
+    height: calc(100vh - 110px);
+    overflow: hidden;
+}
+
+/* Left Panel with Engine Lights */
+.engine-lights-panel {
+    width: 10%;
+    min-width: 70px;
+    max-width: 100px;
+    background-color: #f5f8fa;
+    border-right: 1px solid #e1e8ed;
+    height: 100%;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    padding: 10px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.dark-theme .engine-lights-panel {
+    background-color: #15202b;
+    border-right-color: #38444d;
+}
+
+.engine-lights-panel.hidden {
+    transform: translateX(-100%);
+}
+
+.engine-lights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 5px;
+}
+
+.engine-light {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px 5px;
+    border-radius: 8px;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.engine-light:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-theme .engine-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.engine-light.active {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-theme .engine-light.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.light-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.high-risk .light-circle {
+    background-color: #e07a5f; /* Muted red */
+}
+
+.mid-risk .light-circle {
+    background-color: #f2cc8f; /* Muted yellow */
+}
+
+.low-risk .light-circle {
+    background-color: #81b29a; /* Muted green */
+}
+
+.optimal .light-circle {
+    background-color: #6b98d4; /* Lighter muted blue */
+}
+
+.light-name {
+    font-size: 12px;
+    text-align: center;
+    color: #657786;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dark-theme .light-name {
+    color: #8899a6;
+}
+
+/* Panel Toggle Button */
+.panel-toggle {
+    position: absolute;
+    left: calc(10% - 1px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 60px;
+    background-color: #f5f8fa;
+    border: 1px solid #e1e8ed;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    transition: left 0.3s ease;
+}
+
+.dark-theme .panel-toggle {
+    background-color: #15202b;
+    border-color: #38444d;
+}
+
+.panel-toggle.panel-hidden {
+    left: -1px;
+}
+
+.toggle-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.toggle-icon span {
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: #657786;
+    transition: transform 0.3s ease;
+}
+
+.dark-theme .toggle-icon span {
+    background-color: #8899a6;
+}
+
+.panel-toggle.panel-hidden .toggle-icon span:first-child {
+    transform: rotate(45deg) translate(3px, 3px);
+}
+
+.panel-toggle.panel-hidden .toggle-icon span:last-child {
+    transform: rotate(-45deg) translate(3px, -3px);
+}
+
+/* Right Panel with Details */
+.engine-light-details {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    transition: margin-left 0.3s ease;
+}
+
+.dark-theme .engine-light-details {
+    background-color: #192734;
+    color: white;
+}
+
+/* When panel is hidden, extend details to full width */
+.engine-lights-panel.hidden + .panel-toggle + .engine-light-details {
+    margin-left: -100px; /* Offset by the max-width of the panel */
+}
+
+.empty-state {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #657786;
+}
+
+.dark-theme .empty-state {
+    color: #8899a6;
+}
+
+.empty-state-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.dark-theme .empty-state-icon {
+    filter: brightness(0) invert(1);
+    opacity: 0.6;
+}
+
+/* Detail View Styles */
+.detail-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.detail-header {
+    margin-bottom: 24px;
+}
+
+.risk-indicator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.risk-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.risk-level {
+    font-size: 14px;
+    font-weight: 500;
+    color: #657786;
+}
+
+.dark-theme .risk-level {
+    color: #8899a6;
+}
+
+.detail-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.detail-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.detail-description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #14171a;
+}
+
+.dark-theme .detail-description {
+    color: #ffffff;
+}
+
+.detail-recommendation h3,
+.detail-chart h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.detail-recommendation ul {
+    padding-left: 20px;
+}
+
+.detail-recommendation li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.chart-placeholder {
+    height: 200px;
+    background-color: #f5f8fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #657786;
+}
+
+.dark-theme .chart-placeholder {
+    background-color: #22303c;
+    color: #8899a6;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.action-button {
+    padding: 10px 16px;
+    border-radius: 50px;
+    border: none;
+    background-color: #1da1f2;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: #1a91da;
+}
+
+.action-button.secondary {
+    background-color: transparent;
+    border: 1px solid #1da1f2;
+    color: #1da1f2;
+}
+
+.dark-theme .action-button.secondary {
+    border-color: #1da1f2;
+    color: #1da1f2;
+}
+
+.action-button.secondary:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .engine-lights-panel {
+        width: 15%;
+    }
+    
+    .panel-toggle {
+        left: calc(15% - 1px);
+    }
+    
+    .detail-content {
+        padding: 0 10px;
+    }
+    
+    .engine-lights-panel.hidden + .panel-toggle + .engine-light-details {
+        margin-left: -15%;
+    }
+}
+
+@media (max-width: 480px) {
+    .engine-lights-panel {
+        width: 20%;
+    }
+    
+    .panel-toggle {
+        left: calc(20% - 1px);
+    }
+    
+    .light-name {
+        display: none;
+    }
+    
+    .engine-lights-panel.hidden + .panel-toggle + .engine-light-details {
+        margin-left: -20%;
+    }
+} 

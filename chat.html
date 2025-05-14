@@ -417,10 +417,18 @@
         <div id="chat-list-header" class="nav-top-row">
             <button class="profile-button">
                 <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+                <span class="nav-tooltip">Profile</span>
             </button>
-            <a href="notifications.html" class="notifications-link">
-                <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
-            </a>
+            <div class="nav-top-right">
+                <button class="search-button">
+                    <img src="assets/icons/icons8-search.svg" alt="Search" class="nav-icon" data-default-icon="assets/icons/icons8-search.svg" data-filled-icon="assets/icons/icons8-search.svg">
+                    <span class="nav-tooltip">Search</span>
+                </button>
+                <a href="notifications.html" class="notifications-link">
+                    <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
+                    <span class="nav-tooltip">Notifications</span>
+                </a>
+            </div>
         </div>
         
         <!-- DM view header (hidden by default) -->
@@ -619,21 +627,26 @@
     <footer id="bottom-nav">
         <button class="nav-button" data-page="home">
             <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+            <span class="nav-tooltip">Home</span>
         </button>
         <button class="nav-button" data-page="engine">
             <img src="assets/icons/icons8-engine.svg" alt="Check Engine Lights" class="nav-icon" data-default-icon="assets/icons/icons8-engine.svg" data-filled-icon="assets/icons/icons8-engine-filled.svg">
+            <span class="nav-tooltip">Engine Lights</span>
         </button>
         <button class="nav-button cascaid-logo" data-page="ai">
             <div class="cascaid-logo-placeholder">
-                 <div class="half-circle left"></div>
-                 <div class="half-circle right"></div>
+                <div class="half-circle left"></div>
+                <div class="half-circle right"></div>
             </div>
+            <span class="nav-tooltip">AI Assistant</span>
         </button>
         <button class="nav-button active" data-page="messages">
             <img src="assets/icons/icons8-chat-message-filled.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
+            <span class="nav-tooltip">Messages</span>
         </button>
         <button class="nav-button" data-page="wallet">
             <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
+            <span class="nav-tooltip">Health Wallet</span>
         </button>
     </footer>
 
