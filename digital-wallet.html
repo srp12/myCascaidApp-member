@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Health Wallet - myCascaid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/digital-wallet.css">
+    <style>
+        /* Additional dark mode styles for consistent white icons and text */
+        .dark-theme {
+            color: white;
+        }
+    </style>
+    <script src="js/theme.js"></script>
+</head>
+<body>
+    <!-- Simple top navigation with back button -->
+    <header id="simple-top-nav">
+        <a href="index.html" class="back-to-home-button">
+            <img src="assets/icons/icons8-back.svg" alt="Back" class="back-icon">
+            <span class="back-text">Return to Homepage</span>
+        </a>
+    </header>
+
+    <!-- Simple content with the animated circle and swipe to unlock feature -->
+    <main id="digital-wallet-main-content">
+        <div id="animated-circle"></div>
+        
+        <!-- Swipe to unlock container -->
+        <div id="swipe-container">
+            <div class="swipe-track">
+                <div id="swipe-handle">
+                    <div class="handle-icon"></div>
+                </div>
+                <span class="swipe-text">Swipe to unlock Digital Wallet</span>
+            </div>
+        </div>
+        
+        <!-- Wallet content (hidden initially, shown after swipe) -->
+        <div id="wallet-content" class="hidden">
+            <!-- This will be populated later with wallet content -->
+            <div class="wallet-placeholder">
+                <h2>Digital Health Wallet</h2>
+                <p>Your health data in one secure place</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/digital-wallet.js"></script>
+</body>
+</html> 

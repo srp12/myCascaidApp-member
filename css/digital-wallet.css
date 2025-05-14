@@ -1,0 +1,297 @@
+/* digital-wallet.css */
+
+:root {
+    --primary-color: #38444d; /* Match app's button/accent color */
+    --primary-dark-color: #38444d; /* Darker accent for dark theme */
+    --light-bg: #f8f9fa;
+    --dark-bg: #202926;
+    --light-text: #333;
+    --dark-text: #fff;
+    --swipe-handle-size: 44px;
+    --swipe-track-height: 56px;
+    --swipe-track-width: 280px; /* Increased from 240px to fit text better */
+    --title-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Figtree', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Changed from overflow-x to completely disable scrolling */
+    position: fixed; /* Prevent body from scrolling */
+    width: 100%; /* Ensure body covers entire viewport width */
+}
+
+/* Center the main content in the viewport */
+body > main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Changed back to center for exact middle positioning */
+    position: relative;
+    overflow: hidden;
+}
+
+#digital-wallet-main-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* Remove the previous margin-top to allow true center positioning */
+    margin: 0;
+    position: relative;
+}
+
+/* Position the circle to expand from the exact center point */
+#animated-circle {
+    position: absolute;
+    top: calc(40% + var(--header-offset, 0px));
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #38444d; /* Match app's accent color */
+    border-radius: 50%;
+    transition: width 400ms cubic-bezier(0.4, 0, 0.2, 1), 
+                height 400ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 300ms ease-in-out; 
+    opacity: 0.9;
+    box-shadow: 0 0 20px rgba(56, 68, 77, 0.2);
+    z-index: 1;
+}
+
+#animated-circle.pulse {
+    animation: pulse 2s infinite;
+}
+
+#animated-circle.expanded {
+    width: 240px; /* Made slightly smaller */
+    height: 240px; /* Made slightly smaller */
+    /* Keep the transform to maintain center positioning during expansion */
+    transform: translate(-50%, -50%);
+}
+
+#animated-circle.fully-expanded {
+    width: 200vw; /* Expand beyond screen for full reveal */
+    height: 200vw;
+    opacity: 0.95;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(56, 68, 77, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(56, 68, 77, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(56, 68, 77, 0);
+    }
+}
+
+/* Theme-specific styling for the circle */
+body.dark-theme #animated-circle {
+    background-color: #38444d; /* Match app's dark theme accent */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Swipe to unlock styling */
+#swipe-container {
+    position: absolute;
+    top: 65%; /* Changed from bottom to top positioning for better control */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 500ms ease 800ms; /* Fade in after circle expands */
+}
+
+#swipe-container.visible {
+    opacity: 1;
+}
+
+.swipe-track {
+    width: var(--swipe-track-width);
+    height: var(--swipe-track-height);
+    background-color: rgba(56, 68, 77, 0.3); /* Darker background for better text contrast */
+    border-radius: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid rgba(56, 68, 77, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding-left: var(--swipe-handle-size);
+    padding-right: 15px;
+}
+
+body.dark-theme .swipe-track {
+    background-color: rgba(56, 68, 77, 0.5); /* Darker background in dark mode */
+    border: 1px solid rgba(56, 68, 77, 0.5);
+}
+
+#swipe-handle {
+    width: var(--swipe-handle-size);
+    height: var(--swipe-handle-size);
+    background-color: #38444d; /* Match app's accent color */
+    border-radius: 50%;
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.handle-icon {
+    width: 16px;
+    height: 16px;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    transform: rotate(-45deg);
+    margin-right: -4px;
+}
+
+.swipe-text {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    user-select: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+    font-family: var(--body-font);
+    letter-spacing: -0.01em;
+    margin-left: 12px; /* Adjusted margin */
+    white-space: nowrap; /* Prevent text wrapping */
+    width: 100%; /* Take up available width */
+}
+
+body.dark-theme .swipe-text {
+    color: #dee2e6; /* Light gray for dark theme */
+}
+
+/* Hidden wallet content (shows after successful swipe) */
+#wallet-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 500ms ease;
+    z-index: 0;
+    padding-bottom: 20%;
+}
+
+#wallet-content.visible {
+    opacity: 1;
+    z-index: 5;
+}
+
+.hidden {
+    display: none;
+}
+
+.wallet-placeholder {
+    text-align: center;
+    color: var(--light-text);
+    padding: 20px;
+    margin-top: -10%;
+}
+
+body.dark-theme .wallet-placeholder {
+    color: var(--text-color-dark);
+}
+
+.wallet-placeholder h2 {
+    font-family: var(--title-font);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #38444d; /* Match app's heading color */
+    margin-bottom: 10px;
+}
+
+body.dark-theme .wallet-placeholder h2 {
+    color: white;
+}
+
+.wallet-placeholder p {
+    color: #6c757d;
+    margin-top: 10px;
+    font-family: var(--body-font);
+}
+
+body.dark-theme .wallet-placeholder p {
+    color: #adb5bd; /* Lighter text for dark theme */
+}
+
+/* If the floating post button HTML was copied from index.html and is not desired here, hide it */
+.floating-post-container {
+    display: none !important;
+}
+
+/* Styles for the simple top navigation */
+#simple-top-nav {
+    padding: 12px 16px;
+    background-color: #f8f9fa; /* Light theme background */
+    border-bottom: 1px solid #dee2e6; /* Optional border */
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left; /* Ensure button stays to the left */
+    z-index: 10; /* Ensure nav stays above other elements */
+}
+
+body.dark-theme #simple-top-nav {
+    background-color: #202926; /* Darker background for dark theme */
+    border-bottom: 1px solid #38444d; /* Dark theme border */
+}
+
+.back-to-home-button {
+    text-decoration: none;
+    color: #333; /* Dark color for light theme */
+    display: flex; /* For aligning the icon and text */
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    font-size: 16px;
+    padding: 8px 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.back-icon {
+    width: 20px;
+    height: 20px;
+}
+
+body.dark-theme .back-icon {
+    filter: brightness(0) invert(1); /* Make icon white in dark theme */
+}
+
+.back-text {
+    font-weight: bold; /* Make text bold as requested */
+    font-family: var(--title-font);
+    letter-spacing: -0.01em;
+}
+
+body.dark-theme .back-to-home-button {
+    color: white; /* White for dark theme */
+}
+
+.back-to-home-button:hover {
+    opacity: 0.8; /* Subtle hover effect */
+}
+
+/* Dynamically calculate the header offset using JavaScript */
+/* The actual value will be set via JS in digital-wallet.js */ 

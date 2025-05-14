@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Engine Lights - myCascaid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/engine-lights.css">
+    <script src="js/theme.js"></script>
 </head>
 <body>
     <header id="top-nav">
@@ -175,14 +179,13 @@
                     Bookmarks
                 </a></li>
                 <li>
-                    <div class="theme-toggle-container">
+                    <a href="#" class="profile-nav-link theme-toggle-container" id="theme-toggle-link">
                         <span>
-                            <img src="assets/icons/icons8-night.svg" alt="Theme Icon" class="menu-icon theme-icon light-theme-icon">
-                            <img src="assets/icons/icons8-sun.svg" alt="Theme Icon" class="menu-icon theme-icon dark-theme-icon">
+                            <img src="assets/icons/icons8-night.svg" alt="Dark Theme" class="menu-icon theme-icon light-theme-icon">
+                            <img src="assets/icons/icons8-sun.svg" alt="Light Theme" class="menu-icon theme-icon dark-theme-icon">
                             Appearance
                         </span>
-                        <button id="theme-toggle-button" class="theme-toggle-sidebar-button">Toggle Theme</button>
-                    </div>
+                    </a>
                 </li>
                 <li><a href="#" class="profile-nav-link">
                     <img src="assets/icons/settings.svg" alt="Settings Icon" class="menu-icon">
@@ -200,7 +203,6 @@
         </button>
     </div>
 
-    <script src="js/theme.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/engine-lights.js"></script>
 </body>

@@ -97,6 +97,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-family: var(--title-font);
+    font-weight: 500;
 }
 
 .dark-theme .light-name {
@@ -168,7 +170,7 @@
 }
 
 .dark-theme .engine-light-details {
-    background-color: #192734;
+    background-color: #202926;
     color: white;
 }
 
@@ -229,6 +231,7 @@
     font-size: 14px;
     font-weight: 500;
     color: #657786;
+    font-family: var(--body-font);
 }
 
 .dark-theme .risk-level {
@@ -239,6 +242,8 @@
     font-size: 24px;
     font-weight: 700;
     margin: 0;
+    font-family: var(--title-font);
+    letter-spacing: -0.02em;
 }
 
 .detail-body {
@@ -251,6 +256,7 @@
     font-size: 16px;
     line-height: 1.5;
     color: #14171a;
+    font-family: var(--body-font);
 }
 
 .dark-theme .detail-description {
@@ -262,6 +268,8 @@
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 12px;
+    font-family: var(--title-font);
+    letter-spacing: -0.01em;
 }
 
 .detail-recommendation ul {
@@ -271,6 +279,7 @@
 .detail-recommendation li {
     margin-bottom: 8px;
     line-height: 1.4;
+    font-family: var(--body-font);
 }
 
 .chart-placeholder {
@@ -281,6 +290,7 @@
     align-items: center;
     justify-content: center;
     color: #657786;
+    font-family: var(--body-font);
 }
 
 .dark-theme .chart-placeholder {
@@ -298,11 +308,12 @@
     padding: 10px 16px;
     border-radius: 50px;
     border: none;
-    background-color: #1da1f2;
+    background-color: #025E68;
     color: white;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    font-family: var(--body-font);
 }
 
 .action-button:hover {
@@ -311,13 +322,13 @@
 
 .action-button.secondary {
     background-color: transparent;
-    border: 1px solid #1da1f2;
-    color: #1da1f2;
+    border: 1px solid #025E68;
+    color: #025E68;
 }
 
 .dark-theme .action-button.secondary {
-    border-color: #1da1f2;
-    color: #1da1f2;
+    border-color: #025E68;
+    color: #025E68;
 }
 
 .action-button.secondary:hover {

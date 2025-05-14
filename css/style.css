@@ -1,3 +1,6 @@
+/* Import Space Grotesk font for titles and Figtree font for body text */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Figtree:wght@300;400;500;600;700&display=swap');
+
 /* Basic styles and variables */
 :root {
     --primary-color: #4CAF50; /* Example primary color */
@@ -6,14 +9,70 @@
     --text-color-light: #333333;
     --background-color-dark: #333333;
     --text-color-dark: #ffffff;
+    --title-font: 'Space Grotesk', sans-serif; /* Font for titles */
+    --body-font: 'Figtree', sans-serif; /* Font for body text */
 }
 
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: var(--body-font);
     background-color: var(--background-color-light);
     color: var(--text-color-light);
     transition: background-color 0.3s, color 0.3s;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* Apply Figtree to input elements, buttons, and form elements */
+input, 
+textarea, 
+select, 
+button:not(.action-button),
+p, 
+span:not(.page-title):not(.feed-tab):not(.tweet-name):not(.notification-title), 
+a, 
+li, 
+label,
+.tweet-text,
+.tweet-username,
+.tweet-visibility,
+.tweet-time,
+.notification-text,
+.media-upload-text {
+    font-family: var(--body-font);
+}
+
+/* Button styling with Figtree font */
+.nav-button span,
+.action-button,
+.theme-toggle-sidebar-button,
+.logout-button,
+.home-button {
+    font-family: var(--body-font);
+    font-weight: 500;
+}
+
+/* Apply Space Grotesk to all headings */
+h1, h2, h3, h4, h5, h6, 
+.page-title, 
+.feed-tab, 
+.profile-name, 
+.tweet-name, 
+.notification-title,
+.section-divider,
+.error-title,
+.error-code {
+    font-family: var(--title-font);
+    font-weight: 500; /* Medium weight for titles */
+}
+
+/* Make page title use the new font */
+.page-title {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: center;
+    font-family: var(--title-font);
+    letter-spacing: -0.02em; /* Slightly tighter tracking for Space Grotesk */
 }
 
 /* Light mode */
@@ -133,21 +192,23 @@ main {
 
 /* Cascaid Logo Placeholder Styles */
 .cascaid-logo-placeholder {
-    width: 24px; /* Reduced size */
-    height: 24px; /* Reduced size */
+    width: 24px; /* Match other nav icons */
+    height: 24px; /* Match other nav icons */
     position: relative;
     margin-bottom: 0px; /* Adjust spacing if needed */
-    display: flex; /* Use flex to center half-circles if needed */
+    display: flex; 
     align-items: center;
     justify-content: center;
+    border-radius: 50%; /* Make it circular by default */
+    overflow: hidden; /* Hide sliced parts initially */
 }
 
 .cascaid-logo-placeholder .half-circle {
-    width: 12px; /* Half the new container width */
-    height: 24px; /* Full new container height */
+    width: 12px; /* Half the container width */
+    height: 24px; /* Full container height */
     background-color: #000000; /* Black by default for light mode */
     position: absolute;
-    transition: background-color 0.3s; /* Smooth transition for color change */
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 /* Cascaid logo in Dark Mode (inactive) */
@@ -155,26 +216,73 @@ body.dark-theme .cascaid-logo-placeholder .half-circle {
     background-color: #FFFFFF; /* White in dark mode */
 }
 
-/* Active Cascaid Logo (both light and dark mode) */
-.nav-button.cascaid-logo.active .cascaid-logo-placeholder .half-circle {
-    background-color: #000000; /* Keep original color */
-}
-
-body.dark-theme .nav-button.cascaid-logo.active .cascaid-logo-placeholder .half-circle {
-    background-color: #FFFFFF; /* Keep white in dark mode */
-}
-
+/* Left half-circle positioning and animation */
 .cascaid-logo-placeholder .left {
-    border-radius: 12px 0 0 12px; /* Adjusted for new size */
+    border-radius: 12px 0 0 12px; /* Left side rounded */
     left: 0;
     top: 0;
-    transform: translateY(12px); /* Adjusted for new size */
+    transform: translateY(0); /* Initial position centered */
+    transform-origin: center center;
 }
 
+/* Right half-circle positioning and animation */
 .cascaid-logo-placeholder .right {
-    border-radius: 0 12px 12px 0; /* Adjusted for new size */
+    border-radius: 0 12px 12px 0; /* Right side rounded */
     right: 0;
     top: 0;
+    transform: translateY(0); /* Initial position centered */
+    transform-origin: center center;
+}
+
+/* Active state animation with keyframes for two-stage animation */
+.nav-button.cascaid-logo.active .cascaid-logo-placeholder .left,
+.nav-button.cascaid-logo.active .cascaid-logo-placeholder .right {
+    animation-duration: 0.9s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.nav-button.cascaid-logo.active .cascaid-logo-placeholder .left {
+    animation-name: leftHalfAnimation;
+}
+
+.nav-button.cascaid-logo.active .cascaid-logo-placeholder .right {
+    animation-name: rightHalfAnimation;
+}
+
+/* Handle direct page loads - skip animation and go straight to final state */
+.nav-button.cascaid-logo.direct-load .cascaid-logo-placeholder .left {
+    animation: none;
+    transform: translateY(12px);
+}
+
+.nav-button.cascaid-logo.direct-load .cascaid-logo-placeholder .right {
+    animation: none;
+    transform: translateY(-12px);
+}
+
+@keyframes leftHalfAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateX(-3px) rotate(-15deg);
+    }
+    100% {
+        transform: translateY(12px);
+    }
+}
+
+@keyframes rightHalfAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateX(3px) rotate(15deg);
+    }
+    100% {
+        transform: translateY(-12px);
+    }
 }
 
 /* Adjust Cascaid logo button styling if needed */
@@ -385,26 +493,24 @@ body.dark-theme #profile-side-menu .profile-nav ul li a:hover {
 
 /* Theme Toggle specific styling */
 .theme-toggle-container {
-    justify-content: space-between; /* Pushes toggle switch to the right */
-    padding: 12px 24px;
-}
-
-#theme-toggle-button.theme-toggle-sidebar-button {
-    /* Basic button reset */
-    background: none;
-    border: 1px solid #ccc;
-    color: inherit;
-    padding: 6px 12px;
-    border-radius: 20px;
     cursor: pointer;
-    font-size: 0.8em; /* Smaller text for the button */
-}
-body.dark-theme #theme-toggle-button.theme-toggle-sidebar-button {
-    border-color: #555;
+    transition: background-color 0.2s ease;
 }
 
-/* Optional: Style it like a switch */
-/* This is a placeholder, a real switch needs more HTML/CSS or a library */
+.theme-toggle-container:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+body.dark-theme .theme-toggle-container:hover {
+    background-color: rgba(255,255,255,0.08);
+}
+
+.theme-toggle-container span {
+    display: flex;
+    align-items: center;
+}
+
+/* Theme toggle button is removed */
 
 #profile-side-menu .logout-button {
     padding: 16px 24px;
@@ -436,11 +542,6 @@ body.dark-theme #profile-side-menu .logout-button {
     height: 20px;
     margin-right: 12px;
     vertical-align: middle;
-}
-
-.theme-toggle-container span {
-    display: flex;
-    align-items: center;
 }
 
 /* Theme icons - show/hide based on current theme */
@@ -518,12 +619,6 @@ body.dark-theme .notifications-link .nav-icon {
 /* Make back icon white in dark mode */
 body.dark-theme .back-button .nav-icon {
     filter: brightness(0) invert(1); /* Makes icon white in dark mode */
-}
-
-.page-title {
-    margin: 0;
-    font-size: 1.2rem;
-    text-align: center;
 }
 
 .spacer {

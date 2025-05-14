@@ -296,40 +296,149 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', function() {
             const page = this.getAttribute('data-page');
             
-            // Remove active class from all buttons and reset icons
-            navButtons.forEach(btn => {
-                btn.classList.remove('active');
-                const icon = btn.querySelector('.nav-icon');
-                if (icon && icon.dataset.defaultIcon) {
-                    icon.src = icon.dataset.defaultIcon;
+            // Check if we're on the AI page and navigating away
+            const currentPath = window.location.pathname;
+            const isOnAiPage = currentPath.endsWith('ai.html');
+            const isNavigatingAway = isOnAiPage && page !== 'ai';
+            
+            if (isNavigatingAway) {
+                // Play reverse animation when leaving AI page
+                const cascaidLogo = document.querySelector('.nav-button.cascaid-logo');
+                const leftHalf = cascaidLogo.querySelector('.half-circle.left');
+                const rightHalf = cascaidLogo.querySelector('.half-circle.right');
+                
+                if (leftHalf && rightHalf) {
+                    // First stage: start moving back toward center
+                    leftHalf.style.transition = 'transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+                    rightHalf.style.transition = 'transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+                    
+                    leftHalf.style.transform = 'translateX(-3px) rotate(-15deg)';
+                    rightHalf.style.transform = 'translateX(3px) rotate(15deg)';
+                    
+                    // Second stage: back to circle
+                    setTimeout(() => {
+                        leftHalf.style.transform = 'translateY(0)';
+                        rightHalf.style.transform = 'translateY(0)';
+                        
+                        // Wait for animation to complete before navigating
+                        setTimeout(() => {
+                            // Remove active class from all buttons and reset icons
+                            navButtons.forEach(btn => {
+                                btn.classList.remove('active');
+                                const icon = btn.querySelector('.nav-icon');
+                                if (icon && icon.dataset.defaultIcon) {
+                                    icon.src = icon.dataset.defaultIcon;
+                                }
+                            });
+                            
+                            // Add active class to clicked button and set filled icon
+                            button.classList.add('active');
+                            const icon = button.querySelector('.nav-icon');
+                            if (icon && icon.dataset.filledIcon) {
+                                icon.src = icon.dataset.filledIcon;
+                            }
+                            
+                            // Navigate to the selected page
+                            navigateToPage(page);
+                        }, 300);
+                    }, 300);
+                    
+                    return; // Prevent default navigation
                 }
-            });
-            
-            // Add active class to clicked button and set filled icon
-            this.classList.add('active');
-            const icon = this.querySelector('.nav-icon');
-            if (icon && icon.dataset.filledIcon) {
-                icon.src = icon.dataset.filledIcon;
-            }
-            
-            // Handle page navigation
-            switch(page) {
-                case 'home':
-                    window.location.href = 'index.html';
-                    break;
-                case 'messages':
-                    window.location.href = 'chat.html';
-                    break;
-                case 'engine':
-                    window.location.href = 'engine-lights.html';
-                    break;
-                case 'wallet':
-                    window.location.href = 'wallet.html';
-                    break;
-                case 'ai':
-                    window.location.href = 'ai.html';
-                    break;
+            } else {
+                // Normal navigation behavior for non-AI pages
+                
+                // Remove active class from all buttons and reset icons
+                navButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    const icon = btn.querySelector('.nav-icon');
+                    if (icon && icon.dataset.defaultIcon) {
+                        icon.src = icon.dataset.defaultIcon;
+                    }
+                });
+                
+                // Add active class to clicked button and set filled icon
+                this.classList.add('active');
+                const icon = this.querySelector('.nav-icon');
+                if (icon && icon.dataset.filledIcon) {
+                    icon.src = icon.dataset.filledIcon;
+                }
+                
+                // Special handling for Cascaid logo
+                if (page === 'ai') {
+                    // Manual animation for the logo
+                    const leftHalf = this.querySelector('.half-circle.left');
+                    const rightHalf = this.querySelector('.half-circle.right');
+                    
+                    if (leftHalf && rightHalf) {
+                        // Reset transitions
+                        leftHalf.style.transition = 'transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+                        rightHalf.style.transition = 'transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+                        
+                        // First stage: slicing effect
+                        leftHalf.style.transform = 'translateX(-3px) rotate(-15deg)';
+                        rightHalf.style.transform = 'translateX(3px) rotate(15deg)';
+                        
+                        // Second stage: final offset position
+                        setTimeout(() => {
+                            leftHalf.style.transform = 'translateY(12px)';
+                            rightHalf.style.transform = 'translateY(-12px)';
+                            
+                            // Navigate after animation completes
+                            setTimeout(() => {
+                                window.location.href = 'ai.html';
+                            }, 400);
+                        }, 300);
+                        
+                        return; // Prevent immediate navigation
+                    }
+                    
+                    // Fallback if manual animation fails
+                    setTimeout(() => {
+                        window.location.href = 'ai.html';
+                    }, 900);
+                    return;
+                }
+                
+                // Handle page navigation for other buttons
+                navigateToPage(page);
             }
         });
     });
+    
+    // Helper function for page navigation
+    function navigateToPage(page) {
+        switch(page) {
+            case 'home':
+                window.location.href = 'index.html';
+                break;
+            case 'messages':
+                window.location.href = 'chat.html';
+                break;
+            case 'engine':
+                window.location.href = 'engine-lights.html';
+                break;
+            case 'wallet':
+                window.location.href = 'digital-wallet.html';
+                break;
+        }
+    }
+
+    // Check if we're on the AI page and set active state for the logo
+    const currentPath = window.location.pathname;
+    if (currentPath.endsWith('ai.html')) {
+        const cascaidLogo = document.querySelector('.nav-button.cascaid-logo');
+        if (cascaidLogo) {
+            cascaidLogo.classList.add('active');
+            
+            // Direct positioning for the logo halves
+            const leftHalf = cascaidLogo.querySelector('.half-circle.left');
+            const rightHalf = cascaidLogo.querySelector('.half-circle.right');
+            
+            if (leftHalf && rightHalf) {
+                leftHalf.style.transform = 'translateY(12px)';
+                rightHalf.style.transform = 'translateY(-12px)';
+            }
+        }
+    }
 }); 

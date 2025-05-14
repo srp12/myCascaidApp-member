@@ -14,7 +14,7 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background-color: #355E3B;
+    background-color: #025E68;
     border: none;
     color: white;
     display: flex;
@@ -73,6 +73,7 @@
 .post-type-option span {
     font-size: 14px;
     font-weight: 500;
+    font-family: var(--body-font);
 }
 
 /* Post Modal */
@@ -113,6 +114,8 @@
 .post-modal-title {
     font-size: 18px;
     font-weight: 600;
+    font-family: var(--title-font);
+    letter-spacing: -0.01em;
 }
 
 .post-modal-close {
@@ -136,6 +139,7 @@
     font-size: 16px;
     resize: none;
     margin-bottom: 15px;
+    font-family: var(--body-font);
 }
 
 .post-textarea:focus {
@@ -207,11 +211,14 @@
 .mention-name {
     font-weight: 500;
     font-size: 14px;
+    font-family: var(--title-font);
+    letter-spacing: -0.01em;
 }
 
 .mention-username {
     font-size: 12px;
     color: #666;
+    font-family: var(--body-font);
 }
 
 /* Post Button */
@@ -221,13 +228,14 @@
 }
 
 .post-button {
-    background-color: #355E3B;
+    background-color: #025E68;
     color: white;
     border: none;
     border-radius: 24px;
     padding: 10px 20px;
     font-weight: 600;
     cursor: pointer;
+    font-family: var(--body-font);
 }
 
 .post-button:hover {
@@ -256,6 +264,7 @@
     display: block;
     font-weight: 500;
     margin-bottom: 5px;
+    font-family: var(--body-font);
 }
 
 .form-group input, .form-group select {
@@ -263,6 +272,7 @@
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    font-family: var(--body-font);
 }
 
 /* Poll Form */
@@ -286,6 +296,7 @@
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    font-family: var(--body-font);
 }
 
 .remove-option {
@@ -304,6 +315,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    font-family: var(--body-font);
 }
 
 /* Dark Mode Support */
@@ -402,6 +414,8 @@
 .post-user-name {
     font-weight: 600;
     margin: 0 0 5px 0;
+    font-family: var(--title-font);
+    letter-spacing: -0.01em;
 }
 
 .post-visibility-selector select {
@@ -596,7 +610,7 @@
 
 .dark-theme .health-check-form,
 .dark-theme .poll-form {
-    background-color: #192734;
+    background-color: #202926;
 }
 
 .dark-theme .media-upload-area {
@@ -610,4 +624,20 @@
 
 .dark-theme .post-composer-tools {
     border-color: #38444d;
+}
+
+.resource-title {
+    font-family: var(--title-font);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.workout-title {
+    font-family: var(--title-font);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.resource-description {
+    font-family: var(--body-font);
 } 

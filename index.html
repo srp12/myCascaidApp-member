@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myCascaid</title>
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tweet-cards.css">
     <link rel="stylesheet" href="css/floating-post.css">
@@ -78,12 +82,12 @@
         }
         
         .dark-theme .tweet-card {
-            background-color: #192734;
+            background-color: #202926;
             border-color: #38444d;
         }
         
         .dark-theme .post-type-menu {
-            background-color: #192734;
+            background-color: #202926;
         }
     </style>
 </head>
@@ -1081,8 +1085,9 @@
                                 <div class="tweet-user-info">
                                     <div class="tweet-name-container">
                                         <p class="tweet-name">Dr. Robert Johnson</p>
-                                        <div class="user-badge primary-coach-badge">
+                                        <div class="user-badge specialist-badge">
                                             <span class="badge-check">✓</span>
+                                            <span class="tooltip">Specialist</span>
                                         </div>
                                     </div>
                                     <p class="tweet-username">@dr_johnson</p>
@@ -1475,7 +1480,7 @@
             <img src="assets/icons/icons8-chat-message.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
             <span class="nav-tooltip">Messages</span>
         </button>
-        <button class="nav-button" data-page="wallet">
+        <button class="nav-button" data-page="wallet" onclick="window.location.href = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1) + 'digital-wallet.html'">
             <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
             <span class="nav-tooltip">Health Wallet</span>
         </button>
@@ -1523,8 +1528,8 @@
             <h3 class="profile-name">Saawan Patel</h3>
             <p class="profile-username">@saawan</p>
             <div class="profile-stats">
-                <span><strong>0</strong> Followers</span>
-                <span><strong>0</strong> Following</span>
+                <span><strong>5</strong> Followers</span>
+                <span><strong>18</strong> Following</span>
             </div>
         </div>
         <nav class="profile-nav">
@@ -1542,14 +1547,13 @@
                     Bookmarks
                 </a></li>
                 <li>
-                    <div class="theme-toggle-container">
+                    <a href="#" class="profile-nav-link theme-toggle-container" id="theme-toggle-link">
                         <span>
-                            <img src="assets/icons/icons8-night.svg" alt="Theme Icon" class="menu-icon theme-icon light-theme-icon">
-                            <img src="assets/icons/icons8-sun.svg" alt="Theme Icon" class="menu-icon theme-icon dark-theme-icon">
+                            <img src="assets/icons/icons8-night.svg" alt="Dark Theme" class="menu-icon theme-icon light-theme-icon">
+                            <img src="assets/icons/icons8-sun.svg" alt="Light Theme" class="menu-icon theme-icon dark-theme-icon">
                             Appearance
                         </span>
-                        <button id="theme-toggle-button" class="theme-toggle-sidebar-button">Toggle Theme</button>
-                    </div>
+                    </a>
                 </li>
                 <li><a href="#" class="profile-nav-link">
                     <img src="assets/icons/settings.svg" alt="Settings Icon" class="menu-icon">

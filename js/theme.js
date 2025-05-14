@@ -69,10 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggleButton.addEventListener('click', toggleTheme);
     }
     
-    // Update sidebar theme toggle button text if it exists
-    if (themeToggleButton && document.body.classList.contains('dark-theme')) {
-        themeToggleButton.textContent = 'Switch to Light Mode';
-    } else if (themeToggleButton) {
-        themeToggleButton.textContent = 'Switch to Dark Mode';
+    // Support for the theme toggle link
+    const themeToggleLink = document.getElementById('theme-toggle-link');
+    if (themeToggleLink) {
+        themeToggleLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleTheme();
+        });
     }
 }); 

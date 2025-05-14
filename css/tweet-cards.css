@@ -50,15 +50,18 @@ body.dark-theme .tweet-card {
 }
 
 .tweet-name {
+    font-family: var(--title-font);
     font-weight: 600;
     font-size: 16px;
     margin: 0;
+    letter-spacing: -0.01em;
 }
 
 .tweet-username {
     color: #666;
     font-size: 14px;
     margin: 0;
+    font-family: var(--body-font);
 }
 
 body.dark-theme .tweet-username {
@@ -91,6 +94,7 @@ body.dark-theme .tweet-username {
 .tweet-time {
     color: #666;
     font-size: 14px;
+    font-family: var(--body-font);
 }
 
 body.dark-theme .tweet-time {
@@ -123,6 +127,7 @@ body.dark-theme .tweet-menu-icon {
     color: #666;
     font-size: 13px;
     margin-bottom: 8px;
+    font-family: var(--body-font);
 }
 
 body.dark-theme .tweet-visibility {
@@ -146,6 +151,7 @@ body.dark-theme .tweet-visibility-icon {
 .tweet-text {
     margin: 0 0 12px 0;
     line-height: 1.4;
+    font-family: var(--body-font);
 }
 
 .tweet-interaction {
@@ -179,6 +185,7 @@ body.dark-theme .tweet-actions {
     color: #666;
     padding: 4px;
     transition: color 0.2s;
+    font-family: var(--body-font);
 }
 
 body.dark-theme .tweet-action-button {
@@ -211,6 +218,7 @@ body.dark-theme .tweet-action-icon {
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
+    font-family: var(--body-font);
 }
 
 .action-button:hover {
@@ -338,6 +346,7 @@ body.dark-theme .media-upload-icon {
     font-size: 14px;
     color: #666;
     margin: 0;
+    font-family: var(--body-font);
 }
 
 body.dark-theme .media-upload-text {
@@ -363,8 +372,10 @@ body.dark-theme .workout-details {
 }
 
 .workout-title {
+    font-family: var(--title-font);
     font-weight: 600;
     margin: 0;
+    letter-spacing: -0.01em;
 }
 
 .workout-duration {
@@ -387,12 +398,14 @@ body.dark-theme .workout-duration {
 }
 
 .exercise-name {
+    font-family: var(--title-font);
     font-weight: 500;
 }
 
 .exercise-details {
     color: #666;
     font-size: 14px;
+    font-family: var(--body-font);
 }
 
 body.dark-theme .exercise-details {

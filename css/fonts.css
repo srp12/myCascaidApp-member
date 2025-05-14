@@ -1,0 +1,87 @@
+/* Font definitions for the myCascaid app */
+
+/* Import Space Grotesk for titles and Figtree for body text */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Figtree:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --title-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Figtree', sans-serif;
+}
+
+/* Title elements - Space Grotesk */
+h1, h2, h3, h4, h5, h6, 
+.page-title, 
+.feed-tab, 
+.profile-name, 
+.tweet-name, 
+.notification-title,
+.section-divider,
+.error-title,
+.error-code,
+.detail-title,
+.workout-title,
+.exercise-name,
+.light-name,
+.back-text,
+.post-modal-title,
+.post-user-name,
+.mention-name {
+    font-family: var(--title-font);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+/* Body text elements - Figtree */
+body,
+p, 
+span:not(.page-title):not(.feed-tab):not(.tweet-name):not(.notification-title), 
+a, 
+li, 
+label,
+input, 
+textarea, 
+select, 
+button,
+.tweet-text,
+.tweet-username,
+.tweet-visibility,
+.tweet-time,
+.notification-text,
+.media-upload-text,
+.detail-description,
+.risk-level,
+.swipe-text,
+.chart-placeholder,
+.poll-option-input input,
+.resource-description,
+.mention-username,
+.exercise-details {
+    font-family: var(--body-font);
+}
+
+/* Apply specific weights to different text elements */
+body {
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+button, 
+.action-button, 
+.swipe-text,
+.nav-button span {
+    font-weight: 500;
+}
+
+strong, 
+b, 
+.post-button, 
+.back-text {
+    font-weight: 600;
+}
+
+h1, 
+h2, 
+.detail-title, 
+.error-code {
+    font-weight: 700;
+} 
