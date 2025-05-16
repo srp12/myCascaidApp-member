@@ -74,16 +74,26 @@
                 <!-- Primary goals will be added here by JavaScript -->
             </div>
             
-            <div class="selected-goals-container">
-                <h3>Your Selected Goals</h3>
-                <div class="selected-goals-list">
-                    <!-- Selected goals will appear here -->
-                </div>
-                <div class="empty-state">No goals selected yet. Click on the goal bubbles to select your health goals.</div>
-                <button class="save-goals-button" disabled>Save My Goals</button>
-            </div>
+            <!-- Removed selected-goals-container -->
         </div>
     </main>
+
+    <!-- New Selected Goals Side Tab -->
+    <div id="selected-goals-side-tab">
+        <button id="side-tab-toggle-button">
+            <span id="side-tab-label">Selected Goals</span>
+            <span id="side-tab-indicator-icon">&lt;</span>
+            <span id="side-tab-count-badge">0</span>
+        </button>
+        <div id="side-tab-content">
+            <h3>Your Selected Goals</h3>
+            <div class="selected-goals-list">
+                <!-- Selected goals will appear here -->
+            </div>
+            <div class="empty-state">No goals selected yet. Click on the goal bubbles to select your health goals.</div>
+            <button class="save-goals-button" disabled>Save My Goals</button>
+        </div>
+    </div>
 
     <footer id="bottom-nav">
         <button class="nav-button" data-page="home">

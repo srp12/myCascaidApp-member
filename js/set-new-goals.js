@@ -6,9 +6,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Element selectors
     const allGoalsContainer = document.querySelector('.all-goals-container');
-    const selectedGoalsList = document.querySelector('.selected-goals-list');
-    const emptyState = document.querySelector('.empty-state');
-    const saveGoalsButton = document.querySelector('.save-goals-button');
+    
+    // Old selectors commented out as they are replaced by side tab specific ones
+    // const selectedGoalsList_OLD = document.querySelector('.selected-goals-list'); 
+    // const emptyState_OLD = document.querySelector('.empty-state'); 
+    // const saveGoalsButton_OLD = document.querySelector('.save-goals-button'); 
+
+    // New Side Tab Element Selectors
+    const sideTab = document.getElementById('selected-goals-side-tab');
+    const sideTabToggleButton = document.getElementById('side-tab-toggle-button');
+    const sideTabCountBadge = document.getElementById('side-tab-count-badge');
+    const sideTabContent = document.getElementById('side-tab-content');
+    const sideTabSelectedGoalsList = sideTabContent.querySelector('.selected-goals-list'); 
+    const sideTabEmptyState = sideTabContent.querySelector('.empty-state'); 
+    const sideTabSaveGoalsButton = sideTabContent.querySelector('.save-goals-button'); 
+
     const searchInput = document.getElementById('search-goals-input');
     const clearSearchBtn = document.getElementById('clear-search-btn');
     const addNewGoalBtn = document.querySelector('.add-new-goal-btn');
@@ -460,6 +472,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSearchFunctionality();
     setupModalHandlers();
     setupInlineCreateFunctionality();
+    setupSideTabInteractions();
     
     // Function to initialize the goals display
     function initializeGoals() {
@@ -566,29 +579,29 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (goalType === 'primary') {
             const primaryGoalData = goalsData[goalId];
-            // Find the primary-with-secondaries container
             const container = goalElement.closest('.primary-with-secondaries');
             
             if (isSelected) {
-                // Add goal to selected goals
                 selectedGoals.push({
                     id: goalId,
                     label: primaryGoalData.label,
                     type: 'primary'
                 });
-                
-                // Show related goals dynamically
                 createRelatedGoalsSection(goalId, primaryGoalData, container);
-            } else {
-                // Remove this goal from selected goals
+            } else { // Primary goal is being deselected
+                // Remove this primary goal from selected goals
                 selectedGoals = selectedGoals.filter(g => !(g.id === goalId && g.type === 'primary'));
                 
-                // Remove any secondary goals for this primary goal
-                selectedGoals = selectedGoals.filter(g => !(g.type === 'secondary' && g.primaryId === goalId));
+                // Check if any of its secondary goals are still selected
+                const hasSelectedSecondaries = selectedGoals.some(g => g.type === 'secondary' && g.primaryId === goalId);
                 
-                // Remove related goals section
-                const relatedSection = container.querySelector('.related-goals-section');
-                if (relatedSection) relatedSection.remove();
+                if (!hasSelectedSecondaries) {
+                    // Only remove related goals section if no secondaries of this primary are selected
+                    const relatedSection = container.querySelector('.related-goals-section');
+                    if (relatedSection) relatedSection.remove();
+                }
+                // Secondary goals of this primary are NOT automatically deselected from the 'selectedGoals' array.
+                // Their visual state (selected class on bubble) is also preserved.
             }
         } else if (goalType === 'secondary') {
             const primaryId = goalElement.getAttribute('data-primary-id');
@@ -622,41 +635,49 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Update the selected goals display
     function updateSelectedGoalsDisplay() {
-        if (!selectedGoalsList || !emptyState || !saveGoalsButton) return;
+        if (!sideTabSelectedGoalsList || !sideTabEmptyState || !sideTabSaveGoalsButton || !sideTabCountBadge) return;
         
-        // Clear the current list
-        selectedGoalsList.innerHTML = '';
+        sideTabSelectedGoalsList.innerHTML = ''; // Clear the current list in the side tab
         
-        // Show/hide empty state
+        sideTabCountBadge.textContent = selectedGoals.length;
+        sideTabCountBadge.classList.toggle('hidden', selectedGoals.length === 0);
+
         if (selectedGoals.length === 0) {
-            emptyState.style.display = 'block';
-            saveGoalsButton.disabled = true;
+            sideTabEmptyState.style.display = 'block';
+            sideTabSaveGoalsButton.disabled = true;
         } else {
-            emptyState.style.display = 'none';
-            saveGoalsButton.disabled = false;
+            sideTabEmptyState.style.display = 'none';
+            sideTabSaveGoalsButton.disabled = false;
             
-            // Group selected goals by primary goal for better organization
-            const primaryGoals = selectedGoals.filter(g => g.type === 'primary');
-            
-            // Sort primary goals by label for better organization
-            primaryGoals.sort((a, b) => a.label.localeCompare(b.label));
-            
-            // Create and append primary goals with their secondaries
-            primaryGoals.forEach(primaryGoal => {
-                // Add the primary goal item
-                const primaryItem = createSelectedGoalItem(primaryGoal);
-                selectedGoalsList.appendChild(primaryItem);
+            // Get all unique primary IDs from the selectedGoals (either directly or from secondary goals' primaryId)
+            const allPrimaryIdsInvolved = [...new Set(selectedGoals.map(g => g.type === 'primary' ? g.id : g.primaryId))];
+
+            // Sort these primary IDs based on their label in goalsData for consistent ordering
+            allPrimaryIdsInvolved.sort((idA, idB) => {
+                const labelA = goalsData[idA]?.label || idA; // Use ID as fallback for custom goals not yet in goalsData
+                const labelB = goalsData[idB]?.label || idB;
+                return labelA.localeCompare(labelB);
+            });
+
+            allPrimaryIdsInvolved.forEach(primaryId => {
+                // Check if the primary goal itself is selected
+                const primaryGoalIsSelected = selectedGoals.find(g => g.id === primaryId && g.type === 'primary');
                 
-                // Find and add all secondary goals for this primary
-                const secondaryGoals = selectedGoals.filter(g => 
-                    g.type === 'secondary' && g.primaryId === primaryGoal.id
+                if (primaryGoalIsSelected) {
+                    const primaryItem = createSelectedGoalItem(primaryGoalIsSelected);
+                    sideTabSelectedGoalsList.appendChild(primaryItem);
+                }
+                
+                // Find and add all selected secondary goals for this primary concept
+                const secondaryGoalsForThisPrimary = selectedGoals.filter(g => 
+                    g.type === 'secondary' && g.primaryId === primaryId
                 );
                 
-                secondaryGoals.sort((a, b) => a.label.localeCompare(b.label));
+                secondaryGoalsForThisPrimary.sort((a, b) => a.label.localeCompare(b.label));
                 
-                secondaryGoals.forEach(secondaryGoal => {
+                secondaryGoalsForThisPrimary.forEach(secondaryGoal => {
                     const secondaryItem = createSelectedGoalItem(secondaryGoal);
-                    selectedGoalsList.appendChild(secondaryItem);
+                    sideTabSelectedGoalsList.appendChild(secondaryItem);
                 });
             });
         }
@@ -750,6 +771,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Remove primary goal and all its secondaries 
             selectedGoals = selectedGoals.filter(g => !(g.id === goalId && g.type === 'primary'));
             selectedGoals = selectedGoals.filter(g => !(g.type === 'secondary' && g.primaryId === goalId));
+            
+            // Also deselect related secondary bubbles if any were selected directly
+            const primaryGoalData = goalsData[goalId];
+            if (primaryGoalData && primaryGoalData.secondaries) {
+                primaryGoalData.secondaries.forEach(secGoal => {
+                    const secondaryBubble = document.querySelector(`.goal-bubble.secondary[data-goal-id="${secGoal.id}"][data-primary-id="${goalId}"]`);
+                    if (secondaryBubble && secondaryBubble.classList.contains('selected')) {
+                        secondaryBubble.classList.remove('selected');
+                    }
+                });
+            }
         } else if (goalType === 'secondary') {
             // Only remove the specific secondary goal
             selectedGoals = selectedGoals.filter(g => 
@@ -1236,8 +1268,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Save Goals button functionality
-    if (saveGoalsButton) {
-        saveGoalsButton.addEventListener('click', function() {
+    if (sideTabSaveGoalsButton) {
+        sideTabSaveGoalsButton.addEventListener('click', function() {
             // Organize goals in the format needed for saving
             const organizedGoals = [];
             
@@ -1272,5 +1304,24 @@ document.addEventListener('DOMContentLoaded', function() {
             // Redirect back to profile.html My Goals tab
             window.location.href = 'profile.html#my-goals';
         });
+    }
+
+    // Function to setup side tab interactions
+    function setupSideTabInteractions() {
+        if (!sideTab || !sideTabToggleButton) return;
+
+        sideTabToggleButton.addEventListener('click', function() {
+            sideTab.classList.toggle('open');
+        });
+
+        // Optional: Close tab if clicking outside of it (and not on the toggle button)
+        // document.addEventListener('click', function(event) {
+        //     if (sideTab.classList.contains('open') && 
+        //         !sideTab.contains(event.target) && 
+        //         event.target !== sideTabToggleButton && 
+        //         !sideTabToggleButton.contains(event.target)) {
+        //         sideTab.classList.remove('open');
+        //     }
+        // });
     }
 }); 
