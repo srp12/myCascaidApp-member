@@ -89,6 +89,152 @@
         .dark-theme .post-type-menu {
             background-color: #202926;
         }
+
+        /* Collapsible Progress Container - Main wrapper and positioning */
+        .collapsible-progress-container {
+            position: fixed;
+            top: 110px; /* Positioned below the top-nav */
+            right: 0;
+            z-index: 999;
+            display: none; /* Hidden by default, controlled by .visible class */
+            flex-direction: row; 
+            align-items: center;
+            transform: translateX(300px); /* Initially hide content (content width is 300px) */
+            transition: transform 0.35s ease-in-out;
+        }
+
+        .collapsible-progress-container.visible {
+            display: flex;
+        }
+
+        .collapsible-progress-container.expanded {
+            transform: translateX(0);
+        }
+
+        /* The content area that slides out */
+        .private-feed-progress-content {
+            width: 300px; 
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left: none; /* No border on the side of the tab */
+            border-radius: 0 12px 12px 0; /* Adjusted for tab on left */
+            padding: 15px;
+            box-shadow: -3px 2px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box; /* Ensures padding and border are within the width */
+        }
+        
+        /* Styles for the tab */
+        .progress-tab {
+            width: 45px; 
+            height: 90px; 
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-right: none; /* No border on the side of the content */
+            border-radius: 12px 0 0 12px; /* Adjusted for tab on left */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.2s;
+            box-sizing: border-box; /* Ensures padding and border are within the width */
+        }
+        .progress-tab:hover {
+            background-color: #e9ecef;
+        }
+
+        .mini-progress-indicator {
+            width: 30px; 
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .mini-progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 3px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .tab-icon { 
+            font-size: 20px; /* Slightly larger icon */
+            color: #555;
+        }
+
+        /* Dark Theme adaptations for new elements */
+        .dark-theme .private-feed-progress-content {
+            background-color: #2c3a36;
+            border-color: #38444d;
+            color: #fff;
+            box-shadow: -3px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dark-theme .progress-tab {
+            background-color: #3a4a45; /* Slightly lighter than content */
+            border-color: #38444d;
+        }
+        .dark-theme .progress-tab:hover {
+            background-color: #4a5a54;
+        }
+        .dark-theme .mini-progress-indicator {
+            background-color: #5a6a64;
+        }
+        .dark-theme .mini-progress-fill {
+            background-color: #66bb6a;
+        }
+        .dark-theme .tab-icon {
+            color: #bbb;
+        }
+        
+        /* Original progress bar styles (title, wrapper, fill, text) are mostly unchanged */
+        /* They are now inside .private-feed-progress-content */
+        .progress-bar-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .dark-theme .progress-bar-title {
+            color: #eee;
+        }
+
+        .progress-bar-wrapper {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            height: 18px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .dark-theme .progress-bar-wrapper {
+            background-color: #4a5a54;
+        }
+
+        .progress-bar-fill {
+            width: 60%; /* Example: 60% complete */
+            height: 100%;
+            background-color: #4CAF50; /* Green color for progress */
+            border-radius: 8px 0 0 8px; /* Smooth edges */
+            transition: width 0.5s ease-in-out;
+        }
+         .dark-theme .progress-bar-fill {
+            background-color: #66bb6a;
+        }
+
+        .progress-bar-text {
+            font-size: 12px;
+            color: #555;
+            text-align: center;
+        }
+
+        .dark-theme .progress-bar-text {
+            color: #ccc;
+        }
     </style>
 </head>
 <body>
@@ -480,6 +626,23 @@
                 </div>
             </div>
             
+            <!-- Collapsible Floating Progress UI for Private Feed -->
+            <div class="collapsible-progress-container" id="collapsibleProgressContainer">
+                <div class="progress-tab" id="progressTab">
+                    <div class="mini-progress-indicator" id="miniProgressIndicator">
+                        <div class="mini-progress-fill" id="miniProgressFill" style="width: 40%;"></div>
+                    </div>
+                    <span class="tab-icon">📊</span>
+                </div>
+                <div class="private-feed-progress-content" id="privateFeedProgressContent">
+                    <div class="progress-bar-title">Your Daily Plan Progress</div>
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-bar-fill" id="dailyProgressBar" style="width: 40%;"></div>
+                    </div>
+                    <p class="progress-bar-text" id="dailyProgressText">3 of 5 actions remaining today.</p>
+                </div>
+            </div>
+
             <!-- News & Education Feed -->
             <div id="news-education-feed" class="feed">
                 <div class="feed-cards">
@@ -1461,8 +1624,8 @@
     </div>
 
     <footer id="bottom-nav">
-        <button class="nav-button" data-page="home">
-            <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+        <button class="nav-button active" data-page="home">
+            <img src="assets/icons/icons8-home-filled.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
             <span class="nav-tooltip">Home</span>
         </button>
         <button class="nav-button" data-page="engine">
@@ -1480,9 +1643,9 @@
             <img src="assets/icons/icons8-chat-message.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
             <span class="nav-tooltip">Messages</span>
         </button>
-        <button class="nav-button" data-page="wallet" onclick="window.location.href = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1) + 'digital-wallet.html'">
-            <img src="assets/icons/icons8-dna-helix.svg" alt="Digital Health Wallet" class="nav-icon" data-default-icon="assets/icons/icons8-dna-helix.svg" data-filled-icon="assets/icons/icons8-dna-helix-filled.svg">
-            <span class="nav-tooltip">Health Wallet</span>
+        <button class="nav-button" data-page="programs">
+            <img src="assets/icons/map-marker.svg" alt="Programs" class="nav-icon" data-default-icon="assets/icons/map-marker.svg" data-filled-icon="assets/icons/map-marker-filled.svg">
+            <span class="nav-tooltip">Programs</span>
         </button>
     </footer>
 
@@ -1517,6 +1680,51 @@
                     tooltip.classList.remove('show');
                 });
             });
+
+            // Floating Progress Bar Logic
+            const collapsibleProgressContainer = document.getElementById('collapsibleProgressContainer');
+            const privateFeedProgressContent = document.getElementById('privateFeedProgressContent'); // Content part
+            const progressTab = document.getElementById('progressTab');
+            const forYouFeedTab = document.querySelector('.feed-tab[data-feed="for-you"]');
+            const feedTabs = document.querySelectorAll('.feed-tab');
+            
+            // Set initial transform based on content width (ensure this matches CSS)
+            // If privateFeedProgressContent width is dynamic, calculate it here.
+            // For now, using the 300px from CSS.
+            // collapsibleProgressContainer.style.transform = `translateX(${privateFeedProgressContent.offsetWidth}px)`;
+
+
+            function updateCollapsibleProgressVisibility() {
+                if (forYouFeedTab && forYouFeedTab.classList.contains('active')) {
+                    collapsibleProgressContainer.classList.add('visible');
+                } else {
+                    collapsibleProgressContainer.classList.remove('visible');
+                    collapsibleProgressContainer.classList.remove('expanded'); // Collapse if feed changes
+                }
+            }
+
+            // Initial check
+            updateCollapsibleProgressVisibility();
+
+            // Update on tab click for main feed tabs
+            feedTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // The main navigation.js will handle the 'active' class switching.
+                    // We just need to react to it.
+                    // A slight delay to ensure class changes have propagated
+                    setTimeout(updateCollapsibleProgressVisibility, 50);
+                });
+            });
+
+            // Toggle expand/collapse on progress tab click
+            if (progressTab) {
+                progressTab.addEventListener('click', () => {
+                    collapsibleProgressContainer.classList.toggle('expanded');
+                });
+            }
+            
+            // Example: How to update progress (call this when actions change)
+
         });
     </script>
 
@@ -1545,6 +1753,10 @@
                 <li><a href="#" class="profile-nav-link">
                     <img src="assets/icons/icons8-bookmark.svg" alt="Bookmarks Icon" class="menu-icon">
                     Bookmarks
+                </a></li>
+                <li><a href="#" class="profile-nav-link"> <!-- Placeholder href for Badges -->
+                    <img src="assets/icons/trophy.svg" alt="Badges Icon" class="menu-icon">
+                    Badges
                 </a></li>
                 <li>
                     <a href="#" class="profile-nav-link theme-toggle-container" id="theme-toggle-link">

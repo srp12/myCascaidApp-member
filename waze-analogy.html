@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Programs - myCascaid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/waze-analogy.css">
+    <script src="js/theme.js"></script>
+</head>
+<body>
+    <header id="top-nav">
+        <div class="nav-top-row">
+            <button class="profile-button">
+                <img src="assets/icons/profile-icon.svg" alt="Profile" id="profile-img" class="nav-icon" data-default-icon="assets/icons/profile-icon.svg" data-filled-icon="assets/icons/profile-icon-filled.svg">
+                <span class="nav-tooltip">Profile</span>
+            </button>
+            <div class="nav-top-right">
+                <button class="search-button">
+                    <img src="assets/icons/icons8-search.svg" alt="Search" class="nav-icon" data-default-icon="assets/icons/icons8-search.svg" data-filled-icon="assets/icons/icons8-search.svg">
+                    <span class="nav-tooltip">Search</span>
+                </button>
+                <a href="notifications.html" class="notifications-link">
+                    <img src="assets/icons/icons8-bell.svg" alt="Notifications" class="nav-icon" data-default-icon="assets/icons/icons8-bell.svg" data-filled-icon="assets/icons/icons8-bell-filled.svg">
+                    <span class="nav-tooltip">Notifications</span>
+                </a>
+            </div>
+        </div>
+        <div class="nav-bottom-row">
+            <h1 class="page-title">My Programs</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="waze-analogy-container">
+            <section class="goals-selection-section">
+                <h2>Select Your Goal</h2>
+                <div class="goals-list" id="goalsList">
+                    <div class="goal-card" data-goal-id="1">
+                        <div class="goal-icon">
+                            <img src="assets/icons/icons8-target.svg" alt="Weight Loss">
+                        </div>
+                        <div class="goal-details">
+                            <h3 class="goal-title">Weight Loss</h3>
+                            <p class="goal-description">Lose 10 pounds in 3 months</p>
+                        </div>
+                        <div class="goal-select-indicator"></div>
+                    </div>
+                    
+                    <div class="goal-card" data-goal-id="2">
+                        <div class="goal-icon">
+                            <img src="assets/icons/icons8-heart-health.svg" alt="Blood Pressure">
+                        </div>
+                        <div class="goal-details">
+                            <h3 class="goal-title">Lower Blood Pressure</h3>
+                            <p class="goal-description">Reduce to healthy range (120/80)</p>
+                        </div>
+                        <div class="goal-select-indicator"></div>
+                    </div>
+                    
+                    <div class="goal-card" data-goal-id="3">
+                        <div class="goal-icon">
+                            <img src="assets/icons/icons8-running.svg" alt="Increase Activity">
+                        </div>
+                        <div class="goal-details">
+                            <h3 class="goal-title">Increase Activity</h3>
+                            <p class="goal-description">Walk 10,000 steps daily</p>
+                        </div>
+                        <div class="goal-select-indicator"></div>
+                    </div>
+                    
+                    <div class="goal-card" data-goal-id="4">
+                        <div class="goal-icon">
+                            <img src="assets/icons/icons8-sleep.svg" alt="Better Sleep">
+                        </div>
+                        <div class="goal-details">
+                            <h3 class="goal-title">Better Sleep</h3>
+                            <p class="goal-description">Improve sleep quality</p>
+                        </div>
+                        <div class="goal-select-indicator"></div>
+                    </div>
+                    
+                    <div class="goal-card" data-goal-id="5">
+                        <div class="goal-icon">
+                            <img src="assets/icons/icons8-food.svg" alt="Nutrition">
+                        </div>
+                        <div class="goal-details">
+                            <h3 class="goal-title">Nutrition</h3>
+                            <p class="goal-description">Balanced diet plan</p>
+                        </div>
+                        <div class="goal-select-indicator"></div>
+                    </div>
+                    
+                    <div class="goal-card" data-goal-id="6">
+                        <div class="goal-icon">
+                            <img src="assets/icons/icons8-yoga.svg" alt="Stress Reduction">
+                        </div>
+                        <div class="goal-details">
+                            <h3 class="goal-title">Stress Reduction</h3>
+                            <p class="goal-description">Mental wellness program</p>
+                        </div>
+                        <div class="goal-select-indicator"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="waze-map-section" id="wazeMapSection">
+                <div class="empty-state">
+                    <img src="assets/icons/icons8-map.svg" alt="Program Map" class="empty-state-icon">
+                    <p>Select a goal to view your personalized program</p>
+                </div>
+                
+                <div class="program-container" id="programContainer" style="display: none;">
+                    <div class="program-header">
+                        <div class="program-title-container">
+                            <h2 class="program-title">Your Program Route</h2>
+                            <p class="program-subtitle">Customized by your health coaches</p>
+                        </div>
+                        <div class="program-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Months</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">26</span>
+                                <span class="stat-label">Activities</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">7</span>
+                                <span class="stat-label">Check-ins</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-map">
+                        <div class="route-visualization">
+                            <!-- Route visualization will be rendered by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="route-legend">
+                        <h3>Route Legend</h3>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <div class="legend-marker current"></div>
+                                <span>Current Position</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker check-in"></div>
+                                <span>Coach Check-in</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker assessment"></div>
+                                <span>Assessment</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker milestone"></div>
+                                <span>Milestone</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-line mandatory"></div>
+                                <span>Mandatory Path</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-line flexible"></div>
+                                <span>Flexible Path</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-actions">
+                        <button class="action-button">Start Program</button>
+                        <button class="action-button secondary" id="requestChangesBtn">Request Changes</button>
+                    </div>
+                </div>
+                
+                <!-- Coach modification request modal -->
+                <div id="modificationModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Request Program Modifications</h3>
+                            <button class="close-modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Your request will be reviewed by your health coach team.</p>
+                            
+                            <div class="form-group">
+                                <label for="requestType">Type of Change:</label>
+                                <select id="requestType" class="form-control">
+                                    <option value="duration">Adjust Duration</option>
+                                    <option value="intensity">Change Intensity</option>
+                                    <option value="focus">Modify Program Focus</option>
+                                    <option value="schedule">Reschedule Checkpoints</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="requestDetails">Details:</label>
+                                <textarea id="requestDetails" class="form-control" rows="4" placeholder="Please describe your requested changes..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Preferred Response Method:</label>
+                                <div class="radio-group">
+                                    <label>
+                                        <input type="radio" name="responseMethod" value="message" checked> Message
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="responseMethod" value="call"> Phone Call
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="responseMethod" value="video"> Video Chat
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="action-button cancel-btn">Cancel</button>
+                            <button class="action-button submit-btn">Submit Request</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Checkpoint detail view -->
+                <div id="checkpointDetail" class="detail-panel">
+                    <div class="detail-header">
+                        <h3 class="checkpoint-title">Checkpoint Title</h3>
+                        <div class="coach-info">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Coach" class="coach-avatar">
+                            <span class="coach-name">Dr. Sarah Chen</span>
+                        </div>
+                        <button class="close-detail">&times;</button>
+                    </div>
+                    <div class="detail-body">
+                        <div class="checkpoint-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Date:</span>
+                                <span class="meta-value">June 15, 2023</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Type:</span>
+                                <span class="meta-value">Video Check-in</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Duration:</span>
+                                <span class="meta-value">30 minutes</span>
+                            </div>
+                        </div>
+                        <div class="checkpoint-description">
+                            <p>This is a scheduled check-in with your primary care provider to review your progress, discuss any challenges, and adjust your plan if needed.</p>
+                        </div>
+                        <div class="checkpoint-tasks">
+                            <h4>Preparation Tasks:</h4>
+                            <ul>
+                                <li>Record your weight daily for the week prior</li>
+                                <li>Complete the food diary questionnaire</li>
+                                <li>Prepare questions about your progress</li>
+                            </ul>
+                        </div>
+                        <div class="checkpoint-actions">
+                            <button class="action-button">Add to Calendar</button>
+                            <button class="action-button secondary">Request Reschedule</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer id="bottom-nav">
+        <button class="nav-button" data-page="home">
+            <img src="assets/icons/icons8-home.svg" alt="Home" class="nav-icon" data-default-icon="assets/icons/icons8-home.svg" data-filled-icon="assets/icons/icons8-home-filled.svg">
+            <span class="nav-tooltip">Home</span>
+        </button>
+        <button class="nav-button" data-page="engine">
+            <img src="assets/icons/icons8-engine.svg" alt="Check Engine Lights" class="nav-icon" data-default-icon="assets/icons/icons8-engine.svg" data-filled-icon="assets/icons/icons8-engine-filled.svg">
+            <span class="nav-tooltip">Engine Lights</span>
+        </button>
+        <button class="nav-button cascaid-logo" data-page="ai">
+            <div class="cascaid-logo-placeholder">
+                 <div class="half-circle left"></div>
+                 <div class="half-circle right"></div>
+            </div>
+            <span class="nav-tooltip">AI Assistant</span>
+        </button>
+        <button class="nav-button" data-page="messages">
+            <img src="assets/icons/icons8-chat-message.svg" alt="Direct Messages" class="nav-icon" data-default-icon="assets/icons/icons8-chat-message.svg" data-filled-icon="assets/icons/icons8-chat-message-filled.svg">
+            <span class="nav-tooltip">Messages</span>
+        </button>
+        <button class="nav-button active" data-page="programs">
+            <img src="assets/icons/map-marker-filled.svg" alt="Programs" class="nav-icon" data-default-icon="assets/icons/map-marker.svg" data-filled-icon="assets/icons/map-marker-filled.svg">
+            <span class="nav-tooltip">Programs</span>
+        </button>
+    </footer>
+
+    <!-- Side Menus (reused from main page) -->
+    <div id="side-menu-overlay"></div>
+    <div id="profile-side-menu" class="side-menu">
+        <div class="profile-header">
+            <img src="assets/icons/profile-icon.svg" alt="Profile Image" class="profile-image-large">
+            <h3 class="profile-name">Saawan Patel</h3>
+            <p class="profile-username">@saawan</p>
+            <div class="profile-stats">
+                <span><strong>0</strong> Followers</span>
+                <span><strong>0</strong> Following</span>
+            </div>
+        </div>
+        <nav class="profile-nav">
+            <ul>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/profile-icon.svg" alt="Profile Icon" class="menu-icon">
+                    Profile
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-graph-report.svg" alt="Reports Icon" class="menu-icon">
+                    Reports
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-bookmark.svg" alt="Bookmarks Icon" class="menu-icon">
+                    Bookmarks
+                </a></li>
+                <li>
+                    <a href="#" class="profile-nav-link theme-toggle-container" id="theme-toggle-link">
+                        <span>
+                            <img src="assets/icons/icons8-night.svg" alt="Dark Theme" class="menu-icon theme-icon light-theme-icon">
+                            <img src="assets/icons/icons8-sun.svg" alt="Light Theme" class="menu-icon theme-icon dark-theme-icon">
+                            Appearance
+                        </span>
+                    </a>
+                </li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/settings.svg" alt="Settings Icon" class="menu-icon">
+                    Settings
+                </a></li>
+                <li><a href="#" class="profile-nav-link">
+                    <img src="assets/icons/icons8-invite.svg" alt="Invite Icon" class="menu-icon">
+                    Invite
+                </a></li>
+            </ul>
+        </nav>
+        <button class="logout-button">
+            <img src="assets/icons/logout.svg" alt="Logout Icon" class="menu-icon">
+            Logout
+        </button>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/waze-analogy.js"></script>
+</body>
+</html> 

@@ -434,8 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'engine':
                 window.location.href = 'engine-lights.html';
                 break;
-            case 'wallet':
-                window.location.href = 'digital-wallet.html';
+            case 'programs':
+                window.location.href = 'waze-analogy.html';
                 break;
         }
     }
@@ -454,6 +454,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (leftHalf && rightHalf) {
                 leftHalf.style.transform = 'translateY(12px)';
                 rightHalf.style.transform = 'translateY(-12px)';
+            }
+        }
+    }
+    
+    // Check if we're on the Programs page and set active state
+    if (currentPath.endsWith('waze-analogy.html')) {
+        const programsButton = document.querySelector('#bottom-nav .nav-button[data-page="programs"]');
+        if (programsButton) {
+            // Remove active class from all buttons
+            document.querySelectorAll('#bottom-nav .nav-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to programs button
+            programsButton.classList.add('active');
+            
+            // Update icon to filled version
+            const icon = programsButton.querySelector('.nav-icon');
+            if (icon && icon.dataset.filledIcon) {
+                icon.src = icon.dataset.filledIcon;
             }
         }
     }
